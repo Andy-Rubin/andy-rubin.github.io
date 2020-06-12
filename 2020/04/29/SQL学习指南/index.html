@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="学习，生活，思考，代码，博客" />
+   
+  <meta name="description" content="梦想的萌生岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    SQL学习指南 |  梦想岛
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="梦想岛" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-SQL学习指南" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  SQL学习指南
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/29/SQL%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-date">
+  <time datetime="2020-04-29T06:56:51.000Z" itemprop="datePublished">2020-04-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p>MySQL数据库可以帮你存储类似下面的一张<strong>二维关系表</strong>： </p>
+<p>在命令行中进行如下的命令操作就可以进入到MySQL数据库中：</p>
+<p>xpleaf@xpleaf-machine:~$ <strong>mysql -h localhost -u root -p</strong><br>Enter password:</p>
+<p><strong>mysql -h</strong> 主机名 <strong>-u</strong> 用户名 <strong>-p</strong>  </p>
+<a id="more"></a>
+<p>基本的解释如下：</p>
+<p>◆ -h：后面接的是主机名，表示你要连接到哪台主机的MySQL数据库。 </p>
+<p>◆ -u：后面接的是用户名，MySQL默认的就是root。 </p>
+<p>◆ -p：指定需要使用密码登陆MySQL数据库，如果密码为空，该参数可以省略。</p>
+<h5 id="查看已有的数据库"><a href="#查看已有的数据库" class="headerlink" title="查看已有的数据库"></a>查看已有的数据库</h5><p>通过上面的操作，我们来总结一下查看MySQL数据库中存放了哪几个数据库的命令：  </p>
+<p>show databases;  </p>
+<p>不过需要注意的是，databases这个单词后面是有个s的，然后最后面是有个分号”;”的，这两点都需要注意，极容易输错。   </p>
+<h5 id="创建自己的数据库"><a href="#创建自己的数据库" class="headerlink" title="创建自己的数据库"></a>创建自己的数据库</h5><p><strong>mysql&gt; create database students_info;</strong><br><strong>Query OK, 1 row affected (0.01 sec)</strong><br><img src="https://i.loli.net/2020/04/29/1C7j5Mfm8NTJXyo.png" alt="">  </p>
+<p><img src="https://i.loli.net/2020/04/29/WCwF4xZ7dpRmuhy.png" alt="">  </p>
+<p><a href="https://blog.csdn.net/baidu_21833433/article/details/58139793" target="_blank" rel="noopener">来自</a> </p>
+<p>4.选择要操作的数据库  </p>
+<p><strong>mysql&gt; use students_info;</strong>  </p>
+<p>要选择一个数据库进行操作时，命令语法如下：<br><strong>use 数据库名[;]</strong>  </p>
+<p>这时你应该注意到，分号”;”是放在中括号[ ]里的，也就是说，加不加分号都是可以的，这意味着，你使用use students_info来进行数据库的选择也是可以的，但为了不容易混淆，建议还是加上去好些吧。    </p>
+<p>在数据库中创建数据库表   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table network3 </span><br><span class="line">    -&gt; (</span><br><span class="line">    -&gt; id char(10) not null primary key,</span><br><span class="line">    -&gt; name char(16) not null,</span><br><span class="line">    -&gt; sex char(6) not null,</span><br><span class="line">    -&gt; age int not null,</span><br><span class="line">    -&gt; address char(36) not null</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库表的基本语法了：</p>
+<p>create table 数据库表名(列声明); </p>
+<p><strong>创建一张表并不难，复杂的可能只是列声明里面的内容了，下面再对上面的每一句列声明作一个详细的说明：</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>列声明语句</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id char(10) not null primary key</td>
+<td>创建一列，名称为id；数据类型为char字符类型，字符的最大长度为10个字符；并且该列内容不允许为空；同时把这一列作为这张表的主键，用来区分表中不同行。</td>
+</tr>
+<tr>
+<td>name char(16) not null</td>
+<td>创建一列，名称为name；数据类型为char字符类型，字符的最大长度为16个字符；并且该列内容不允许为空。</td>
+</tr>
+<tr>
+<td>sex char(6) not null</td>
+<td>创建一列，名称为sex；数据类型为char字符类型，字符的最大长度为6个字符；并且该列内容不允许为空。</td>
+</tr>
+<tr>
+<td>age int not null</td>
+<td>创建一列，名称为age；数据类型为int整型；并且该列内容不允许为空。</td>
+</tr>
+<tr>
+<td>address char(36) not null</td>
+<td>创建一列，名称为sex；数据类型为char字符类型，字符的最大长度为36个字符；并且该列内容不允许为空。</td>
+</tr>
+</tbody></table>
+<h5 id="（1）关于列名称"><a href="#（1）关于列名称" class="headerlink" title="（1）关于列名称"></a>（1）关于列名称</h5><p>需要注意的是，每一列的名称必须是不相同的才行。  </p>
+<h5 id="（2）关于数据类型"><a href="#（2）关于数据类型" class="headerlink" title="（2）关于数据类型"></a>（2）关于数据类型</h5><p>跟编程语言一样，MySQL数据库也有它自己的数据类型，比如上面出现的char、int等，当然MySQL数据库的数据类型还有很多，这里不可能一一作介绍，有需要作更多了解的，可以百度一下。   </p>
+<h5 id="（3）关于not-null"><a href="#（3）关于not-null" class="headerlink" title="（3）关于not null"></a>（3）关于not null</h5><p>这个参数是非必须的，加上这个参数，表明这一列的数据必须不能为空，上面我们创建的这个表中，可以说每一列都是一个学生最基本的信息，所以应该要不为空才对，不然以后可能就会出现学生信息不全的情况，这可不好吧，所以这里我们还是加上not null参数。当然，如果以后我们需要添加新的一列时，比如添加一列tel列的，这时你可能就没有必要指定not null参数了，因为不一定每个学生都有手机号码呀！   </p>
+<h5 id="（4）关于primary-key"><a href="#（4）关于primary-key" class="headerlink" title="（4）关于primary key"></a>（4）关于primary key</h5><p>考虑一下，在学生信息表中，假如存放了很多学生的信息，像上面这个表中，可能会存在这样的两个学生，他们的name、sex、age、address都相同的，这很正常吧！所以呢，你就必须得有一个数据项是不同的，我们上面这个表就指定id数据项是必须不同相同的，也就是所谓的主键了。   </p>
+<p>我们上面就在students_info这个数据库中创建了一张名为network3的数据库表，创建完成之后，我们应该要检查一下刚刚这张表，看看有没有什么问题：<br><strong>mysql&gt; describe network3;</strong>   </p>
+<p><img src="https://i.loli.net/2020/04/29/w3kt14XiIlqZKsh.png" alt=""></p>
+<p>它是用来查询数据库表的详细信息的（只包括表头，并不包含内容）：<br>describe 数据库表名;<br>语法跟前面的是一样的，我们应该养成一个好习惯，那就是每次创建完成一个数据库表后，都使用这个命令来检查一下，看看所创建的数据库表跟你想要的是不是一样。</p>
+<h5 id="MySQL数据库、数据库与数据库表"><a href="#MySQL数据库、数据库与数据库表" class="headerlink" title="MySQL数据库、数据库与数据库表"></a>MySQL数据库、数据库与数据库表</h5><p>三者的关系<br> <strong>MySQL数据库</strong>： 相当于是一个大仓库，里面有很多个小仓库；<br><strong>数据库</strong>： 相当于是大仓库中的小仓库，里面有很多个小的容器；<br><strong>数据库表</strong>： 相当于是小仓库中的容器，我们就是在里面存储内容；  </p>
+<h5 id="三、操作数据库中的数据库表"><a href="#三、操作数据库中的数据库表" class="headerlink" title="三、操作数据库中的数据库表"></a>三、操作数据库中的数据库表</h5><p>前面创建了数据库表之后，注意里面是没有存储任何数据的，下面我们就往这个表中插入数据：<br><strong>mysql&gt; insert into network3 values(“3114006441”,”xpleaf”,”male”,35,”QingYuan”)</strong>;<br><strong>Query OK, 1 row affected (0.01 sec)</strong>  </p>
+<p>上面的操作，我就往数据库表中添加了一条数据，数据内容跟前面的学生信息表中的第一条是一模一样的，这里我们着重看一下向数据库表中插入数据的命令语法：  </p>
+<p>insert into 数据库表名 values(value值1,value值2,…….); </p>
+<p>**mysql&gt; insert into network3 values(“3114006442”,”Jim”,”male”,38,”JiangMen”);<br>Query OK, 1 row affected (0.00 sec)  </p>
+<p>mysql&gt; insert into network3 values(“3114006443”,”Pei”,”male”,41,”PuNing”);<br>Query OK, 1 row affected (0.01 sec)   </p>
+<p>mysql&gt; insert into network3 values(“3114006440”,”Xuan”,”male”,36,”ShanWei”);<br>Query OK, 1 row affected (0.02 sec)   </p>
+<p>mysql&gt; insert into network3 values(“3214006336”,”Ting”,”female”,30,”ChaoShan”);<br>Query OK, 1 row affected (0.02 sec)**   </p>
+<p><strong>2.查询数据库表中的数据</strong>  </p>
+<p>向表中插入数据之后，接下来我们当然是要查询表中的数据了。查询表中的数据有多种方法（其实都是一种方法），但无论哪种方法，基本的命令语法都是像下面这样：  </p>
+<p><strong>select</strong> 列名称 <strong>from</strong> 数据库表名 [查询条件];  </p>
+<p><strong>（1）查询表中全部数据</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from network3; +------------+--------+--------+-----+----------+   | id | name   | sex    | age | address  |    +------------+--------+--------+-----+----------+   </span><br><span class="line">| 3114006440 | Xuan   | male   |  36 | ShanWei  |  </span><br><span class="line">| 3114006441 | xpleaf | male   |  35 | QingYuan |  </span><br><span class="line">| 3114006442 | Jim    | male   |  38 | JiangMen |  </span><br><span class="line">| 3114006443 | Pei    | male   |  41 | PuNing   |  </span><br><span class="line">| 3214006336 | Ting   | female |  30 | ChaoShan |  +------------+--------+--------+-----+----------+ 5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+
+<p>这里的”*”是一个通配符，它表示任意匹配，如果你学过基本的正则表达式，这应该比较好理解，所以”*”放在列的位置，表示的是要查询所有列的数据；我们是查询network3这张表中的全部列的数据。  </p>
+<p><strong>2）查询表中特定列的数据</strong><br>操作如下：<br><strong>mysql&gt; select id,name from network3;</strong>  </p>
+<p><strong>（3）按特定条件查询表中的数据</strong><br>有时我们可能只想要得到某个人或者相同性别的数据，这时候我们就需要指定条件来进行查询了，基本的命令语法如下：<br>select 列名称 from 数据库表名 where 查询条件;<br>看我下面的操作：<br><strong>mysql&gt; select * from network3 where name=’xpleaf’;</strong>  </p>
+<p><img src="https://i.loli.net/2020/04/29/4AuHZPbjgxkfpeo.png" alt=""><br><img src="https://i.loli.net/2020/04/29/aeJIRDLdrkClfZv.png" alt=""><br><img src="https://i.loli.net/2020/04/29/iYOwsK4tdn59rMp.png" alt="">  </p>
+<p><strong>3.修改数据库表中的数据</strong><br>数据不可能永远都不会变的，总有发生变化的时候，因此，有时我们需要对表中的数据作一些修改，或者说就是更新表中的数据，比如说年龄、地址等，可以先看下面的操作：   </p>
+<p><img src="https://i.loli.net/2020/04/29/YlszUaCd5n9KmVb.png" alt=""></p>
+<p>下面开始做一些修改（更新）：<br>#将name为”xpleaf”的address修改为”YuanTan”<br>mysql&gt; update network3 set address=”YuanTan” where name=’xpleaf’;<br>#将id为”3214006336”的name修改为”Hui”<br>mysql&gt; update network3 set name=”Hui” where id=’3214006336’;<br>#将所有人的age加1<br>mysql&gt; update network3 set age=age+1;  </p>
+<p><img src="https://i.loli.net/2020/04/29/XLci95qfPHwJgrp.png" alt="">  </p>
+<p>下面我们就来总结一下修改（更新）表中数据的基本命令语法：<br><strong>update</strong> 数据库列名 <strong>set</strong> 列=新value <strong>where</strong> 更新条件;  </p>
+<p><strong>4.删除数据库表中的数据</strong>  </p>
+<p>delete from 数据库表名 where 删除条件;   </p>
+<p><img src="https://i.loli.net/2020/04/29/6V9b5ZCOUtFLASI.png" alt="">  </p>
+<p>当然，你也可以把这个表中所有的数据都删除表，只需要使用下面这条命令就可以了：</p>
+<td bgcolor=#ff4500> </td>
+<table>
+  <tr>
+    <td bgcolor=#FF4500>delete from 数据库表名;</td>
+  </tr>
+</table>
+
+<p>这个命令只是把表中的所有数据删除而已，并没有把这个表也删除了，这个数据库表是依然存在的，只是这时候它就是一个空表，就像我们刚刚创建它时一样。 </p>
+<p>5.修改数据库表</p>
+<p>前面讲的是修改数据库表中的数据，而这里讲的，就是要修改数据库表的结构，比如说添加一列、删除一列，或者说只是简单的修改列的名称或数据类型等，这里一定要弄清楚这是两个完全不同的操作。  </p>
+<p>（1）修改数据库表中的列<br>就直接给出命令语法了：<br>alter table 数据库表名 change 列名称 新数据类型 [其它];    </p>
+<p>还是看下面我的操作：<br>在修改前，先看一下原来数据库表的详细信息：<br><strong>mysql&gt; describe network3;</strong>     </p>
+<p><img src="https://i.loli.net/2020/04/29/wfL6iDE17gGyAqI.png" alt=""></p>
+<p>开始做修改操作：<br>#将列名称”adress”修改为”addr”，其它保持不变<br><strong>mysql&gt; alter table network3 change address addr char(30) not null;</strong><br>Query OK, 4 rows affected (0.04 sec)<br>Records: 4  Duplicates: 0  Warnings: 0   </p>
+<p>#将列”name”的数据类型修改为最大可以存放20个字符的char类型，其它保持不变<br>mysql&gt; alter table network3 change name name char(20) not null;<br>Query OK, 4 rows affected (0.03 sec)<br>Records: 4  Duplicates: 0  Warnings: 0    </p>
+<p>#同时修改列”sex”的名称和数据类型<br>mysql&gt; alter table network3 change sex Sex char(10) not null;<br>Query OK, 4 rows affected (0.05 sec)<br>Records: 4  Duplicates: 0  Warnings: 0    </p>
+<p><img src="https://i.loli.net/2020/04/29/FrfLKoUYixVEbwy.png" alt="">  </p>
+<p>（2）删除数据库表的列<br>有时候，随着时间的推移，数据库表中的某些内容显得没有那么重要了，或者说已经没有存在的意义了，这时候我们就可以把整一列都删除掉，这样就可以节省一些存储空间了。<br>删除列的基本命令语法如下：   </p>
+<p><strong>alter table 数据库表名 drop 列名称;</strong> </p>
+<p>mysql&gt; alter table network3 drop addr;  </p>
+<p><strong>（3）重命名数据库表</strong><br>通过前面的操作，我们的数据库表已经焕然一新，跟原来的相比，结构已经发生了一些变化，这时我们就给这个数据库表重命名吧。<br>给数据库表重命名的基本命令语法如下：<br>mysql&gt; alter table network3 rename New_network3;<br>Query OK, 0 rows affected (0.00 sec)<br>再用show tables;来查看一下此时存在的数据库表：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;   </span><br><span class="line">+-------------------------+ </span><br><span class="line">| Tables_in_students_info | </span><br><span class="line">+-------------------------+ </span><br><span class="line">| New_network3    | </span><br><span class="line">+-------------------------+ </span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>好！也没有问题了。</p>
+<p><strong>（4）删除数据库表</strong><br>New_network3存放的是一个班的学生信息，他们总有毕业的一天，当他们毕业的时候，也许我们就不再需要存放他们的信息了，这时就可以把这张数据库表删除了。<br>删除数据库表的基本命令语法如下：<br><strong>drop table 数据库表名;</strong><br>好吧，我们也来操作一下：<br>mysql&gt; drop table New_network3;<br>Query OK, 0 rows affected (0.01 sec)<br>再用show tables;来查看一下数据库中的数据库表：   </p>
+<p><strong>6.删除数据库</strong><br>最开始我们在MySQL数据库创建了students_info这个数据库，是为了在用它来存储学生信息，现在，我们不想用MySQL数据库来存储有关学生信息了，这时，就可以考虑把students_info这个数据库删除了。<br>删除数据库的基本命令语法如下：<br><strong>drop database 数据库名;</strong><br>虽然很不舍，但我们总要向前走，才能进步，所以下面我们就来执行这个操作：<br><strong>mysql&gt; drop database students_info;<br>Query OK, 0 rows affected (0.00 sec)</strong>  </p>
+<p>四、进阶操作<br><strong>1.修改MySQL数据库的登陆密码</strong><br>不管怎么说，你的MySQL数据库密码总不可能一直不变，说不定哪一天你不小心把它告诉了你的朋友，而里面又存放了非常重要的数据，这时你就要修改数据库的登陆密码了。<br>修改数据库登陆密码的基本命令语法如下：<br>mysqladmin -r root -p password 新密码  </p>
+<p>注意，这个操作应该是在你未登陆MySQL数据库之前进行的操作。   </p>
+<p>2.在登陆MySQL数据库时指定要操作的数据库<br>直接给出下面的基本命令语法：<br><strong>mysql -D   选择要操作的数据库名    -h   主机名   -u  root  -p</strong></p>
+<p><strong>3.通过文件的方式创建数据库表</strong><br>前面我们在创建数据库表时，使用的方法是在MySQL数据库的命令行界面中一行一行输入的，这样不仅很容易输错，而且一旦输错了，又得重新输一遍，当要创建一个结构比较复杂的数据库表时，这样的方法显然是行不能的，这时我们就可以考虑使用文件的方式来操作了。<br>直接给出下面的基本命令语法：<br><strong>mysql -D 选择要操作的数据库名 -h 主机名 -u root -p &lt; .sql类型文件</strong>    </p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/29/SQL%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/29/Markdown%E7%9A%84%E7%BB%86%E8%87%B4%E6%8E%92%E7%89%88/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Markdown的细致排版
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/29/python%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">python学习指南</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+        app_key: '1OB4hLIBzNt40C7AAQ3ImBWG',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+  
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+    <div id="mvcomments">
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js'></script>
+<script>
+	new MiniValine({
+	  el: '#mvcomments',
+	  appId: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+	  appKey: '1OB4hLIBzNt40C7AAQ3ImBWG',
+	  placeholder: 'Write a Comment',
+	  lang: '',
+	  adminEmailMd5: '',
+	  math: true,
+	  md: true
+	});
+    const infoEle = document.querySelector('#mvcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #mvcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #mvcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #mvcomments-box #mvcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2020
+        <i class="ri-heart-fill heart_icon"></i> Chen Bin
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梦想岛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/">代码说</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://chenbin-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/">法律法规</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/VjamHOiTgk26EpK.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/FMJN75HGXRpDdP4.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 180,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="学习，生活，思考，代码，博客" />
+   
+  <meta name="description" content="梦想的萌生岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    搜索 |  梦想岛
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="梦想岛" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-搜索" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  搜索
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/26/%E6%90%9C%E7%B4%A2/" class="article-date">
+  <time datetime="2020-04-26T08:38:43.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">19 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>广度优先搜索一层一层地进行遍历，每层遍历都是以上一层遍历的结果作为起点，遍历一个距离能访问到的所有节点。需要注意的是，遍历过的节点不能再次被遍历。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">第一层：  </span><br><span class="line">	• 0 -&gt; &#123;6,2,1,5&#125;  </span><br><span class="line">第二层：  </span><br><span class="line">	• 6 -&gt; &#123;4&#125;  </span><br><span class="line">	• 2 -&gt; &#123;&#125;  </span><br><span class="line">	• 1 -&gt; &#123;&#125;  </span><br><span class="line">	• 5 -&gt; &#123;3&#125;  </span><br><span class="line">第三层：  </span><br><span class="line">	• 4 -&gt; &#123;&#125;  </span><br><span class="line">	• 3 -&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<a id="more"></a>
+
+<p>每一层遍历的节点都与根节点距离相同。设di 表示第i个节点与根节点的距离，推导出一个结论：对于先遍历的节点 i 与后遍历的节点j，有di &lt;=dj。利用这个结论，可以求解最短路径等 最优解问题：第一次遍历到目的节点，其所经过的路径为最短路径。应该注意的是，使用BFS只能求解无权图的最短路径，无权图是指从一个节点到另一个节点的代价都记为1。在程序实现BFS时需要考虑以下问题：</p>
+<blockquote>
+<p>   • 队列：用来存储每一轮遍历得到的节点；<br>   • 标记：对于遍历过的节点，应该将它标记，防止重复遍历。  </p>
+</blockquote>
+<p><strong>1.计算在网格中从原点到特定点的最短路径长度</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[[1,1,0,1],</span><br><span class="line"> [1,0,1,0],</span><br><span class="line"> [1,1,1,1],</span><br><span class="line"> [1,0,1,1]]</span><br></pre></td></tr></table></figure>
+<p>题目描述：0 表示可以经过某个位置，求解从左上角到右下角的最短路径长度。  </p>
+<pre><code>public int shortestPathBinaryMatrix(int[][] grids){
+    if(grids == null || grids.length == 0 || grids[0].length == 0){
+        return -1;
+    }
+    int[][] direction={{1,-1},{1,0},{1,1},{0,-1},{0,1},{-1,-1},{-1,0},{-1,1}};
+    int m=grids.length, n=grids[0].length;
+    Queue&lt;Pair&lt;Integer, Integer&gt;&gt; queue = new LinkedList&lt;&gt;();
+    queue.add(new Pair&lt;&gt;(0,0));
+    int pathLength = 0;
+    while(!queue.isEmpty()){
+        int size = queue.size();
+        pathLength++;
+        while(size-- &gt; 0){
+            Pair&lt;Integer, Integer&gt; cur = queue.poll();
+            int cr= cur.getKey(),  cc = cur.getValue();
+            if(grids[cr][cc] ==  1){
+                continue;
+            }
+            if(cr == m -1 &amp;&amp; cc == n-1){
+                return pathLength;
+            }
+            grids[cr][cc] = 1; //标记
+            for(int[] d : direction){
+                int nr = cr + d[0], nc=cc+d[1];
+                if(nr &lt; 0 || nr &gt;= m || nc &lt; 0 || nc &gt;= n){
+                    continue;
+                }
+                queue.add(new Pair&lt;&gt;(nr, nc));
+            }
+        }
+    }
+    return -1;
+}</code></pre><p><strong>2.组成整数的最小平方数数量</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example, given n &#x3D; 12, return 3 because 12 &#x3D; 4 + 4 + 4; given n &#x3D; 13, </span><br><span class="line"></span><br><span class="line">return 2 because 13 &#x3D; 4 + 9.</span><br></pre></td></tr></table></figure>
+<p>可以将每个整数看成图中的一个节点，如果两个整数之差为一个平方数，那么这两个整数所在的节点就有一条边。<br>要求解最小的平方数数量，就是求解从节点 n 到节点 0 的最短路径。<br>本题也可以用动态规划求解，在之后动态规划部分中会再次出现。  </p>
+<pre><code>public int numSquares(int n){
+    List&lt;Integer&gt; squares = generateSquares(n);
+    Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+    boolean[] marked = new boolean[n+1];
+    queue.add(n);
+    marked[n] = true;
+    int level = 0;
+    while(!queue.isEmpty()){
+        int size = queue.size();
+        level++;
+        while(size-- &gt; 0){
+            int cur = queue.poll();
+            for(int s : squares){
+                int next=cur-s;
+                if(next &lt; 0){
+                    break;
+                }
+                if(next == 0){
+                    return level;
+                }
+                if(marked[next]){
+                    continue;
+                }
+                marked[next] = true;
+                queue.add(next);
+            }
+        }
+    }
+    return n;
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">生成小于n的平方数序列</span><br><span class="line">return 1,4,9....</span><br></pre></td></tr></table></figure>
+
+<pre><code>private List&lt;Integer&gt; generateSquares(int n){
+    List&lt;Integer&gt; squares = new ArrayList&lt;&gt;();
+    int square =1;
+    int diff= 3;
+    while(square &lt;= n){
+        squares.add(square);
+        square += diff;
+        diff += 2;
+    }
+    return squares;
+}</code></pre><p><strong>3.最短单词路径</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
+
+<p>题目描述：找出一条从 beginWord到endWord的最短路径，每次移动规定为改变一个字符，并且改变之后的字符串必须在 wordList 中。  </p>
+<pre><code>public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList){
+    wordList.add(beginWord);
+    int N=wordList.size();
+    int start = N-1;
+    int end = 0;
+    while(end &lt; N &amp;&amp; !wordList.get(end).equals(endWord)){
+        end++;
+    }
+    if(end == N){
+        return 0;
+    }
+    List&lt;Integer&gt;[] graphic = buildGraphic(wordList);
+    return getShortestPath(graphic, start, end);
+}
+private List&lt;Integer&gt;[] buildGraphic(List&lt;String&gt; wordList){
+    int N=wordList.size();
+    List&lt;Integer&gt;[] graphic = new List[N];
+    for(int i=0; i&lt;N; i++){
+        graphic[i] = new ArrayList&lt;&gt;();
+        for(int j=0; j&lt;N; j++){
+            if(isConnect(wordList.get(j))){
+                graphic[i].add(j);
+            }
+        }
+    }
+    return graphic;
+}
+
+private boolean isConnect(String s1, String s2){
+    int diffCnt = 0;
+    for(int i=0; i&lt;s1.length() &amp;&amp; diffCnt &lt;= 1; i++){
+        if(s1.charAt(i) != s2.charAt(i)){
+            diffCnt++;
+        }
+    }
+    return diffCnt == 1;
+}
+
+private int getShortestPath(List&lt;Integer&gt;[] graphic, int start, int end){
+    Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+    boolean[] marked = new boolean[graphic.length];
+    queue.add(start);
+    marked[start] = true;
+    int path = 1;
+    while(!queue.isEmpty()){
+        int size=queue.size();
+        path++;
+        while(size-- &gt; 0){
+            int cur = queue.poll();
+            for(int next  : graphic[cur]){
+                if(next == end){
+                    return path;
+                }
+                if(marked[next]){
+                    continue;
+                }
+                marked[next] = true;
+                queue.add(next);
+            }
+        }
+    }
+    return 0;
+}</code></pre><hr>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>广度优先搜索一层一层遍历，每一层得到的所有新节点，要用队列存储起来以备下一层遍历的时候再遍历。<br>而深度优先搜索在得到一个新节点时立即对新节点进行遍历：从节点0出发开始遍历，得到到新节点 6 时，立马对新节点 6进行遍历，得到新节点4；如此反复以这种方式遍历新节点，直到没有新节点了，此时返回。返回到根节点0的情况是，继续对根节点0进行遍历，得到新节点2，然后继续以上步骤。从一个节点出发，使用DFS对一个图进行遍历时，能够遍历到的节点都是从初始节点可达的，DFS常用来求解这种 可达性 问题。在程序实现 DFS 时需要考虑以下问题：  </p>
+<ul>
+<li><p>栈：用栈来保存当前节点信息，当遍历新节点返回时能够继续遍历当前节点。可以使用递归栈。</p>
+</li>
+<li><p>标记：和 BFS 一样同样需要对已经遍历过的节点进行标记。</p>
+</li>
+</ul>
+<p><strong>1. 查找最大的连通面积</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</span><br><span class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</span><br><span class="line"> [0,1,1,0,1,0,0,0,0,0,0,0,0],</span><br><span class="line"> [0,1,0,0,1,1,0,0,1,0,1,0,0],</span><br><span class="line"> [0,1,0,0,1,1,0,0,1,1,1,0,0],</span><br><span class="line"> [0,0,0,0,0,0,0,0,0,0,1,0,0],</span><br><span class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</span><br><span class="line"> [0,0,0,0,0,0,0,1,1,0,0,0,0]]</span><br></pre></td></tr></table></figure>
+
+<pre><code>private int m, n;
+private int[][] direction = {{0,1},{0,-1},{1,0},{-1,0}};
+
+public int maxAreaOfIsland(int[][] grid){
+    if(grid == null || grid.length == 0){
+        return 0;
+    }
+    m = grid.length;
+    n=grid[0].length;
+    int maxArea=0;
+    for(int i=0; i&lt;m; i++){
+        for(int j=0; j&lt;n; j++){
+            maxArea = Math.max(maxArea, dfs(grid, i, j));
+        }
+    }
+    return maxArea;
+}
+
+private int dfs(int[][] grid, int r, int c){
+    if(r &lt; 0 || r&gt;=m || c &lt; 0 || c&gt;=0 || grid[r][c] == 0){
+        return 0;
+    }
+    grid[r][c] = 0;
+    int area = 1;
+    for(int[] d : direction){
+        area += dfs(grid, r+d[0], c+d[1]);
+    }
+    return area;
+}</code></pre><p><strong>2. 矩阵中的连通分量数目</strong>  </p>
+<blockquote>
+<p>Input:<br>11000<br>11000<br>00100<br>00011<br>Output: 3  </p>
+</blockquote>
+<pre><code>private int m,n;
+private int[][] direction = {{0,1},{0,-1},{1,0},{-1,0}};
+
+public int numIslands(char[][] grid){
+    if(grid == null || grid.length == 0){
+        return 0;
+    }
+    m = grid.length;
+    n  = grid[0].length;
+    int islandsNum=0;
+    for(int i=0; i&lt;m; i++){
+        for(int j=0; j&lt;n; j++){
+            if(grid[i][j] != &apos;0&apos;){
+                dfs(grid, i, j);
+                islandsNum++;
+            }
+        }
+    }
+    return islandsNum;
+}
+
+private void dfs(char[][] grid, int i, int j){
+    if(i &lt;0 || i&gt;=m || j&lt;0 || j&gt;=n || grid[i][j] == &apos;0&apos;){
+        return ;
+    }
+    grid[i][j] = &apos;0&apos;;
+    for(int[] d : direction){
+        dfs(grid, i+d[0], j+d[1]);
+    }
+}</code></pre><p><strong>3. 好友关系的连通分量数目</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[[1,1,0],</span><br><span class="line"> [1,1,0],</span><br><span class="line"> [0,0,1]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:The 0th and 1st students are direct friends, so they are in a friend circle.</span><br><span class="line">The 2nd student himself is in a friend circle. So return 2.</span><br></pre></td></tr></table></figure>
+<p>题目描述：好友关系可以看成是一个无向图，例如第 0 个人与第 1 个人是好友，那么 M[0][1] 和 M[1][0] 的值都为 1。  </p>
+<pre><code>private int n;
+
+public int findCircleNum(int[][] M){
+    n = M.length;
+    int circleNum = 0;
+    boolean[] hasVisited = new boolean[n];
+    for(int i=0; i&lt;n; i++){
+        if(!hasVisited[i]){
+            dfs(M, i, hasVisited);
+            circleNum++;
+        }
+    }
+    return circleNum;
+}
+
+pricate void dfs(int[][] M, int i, boolean[] hasVisited)
+{
+    hasVisited[i] = true;
+    for(int k=0; k&lt;n; k++){
+        if(M[i][k] == 1 &amp;&amp; !hasVisited[k]){
+            dfs(M, k, hasVisited);
+        }
+    }
+}</code></pre><p><strong>4. 填充封闭区域</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">X X X X</span><br><span class="line">X O O X</span><br><span class="line">X X O X</span><br><span class="line">X O X X </span><br><span class="line"></span><br><span class="line">After running your function, the board should be:</span><br><span class="line">X X X X</span><br><span class="line">X X X X</span><br><span class="line">X X X X</span><br><span class="line">X O X X</span><br></pre></td></tr></table></figure>
+<p>题目描述：使被 ‘X’ 包围的 ‘O’ 转换为 ‘X’。<br>先填充最外侧，剩下的就是里侧了。  </p>
+<pre><code>private int[][] direction={{0,1},{0,-1},{1,0},{-1,0}};
+private int m,n;
+
+public void solve(char[][] board){
+    if(board == null || board.length == 0){
+        return;
+    }
+
+    m=board.length;
+    n=board[0].length;
+
+    for(int i=0; i&lt;m; i++){
+        dfs(board, i, 0);
+        dfs(board, i, n-1);
+    }
+    for(int i=0; i&lt;n; i++){
+        dfs(board, 0, i);
+        dfs(board, m-1, i);
+    }
+    for(int i=0; i&lt;m; i++){
+        for(int j=0; j&lt;n; j++){
+            if(board[i][j] == &apos;T&apos;){
+                board[i][j] = &apos;0&apos;;
+            }else if(board[i][j] == &apos;0&apos;){
+                board[i][j] = &apos;X&apos;;
+            }
+        }
+    }
+}
+
+private void dfs(char[][] board, int r, int c){
+    if(r &lt; 0 || r&gt;=m || c&lt;0 || c&gt;=n || board[r][c] != &apos;0&apos;){
+        return ;
+    }
+    board[r][c] = &apos;T&apos;;
+    for(int[] d : direction){
+        dfs(board, r + d[0], c + d[1]);
+    }
+}</code></pre><p><strong>5. 能到达的太平洋和大西洋的区域</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Given the following 5x5 matrix:</span><br><span class="line">Pacific ~   ~   ~   ~   ~</span><br><span class="line">       ~  1   2   2   3  (5) *</span><br><span class="line">       ~  3   2   3  (4) (4) *</span><br><span class="line">       ~  2   4  (5)  3   1  *</span><br><span class="line">       ~ (6) (7)  1   4   5  *</span><br><span class="line">       ~ (5)  1   1   2   4  *</span><br><span class="line">          *   *   *   *   * Atlantic</span><br><span class="line">Return:</span><br><span class="line">[[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]] (positions with parentheses in above matrix).</span><br></pre></td></tr></table></figure>
+
+<p>左边和上边是太平洋，右边和下边是大西洋，内部的数字代表海拔，海拔高的地方的水能够流到低的地方，求解水能够流到太平洋和大西洋的所有位置。  </p>
+<pre><code>private int m, n;
+private int[][] matrix;
+private int[][] direction = {{0,1},{0,-1},{1,0},{-1,0}};
+
+public List&lt;List&lt;Integer&gt;&gt; pacificAtlantic(int[][] matrix){
+    List&lt;List&lt;Integer&gt;&gt; ret = new ArrayList&lt;&gt;();
+    if(matrix == null || matrix.length == 0){
+        return ret;
+    }
+
+    m = matrix.length;
+    n = matrix[0].length;
+    this.matrix = matrix;
+    boolean[][] canReachP = new  boolean[m][n];
+    boolean[][] canReachA = new boolean[m][n];
+
+    for(int i=0; i&lt;m; i++){
+        dfs(i, 0, canReachP);
+        dfs(i, n-1, canReachA);
+    }
+    for(int i=0; i&lt;n; i++){
+        dfs(0, i, canReachP);
+        dfs(m-1, i, canReachA);
+    }
+    for(int i=0; i&lt;m; i++){
+        for(int j=0; j&lt;n; j++){
+            if(canReachP[i][j] &amp;&amp; canReachA[i][j]){
+                ret.add(Arrays.asList(i,j));
+            }
+        }
+    }
+    return ret;
+}
+
+private void dfs(int r, int c, boolean[][] canReach){
+    if(canReach[r][c]){
+        return;
+    }
+    canReach[r][c] = true;
+    for(int[] d : direction){
+        int nextR = d[0] + r;
+        int nextC = d[1] + c;
+        if(nextR &lt; 0 || nextR &gt;= m || nextC &lt; 0 || nextC &gt;= n || matrix[r][c] &gt; matrix[nextR][nextC]){
+            continue;
+        }
+        dfs(nextR, nextC, canReach);
+    }
+}</code></pre><p><strong>Backtracking</strong><br>Backtracking（回溯）属于 DFS。  </p>
+<ul>
+<li>普通 DFS 主要用在 可达性问题 ，这种问题只需要执行到特点的位置然后返回即可。  </li>
+<li>而 Backtracking 主要用于求解 排列组合 问题，例如有 { ‘a’,’b’,’c’ } 三个字符，求解所有由这三个字符排列得到的字符串，这种问题在执行到特定的位置返回之后还会继续执行求解过程。  </li>
+</ul>
+<p>因为 Backtracking 不是立即返回，而要继续求解，因此在程序实现时，需要注意对元素的标记问题：  </p>
+<ul>
+<li>在访问一个新元素进入新的递归调用时，需要将新元素标记为已经访问，这样才能在继续递归调用时不用重复访问该元素；</li>
+<li>但是在递归返回时，需要将元素标记为未访问，因为只需要保证在一个递归链中不同时访问一个元素，可以访问已经访问过但是不在当前递归链中的元素。</li>
+</ul>
+<p><strong>1. 数字键盘组合</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input:Digit string &quot;23&quot;</span><br><span class="line">Output: [&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">private static final String[] KEYS &#x3D; &#123;&quot;&quot;, &quot;&quot;, &quot;abc&quot;, &quot;def&quot;, &quot;ghi&quot;, &quot;jkl&quot;, &quot;mno&quot;, &quot;pqrs&quot;, &quot;tuv&quot;, &quot;wxyz&quot;&#125;;</span><br></pre></td></tr></table></figure>
+
+<pre><code>public List&lt;String&gt; letterCombinations(String digits){
+    List&lt;String&gt; combinations = new ArrayList&lt;&gt;();
+    if(digits == null || digits.length() == 0){
+        return combinations;
+    }
+    private void doCombination(StringBuilder prefix, List&lt;String&gt; combinations, final String digits){
+        if(prefix.length() == digits.length()){
+            combinations.add(prefix.toString());
+            return l
+        }
+        int curDigits = digits.charAt(prefix.length()) - &apos;0&apos;;
+        String letters = KEYS[curDigits];
+        for(char c : letters.toCharArray()){
+            prefix.append(c);                                            //添加
+            doCombination(pre, combinations, digits);
+            prefix.deleteCharAt(prefix.length()-1);       //删除
+        }
+    }
+}</code></pre><p><strong>2. IP 地址划分</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Given &quot;25525511135&quot;,</span><br><span class="line">return [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;].</span><br></pre></td></tr></table></figure>
+
+<pre><code>public List&lt;String&gt; restoreIpAddresses(String s){
+    List&lt;String&gt; addresses = new ArrayList&lt;&gt;();
+    StringBuilder tempAddress = new StringBuilder();
+    doRestore(0, tempAddress, addresses, s);
+    return addresses;
+}
+
+private void doRestore(int k, StringBuilder tempAddress, List&lt;String&gt; addresses, String s){
+    if(k==4 || s.length() == 0){
+        if(k=4 &amp;&amp; s.length() == 0){
+            addresses.add(tempAddress.toString());
+        }
+        return ;
+    }
+    for(int i=0; i&lt;s.length() &amp;&amp; i&lt;=2; i++){
+        if(i != 0 &amp;&amp; s.charAt(0) == &apos;0&apos;){
+            if(tempAddress.length() != 0){
+                part = &quot;.&quot; + part;
+            }
+            tempAddress.append(part);
+            doRestore(k+1, tempAddress, addresses, s.substring(i+1));
+            tempAddress.delete(tempAddress.length() - part.length(), tempAddress.length());
+        }
+    }
+}</code></pre><p><strong>3. 在矩阵中寻找字符串</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given board &#x3D;</span><br><span class="line">[</span><br><span class="line">  [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;E&#39;],</span><br><span class="line">  [&#39;S&#39;,&#39;F&#39;,&#39;C&#39;,&#39;S&#39;],</span><br><span class="line">  [&#39;A&#39;,&#39;D&#39;,&#39;E&#39;,&#39;E&#39;]</span><br><span class="line">]</span><br><span class="line">word &#x3D; &quot;ABCCED&quot;, -&gt; returns true,</span><br><span class="line">word &#x3D; &quot;SEE&quot;, -&gt; returns true,</span><br><span class="line">word &#x3D; &quot;ABCB&quot;, -&gt; returns false.</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>private final static int[][] direction = {{1,0},{-1,0},{0,1},{0,-1}};
+private int m;
+private int n;
+
+public boolean exist(char[][] board, String word){
+    if(word == null || word.length() == 0){
+        return true;
+    }
+    if(board == null || board.length == 0 || board[0].length == 0){
+        return false;
+    }
+
+    m = board.length;
+    n = board[0].length;
+    boolean[][] hasVisited = new boolean[m][n];
+
+    for(int r=0; r&lt;m; r++){
+        for(int c=0; c&lt;n; c++){
+            if(backtracking(0, r, c, hasVisited, board, word)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+private boolean backtracking(int curLen, int r, int c, boolean[][] visited, final char[][] board, final String word){
+    if(curLen == word.length()){
+        return true;
+    }
+    if(r &lt;0 || r&gt;= m || c &lt;0 || c&gt;=n || board[r][c] != word.charAt(curLen) || visited[r][c]){
+        return false;
+    }
+    visited[r][c] = true;
+    for(int [] d : direction){
+        if(backtracking(curLen +1, r+d[0], c+d[1], visited, board, word)){
+            return true;
+        }
+    }
+    visited[r][c] = false;
+
+    return false;
+}</code></pre><p><strong>4.输出二叉数中所有从根到叶子的路径</strong>   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  1</span><br><span class="line"> &#x2F;  \</span><br><span class="line">2    3</span><br><span class="line"> \</span><br><span class="line">  5</span><br><span class="line">[&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</span><br></pre></td></tr></table></figure>
+
+<pre><code>public List&lt;String&gt; binaryTreePaths(TreeNode root){
+    List&lt;String&gt; paths = new ArrayList&lt;&gt;();
+    if(root == null){
+        return paths;
+    }
+    List&lt;Integer&gt; values = new ArrayList&lt;&gt;();
+    backtracking(root, values, paths);
+    return paths;
+}
+
+private void backtracking(TreeNode node, List&lt;Integer&gt; values, List&lt;String&gt; paths){         if(node == null){
+        return;
+    }
+    values.add(node.val);
+    if(isLeaf(node)){
+        paths.add(buildPath(values));
+    }else{
+        backtracking(node.left, values, paths);
+        backtracking(node.right, values, paths);
+    }
+    values.remove(values.size() - 1);
+}
+
+private boolean isLeaf(TreeNode node){
+    return node.left == null &amp;&amp; node.right == null;
+}
+
+private String buildPath(List&lt;Integer&gt; values){
+    StringBuilder str = new StringBuilder();
+    for(int i=0; i&lt;value.size(); i++){
+        str.append(values.get(i));
+        if(i != values.size() -1){
+            str.append(&quot;-&gt;&quot;);
+        }
+    }
+    return str.toString();
+}</code></pre><p><strong>5.排序</strong>    </p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums){
+    List&lt;List&lt;Integer&gt;&gt; permutes = new ArrayList&lt;&gt;();
+    List&lt;Integer&gt; permuteList = new ArrayList&lt;&gt;();
+    boolean[] hasVisited = new ArrayList&lt;&gt;();
+    backtracking(permuteList, permutes, hasVisited, nums);
+    return permutes;
+}
+
+private void backtracking(List&lt;Integer&gt; permuteList, List&lt;List&lt;Integer&gt;&gt; permutes, boolean[] visited, final int[] nums){
+    if(permuteList.size() == nums.length){
+        permutes.add(new ArrayList&lt;&gt;(permuteList)); 
+        return;
+    }
+    for(int i=0; i&lt;visited.length; i++){
+        if(visited[i]){
+            continue;
+        }
+        visited[i] = true;
+        permuteList.add(nums[i]);
+        backtracking(permuteList, permutes, visited, nums);
+        visited[i] = false;
+    }
+}</code></pre>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/26/%E6%90%9C%E7%B4%A2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/26/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            动态规划
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/26/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">二分查找法</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+        app_key: '1OB4hLIBzNt40C7AAQ3ImBWG',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+  
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+    <div id="mvcomments">
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js'></script>
+<script>
+	new MiniValine({
+	  el: '#mvcomments',
+	  appId: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+	  appKey: '1OB4hLIBzNt40C7AAQ3ImBWG',
+	  placeholder: 'Write a Comment',
+	  lang: '',
+	  adminEmailMd5: '',
+	  math: true,
+	  md: true
+	});
+    const infoEle = document.querySelector('#mvcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #mvcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #mvcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #mvcomments-box #mvcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2020
+        <i class="ri-heart-fill heart_icon"></i> Chen Bin
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梦想岛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/">代码说</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://chenbin-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/">法律法规</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/VjamHOiTgk26EpK.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/FMJN75HGXRpDdP4.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 180,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

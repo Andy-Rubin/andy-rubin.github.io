@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="学习，生活，思考，代码，博客" />
+   
+  <meta name="description" content="梦想的萌生岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    HTML+CSS+JavaScript |  梦想岛
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="梦想岛" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-HTML-CSS-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  HTML+CSS+JavaScript
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/26/HTML-CSS-JavaScript/" class="article-date">
+  <time datetime="2020-04-26T05:14:54.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><a id="more"></a>
+
+<p>1.基本元素<br>HTML文档是一份结构化的文档，根元素总是&lt;html…/&gt;元素，该元素内通常包含&lt;head…/&gt;和&lt;body…/&gt;两个子元素（HTML5允许忽略它们，会隐式添加）这三个元素定义了HTML文档 的基本结构: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">• &lt;!--...--&gt;   注释</span><br><span class="line">• &lt;html&gt;:它是HTML5文档的根元素</span><br><span class="line">• &lt;head&gt;:它用于定义HTML5文档的根元素。但HTML5允许完全省略这个元素</span><br><span class="line">• &lt;title&gt;：它用于定义HTML5文档的页面头部分，但HTM5允许忽略这个元素</span><br><span class="line">• &lt;body&gt;:它用于定义HTML5文档的页面主体部分，该元素指定id, class, style等通用属性，还可以指定onload, onunload, onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeydown, onkeyup等事件属性，这些属性用于指定JavaScript脚本。</span><br><span class="line">• &lt;h1&gt;到&lt;h6&gt;：定义标题一到标题六</span><br><span class="line">• &lt;p&gt;定义段落，该元素可以指定id, class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">• &lt;br&gt;插入一个换行，该元素可以指定id,class, style等通用属性。</span><br><span class="line">• &lt;hr&gt;定义水平线，该元素可以指定id, class, style等通用属性。</span><br><span class="line">• &lt;div&gt;定义文档中的节。该元素可以指定id,class,style,dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">• &lt;span&gt;与&lt;div&gt; 基本相似，区别是&lt;span&gt;只是表示一段一般性文本，该元素包含的文本内容默认不会换行。该元素可以指定和&lt;div&gt;相同的属性。</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;基本元素&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- 采用标题1到6来输出文本 --&gt;
+    &lt;h1&gt;讲义&lt;/h1&gt;
+    &lt;h2&gt;记忆&lt;/h2&gt;
+    &lt;h3&gt;大量&lt;/h3&gt;
+    &lt;h4&gt;dalaing&lt;/h4&gt;
+    &lt;h5&gt;weuitn00&lt;/h5&gt;
+    &lt;h6&gt;safihhri&lt;/h6&gt;
+    &lt;!-- 输出一条水平线--&gt;
+    &lt;hr /&gt;
+    &lt;!-- 使用三个span文本--&gt;
+    &lt;span&gt;Tomcat&lt;/span&gt;
+    &lt;span&gt;Jerry&lt;/span&gt;
+    &lt;span&gt;Tom&lt;/span&gt;
+    &lt;!-- 输出换行--&gt;
+    &lt;br /&gt;
+    &lt;!-- 使用三个div定义三节 --&gt;
+    &lt;div&gt;Tomcat&lt;/div&gt;
+    &lt;div&gt;Tomcat&lt;/div&gt;
+    &lt;div&gt;Tomcat&lt;/div&gt;
+    &lt;!-- 用p定义段落 --&gt;
+    &lt;p&gt;Tomcat&lt;/p&gt;
+    &lt;p&gt;Tomcat&lt;/p&gt;
+    &lt;p&gt;Tomcat&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>文本格式相关元素  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">下面这些元素让文本内容在浏览器中呈现出特定的效果</span><br><span class="line">&lt;b&gt;:定义粗体文本。该元素可以指定id, class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">&lt;i&gt;:定义斜体文本。该元素可以指定id, class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">&lt;em&gt;： 定义强调文本，实际效果与斜体文本差不多。该元素可以指定id, class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">&lt;strong&gt;: 定义粗体文本。与&lt;b&gt;元素的作用和用法基本相同。“用&lt;strong..&#x2F;&gt;”包起来的文本代表重要的文本</span><br><span class="line">&lt;small&gt;:定义小号字体文本。该元素可以指定id,class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。通常用来标注诸如免责声明、注意事项、法律规定和版权相关的声明性文字。</span><br><span class="line">&lt;sup&gt;：定义上标文本，该元素可以指定id,class, style,dir,title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">&lt;sub&gt;:定义下标文本，该元素可以指定id, class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。</span><br><span class="line">&lt;bdo&gt;:定义文本显示的方向。该元素可以指定id,class, style, dir, title等通用属性，还可以指定onclick等各种事件属性。除此之外，该元素应该指定dir属性，该属性值只能是ltr或者rtl，用于指定文本的排列方向。</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;文本格式化元素&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;span&gt;&lt;b&gt;加粗字体&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+    &lt;span&gt;&lt;i&gt;斜体字体&lt;/i&gt;&lt;/span&gt;&lt;br /&gt;
+    &lt;span&gt;&lt;b&gt;&lt;i&gt;加粗斜字体&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;&lt;br /&gt;
+    &lt;span&gt;&lt;em&gt;强调的文本&lt;/em&gt;&lt;/span&gt;&lt;br /&gt;
+    &lt;p&gt;&lt;strong&gt;加粗文本&lt;/strong&gt;&lt;/p&gt;
+    &lt;small&gt;&lt;span&gt;小号字体文本&lt;/span&gt;&lt;/small&gt;
+    &lt;div&gt;普通文本&lt;sup&gt;上标文本&lt;/sup&gt;&lt;/div&gt;
+    &lt;span&gt;普通文本&lt;sub&gt;下标文本&lt;/sub&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;!-- 指定文本从左向右（正常情况） 排列 --&gt;
+    &lt;bdo dir=&quot;ltr&quot;&gt;从左向右排列的文本&lt;/bdo&gt;&lt;BR/&gt;
+&lt;!-- 指定文本从右向左排列 --&gt;
+    &lt;BDO dir=&quot;rtl&quot;&gt;从右向左排列的文本&lt;/BDO&gt;&lt;BR /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>语义相关元素   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;abbr&gt;: 用于表示一个缩写。使用该元素时通常建议指定title属性，该属性用于指定该缩写所代表的全称</span><br><span class="line">&lt;address&gt;用于表示一个地址。</span><br><span class="line">&lt;blockquote&gt;用于定义比较长的引用文本。该元素可以指定cite属性，该属性用于指定引用文本所引用的网址URL或出处。</span><br><span class="line">&lt;q&gt;用于定义一段短的引用文本。浏览器会为这段被引用文本添加引号。</span><br><span class="line">&lt;cite&gt;用于表示作品的标题。</span><br><span class="line">&lt;code&gt;用于表示一段代码</span><br><span class="line">&lt;dfn&gt;用于定义一个专业术语。</span><br><span class="line">&lt;del&gt;定义文档中被删除的文本</span><br><span class="line">&lt;ins&gt;定义文档中插入的文本</span><br><span class="line">&lt;pre&gt;用于表示该元素所包含的文本已经进行了“预格式化”。也就是说，该元素的内容有回车空格等元素，但浏览器会处理元素内大部分HTML元素</span><br><span class="line">&lt;samp&gt;用于定义示范文本内容</span><br><span class="line">&lt;kbd&gt;用于定义键盘文本。该元素用于表示文本是通过键盘输入的。通常在计算机使用文档、使用说明中会经常使用该元素。</span><br><span class="line">&lt;var&gt;用于表示一个变量。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用a元素添加超链接和锚点  </span><br><span class="line">定义超链接的&lt;a...&#x2F;&gt;元素，该元素可以指定id, class , style, dir, title等通用属性，也可以指定onclick等各种事件属性。它还可以指定如下6个重要属性</span><br><span class="line"></span><br><span class="line">href:指定超链接所链接的另一个资源。</span><br><span class="line">hreflang:指定超链接所连接的文档所使用的语言</span><br><span class="line">target : 指定使用框架集中的哪个框架来装载另一个资源。该属性的属性值可以是_self, _blank, _top, _parent四个值，分别代表使用自身、新窗口、顶层框架、父框架来装载新资源。</span><br><span class="line">download: 用于让用户下载目标链接所指向的资源，而不是直接打开该目标链接。该属性的属性值指定用户保存下载资源时的默认文件名。</span><br><span class="line">type:指定被链接文档的MIME类型</span><br><span class="line">media：指定目标URL所引用的媒体类型。默认值为all。</span><br></pre></td></tr></table></figure>
+
+<p>【列表相关元素】  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;定义无序列表。该元素可以指定id,style,class等属性，还可以指定onclick等事件属性。该元素只能包含&lt;li&gt;子元素  </span><br><span class="line">&lt;ol&gt;定义有序列表。该元素可以指定id,style,class等属性，还可以指定onclick等事件属性。该元素只能包含&lt;li...&#x2F;&gt;子元素。  </span><br><span class="line">在HTML5中还规定了如下属性：  </span><br><span class="line">	• start: 指定列表起始数字，默认是第一个，如1，A等  </span><br><span class="line">	• type： 指定使用哪种类型的编号，例如1代表使用数字，A或a分别代表使用大写或小写字母，I或i代表使用大写或小写罗马数字。该属性在HTML5规范中已经不在推荐使用，推荐使用CSS来定义。  </span><br><span class="line">	• reversed：该属性指定是否将排序反转。  </span><br><span class="line">&lt;li&gt;     定义列表项。该元素可以指定id,style,class等属性，还可以指定onclick等事件属性。该元素里可以包含与&lt;div...&#x2F;&gt;完全类似的内容。</span><br><span class="line">&lt;dl&gt;定义术语列表，该元素只能包含&lt;dt...&#x2F;&gt;和&lt;dd...&#x2F;&gt;两种子元素。该元素可以指定id,style,class等属性，还可以指定onclick等事件属性。</span><br><span class="line">&lt;dt&gt;定义标题列表项。该元素可以指定id,style,calss等属性，还可以指定onclick等事件属性。该元素只能包含文本，图像，超链接，文本格式化元素和表单控件元素等</span><br><span class="line">&lt;dd&gt;定义普通列表项。该元素可以指定id，style,class等属性，还可以指定onclick等事件属性。该元素里可以包含与&lt;div...&#x2F;&gt;完全类似的内容，因此可以包含较多类型的子元素。</span><br></pre></td></tr></table></figure>
+
+<p>【使用img元素添加图片】  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;img...&#x2F;&gt;元素在页面中定义图片，这个元素只能是一个空元素，它可以不包含任何内容。该元素除了id,style,class等通用属性外，也可以指定onclick等事件属性。不仅如此，使用该元素必须指定如下两种属性：</span><br><span class="line">	• src: 该属性指定图片文件所在的位置，该属性值既可以是相对路径，也可以是绝对路径。</span><br><span class="line">	• alt:该属性指定一段文本，该文本将作为该图片的提示信息。</span><br><span class="line"></span><br><span class="line">还有可选属性：</span><br><span class="line">	• width : 指定该图片的宽度，该属性值可以是百分比，也可以是像素值。</span><br><span class="line">	• height:指定该图片的高度，该属性值可以是百分比，也可以是像素值。</span><br><span class="line"></span><br><span class="line">另外还有与图片相关的属性：</span><br><span class="line">	• &lt;map&gt;: 用于定于图片映射，该元素主要可以包含一个或多个&lt;area...&#x2F;&gt;子元素，每个&lt;area...&#x2F;&gt;子元素定义一个区域，不同区域可链接到不同URL。</span><br><span class="line">	• &lt;area&gt;:用于定义图片映射的内部区域，该元素只能是onclick等事件属性，还可以指定onfocus，onblur等焦点相关属性。除此之外 可以指定onclick事件属性，还可以指定onfocus,onblur等焦点相关属性。除此之外，还可以指定如下几个属性。</span><br><span class="line">	shape:指定该内部区域是哪种区域，该属性的默认值是“rect”,即矩形区域：除此之外，还可以是circle和ploy，分别代表圆形区域和多边形区域。</span><br><span class="line">	coords:指定多个坐标值，用于确定区域位置。</span><br><span class="line">	href:用于确定该区域所连接的资源。</span><br><span class="line">	alt:该属性指定一段文本，该文本将作为该图片的提示信息。</span><br><span class="line">	target:指定使用框架集中的哪个框架来装载另一个资源。该属性的属性值可以是_self, _blank, _top, _parent四个值，分别代表使用自身、新窗口、顶层框架、父框架来装载新资源。</span><br></pre></td></tr></table></figure>
+
+
+<p>【表格相关元素】  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;用于定义表格，该元素只能包含0个或1个&lt;caption...&#x2F;&gt;子元素（定义表格标题），0或1个&lt;thead...&#x2F;&gt;子元素（定义表格头），0或1个&lt;tfoot...&#x2F;&gt;（定义表格脚），多个&lt;tr...&#x2F;&gt;子元素（定义表格行），多个&lt;tbody...&#x2F;&gt;子元素（定义表格体）。该元素可以定义id,style,class等通用属性，或onclick等事件属性。除此之外，该元素还可以指定如下几个属性。  </span><br><span class="line">• cellpadding：指定单元格内容和单元格边框之间的间距。该属性值既可以是像素也可以是百分比；</span><br><span class="line">• cellspacing： 指定单元格之间的间距。该属性值即可是像素也可以是百分比；</span><br><span class="line">• width：指定表格的宽度，该属性值即可是像素值，也可是百分比。</span><br><span class="line"></span><br><span class="line">&lt;caption&gt;用于定义表格标题，该元素只能包含文本，图片，超链接，文本格式化元素和表单控件元素</span><br><span class="line">&lt;tr&gt;定义表格行，该元素只能包含&lt;td...&#x2F;&gt;或者&lt;th...&#x2F;&gt;两种元素，该元素可以指定通用和事件属性。</span><br><span class="line">&lt;td&gt;定义单元格，该元素和&lt;div...&#x2F;&gt;元素一样，可以包含各种类型的子元素，包括在&lt;td...&#x2F;&gt;元素里包含&lt;table...&#x2F;&gt;子元素再次插入一个表格。该元素可指定通用和事件属性，还可以定义一下属性：</span><br><span class="line">	○ colspan: 指定该单元格跨多少列，该属性值就是一个简单数字。</span><br><span class="line">	○ rowspan:指定此单元格可横跨的行数</span><br><span class="line">	○ height:指定该单元格的高度，该属性值即可是像素也可是百分比</span><br><span class="line">	○ width:                                宽度</span><br><span class="line">&lt;th&gt;定义表格的表头单元格，和&lt;td&gt;元素的用法几乎完全一样，只是浏览器呈现&lt;th...&#x2F;&gt;元素时有一定差别。</span><br><span class="line">&lt;tbody&gt;：定义表格的主体，该元素只能包含&lt;tr...&#x2F;&gt;子元素，该元素可以指定id,style和class等通用属性，也可以指定onclick等事件属性。</span><br><span class="line">&lt;thead&gt;定义表格头，用法与&lt;tbody...&#x2F;&gt;基本相似。</span><br><span class="line">&lt;tfoot&gt;定义表格脚，用法与&lt;tbody...&#x2F;&gt;基本相似。</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/26/HTML-CSS-JavaScript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JavaScript/" rel="tag">HTML+CSS+JavaScript</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/26/let's%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E5%8F%8C%E6%8C%87%E9%92%88/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Let&#39;s 算法设计-双指针
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/26/TM7705%E7%9A%84%E6%9C%89%E5%85%B3%E8%8A%AF%E7%89%87%E7%9F%A5%E8%AF%86%E4%B8%8E%E4%BB%A3%E7%A0%81%E7%A0%94%E7%A9%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">TM7705的有关芯片知识与代码研究</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+        app_key: '1OB4hLIBzNt40C7AAQ3ImBWG',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+  
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+    <div id="mvcomments">
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js'></script>
+<script>
+	new MiniValine({
+	  el: '#mvcomments',
+	  appId: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+	  appKey: '1OB4hLIBzNt40C7AAQ3ImBWG',
+	  placeholder: 'Write a Comment',
+	  lang: '',
+	  adminEmailMd5: '',
+	  math: true,
+	  md: true
+	});
+    const infoEle = document.querySelector('#mvcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #mvcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #mvcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #mvcomments-box #mvcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2020
+        <i class="ri-heart-fill heart_icon"></i> Chen Bin
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梦想岛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/">代码说</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://chenbin-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/">法律法规</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/VjamHOiTgk26EpK.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/FMJN75HGXRpDdP4.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 180,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

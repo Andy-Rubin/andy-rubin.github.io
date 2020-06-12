@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="学习，生活，思考，代码，博客" />
+   
+  <meta name="description" content="梦想的萌生岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    基本概念 |  梦想岛
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="梦想岛" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-基本概念" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  基本概念
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="article-date">
+  <time datetime="2020-04-28T05:35:07.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">17.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">67 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="基本的常用类及其方法"><a href="#基本的常用类及其方法" class="headerlink" title="基本的常用类及其方法"></a>基本的常用类及其方法</h3><ol>
+<li>Math类的方法：</li>
+<li>round():返回四舍五入后的整数</li>
+<li>floor():返回小于参数的最大整数</li>
+<li>ceil():返回大于参数的最小整数</li>
+<li>random():返回[0,1)之间的随机数浮点数</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p>静态：static<br>用法：是一个修饰符；用于修饰成员（成员变量或成员函数）<br>当成员被静态修饰后，就多了一种调用方式，除了可以被对象调用外，还可以直接被类名调用格式：类名.静态成员。<br>静态的特点：  </p>
+<ol>
+<li>随着类的加载而加载</li>
+<li>也就是，说静态会随着类的消失而消失，说明静态的生命周期最长</li>
+<li>优先于对象的存在</li>
+<li>明确一点：静态是先存在的对象是后存在的</li>
+<li>被所有对象共享</li>
+<li>可以直接被类名多调用</li>
+</ol>
+<p>实例变量和类变量的区别<br>1.存放位置<br>类变量随着类的加载存在于方法区中，实例变量随着对象的对象的建立存在于堆内存里<br>2.生命周期<br>类变量生命周期最长，随着“类”的加载而加载，随着类的消失而消失<br>实例变量随着“对象”的消失而消失  </p>
+<p><a href="https://bbs.csdn.net/topics/390019545" target="_blank" rel="noopener">来自</a> </p>
+<p>静态的使用注意事项：  </p>
+<ul>
+<li>1.静态方法只能访问静态成员（包括成员变量和成员方法）</li>
+<li>非静态方法可以访问静态也可以访问非静态</li>
+<li>2.静态方法中不可以定义this，super关键字</li>
+<li>因为静态优先于对象存在，所以静态方法中不可以出现this，super关键字</li>
+<li>3.主函数是静态的。</li>
+</ul>
+<p>静态的利弊<br>利：对 对象的共享数据进行单独空间的存储，节省空间，没有必要没一个对象中都存储一份<br>可以直接被类名所调用<br>弊：生命周期过长，访问出现局限性（只能访问静态）  </p>
+<p>public static void main(String[] args)  </p>
+<p>主函数是一个特殊的函数，作为程序的入口，可以被jvm调用。  </p>
+<p>主函数的定义：  </p>
+<ul>
+<li>public：代表着该函数的访问权限是最大的。</li>
+<li>static：代表主函数随着类的加载就已经存在了</li>
+<li>void：主函数没有具体的返回值</li>
+<li>main：不是关键字，但是是一个特殊的单词，可以被jvm识别</li>
+<li>(String[] args):函数的参数，参数类型是一个数组，该数组中的元素是字符串，字符串类型的数组</li>
+</ul>
+<p>主函数是固定格式的：jvm识别<br>jvm在调用主函数时，传入的是 new String[0];  </p>
+<p>什么时候使用静态？<br>因为静态修饰的内容有成员变量和方法。<br>什么时候定义静态变量（类变量）呢？<br>当对象中出现共享数据时，该数据被静态所修饰，对象中的特有数据要定义成非静态存在于堆内存中<br>什么时候定义静态函数？<br>当功能内部没有访问到非静态数据（或者称为对象的特有数据）<br>那么该功能可以定义成静态的。  </p>
+<h3 id="java中类方法和实例方法及main函数调用同类中的方法"><a href="#java中类方法和实例方法及main函数调用同类中的方法" class="headerlink" title="java中类方法和实例方法及main函数调用同类中的方法"></a>java中类方法和实例方法及main函数调用同类中的方法</h3><p>1、类方法：<br>也可以称为静态方法，使用static修饰的类中方法；<br>属于整个类的，不是属于某个实例的，只能处理static域或者调用static方法；<br>不能访问实例变量，只能访问类变量，类方法由类名或者实例对象调用；<br>类方法中不能出现this或者super关键字；<br>2、实例方法：<br>非静态方法，没有用static修饰的方法；<br>属于对象的方法，由对象来调用。可以对类变量进行操作<br>3、实例  </p>
+<pre><code>import java.io.Serializable;
+public class GameCharacter implements Serializable {
+    int power;
+    String type;
+    String[] weapons;
+    private int a = 5;
+    private static int b = 10;   //静态变量
+
+    public GameCharacter(int p,String t,String[] w){
+        power = p;
+        type = t;
+        weapons = w;
+    }
+
+    // 非静态方法
+    public int getPower(){
+        a = 10;
+        b = 5;      // 非静态方法可以访问静态变量
+        System.out.println(&quot;非静态方法可以访问静态变量:&quot;+a);
+        return power;
+    }
+
+    // 静态方法
+    public static void gettest1(){
+        System.out.println(&quot;静态方法的调用&quot;);
+    }
+
+    // 静态方法
+    public static void gettest(){
+//        getPower();    // 静态方法不可以访问非静态方法
+        gettest1();     // 静态方法可以访问静态方法
+        // a = 10;  // 静态方法无法访问非静态成员变量
+        b = 5;    // 静态方法可以访问静态变量
+//        this.power =10;    // 静态方法中不能出现this
+        System.out.println(&quot;静态方法的调用&quot;);
+    }
+
+    // 非静态方法
+    public String getType(){
+        getPower();     // 非静态方法可以访问非静态方法
+        gettest();     // 非静态方法可以访问静态方法
+        this.power = 5;
+        this.a = 9;
+        this.b = 10;
+        return type;
+    }
+
+    // 非静态方法
+    public String getWeapons(){
+        String weaponList = &quot;&quot;;
+        for (int i =0; i &lt; weapons.length; i++){
+            weaponList += weapons[i] + &quot;&quot;;
+            System.out.println(weaponList);
+        }
+        return weaponList;
+    }
+    public static void main(String[] args){
+// 类中方法的调用
+        String [] weapons = {&quot;1&quot;,&quot;6&quot;,&quot;n&quot;,&quot;8&quot;};
+        GameCharacter game = new GameCharacter(7,&quot;4561&quot;,weapons);
+//  非静态方法的调用
+        game.getWeapons();   // 非静态方法需要创建一个对象的才能调用
+        System.out.println(game.getPower());  // 通过创建的实例调用非静态方法
+        System.out.println(game.getType());  // 通过创建的实例调用非静态方法
+// 调用非静态方法
+        gettest();    //静态方法直接调用
+    }
+}</code></pre><p>总结：<br>对于一般的非static成员变量或方法，需要有一个对象的实例才能调用，所以要先成对象的实例，他们才会分配到内存空间。而对于static的对象或方法，在程序载入时便已经分配了内存空间，他只和特定的类相关联，无需实例化。  </p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue接口继承Collection<br>java.util.Queue<E><br>offer(element : E) :  boolean  插入一个元素到队列中<br>poll( ) :  E  获取并且移除队列的头元素，队列为空则返null<br>remove() :  E  获取并且移除队列的头元素，队列为空则返异常<br>peek() : E  获取并且移除队列的头元素，队列为空则返null<br>element( ) :  E  获取并且移除队列的头元素，队列为空则返异常  </p>
+<h3 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h3><p>deque(double - ende queue) 双端队列<br>addFirst(e)<br>addLast(e)<br>getFirst()<br>removeFirst()<br>removeLast()<br>getLast()  </p>
+<h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>java.util.PriorityQueue<E><br>PriorityQueue()<br>PriorityQueue(initialcapacity： int)<br>PriorityQueue(c : Collection&lt;? extends E&gt;)<br>PriorityQueue(initial Capacity : int, comparator : Comparator&lt;? super E&gt;)创建一个初始容量为指定值并且具有比较器的优先队列。  </p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>Stirng str1= new String();<br>String str2= new String(“asdf”);<br>String str3 = new String(value , 1, 2);  </p>
+<p>str.length();<br>str.charAt(4);<br>str.substring(2,5);<br>str1.conmpareTo(str2);<br>“aa”.concat(“bb”);<br>str.indexOf(‘a’);<br>str.indexOf(“w”,2);<br>str.lastIndexOf(“a”,3);<br>字符串转换为基本类型<br>int n=Integer.parseInt(“12”);<br>float f  = Float.parseFloat(“12.34”);<br>double d = Double.parseDouble(“1.234”);  </p>
+<p>public static byte parseByte(String s);<br>            short parseShort(String s);<br>            int parseInt(String s);<br>            long parseLong(String s);<br>            float parseFloat(String s);<br>            double parseDouble(String s);  </p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList<E><br>ArrayList()<br>add(o: E)  : void<br>add(index : int,   o :E) : void<br>clear() ： void<br>contains(o : Object) : boolean<br>get(index : int) : E<br>indexOf(o : Object) : int<br>isEmpty() : boolean<br>lastIndexOf(o : Object) : int<br>remove(o : Object) : boolean<br>size() : int<br>remove( index : int) : boolean<br>set(index : int， O : E) : E  </p>
+<h3 id="线性表和合集的静态方法"><a href="#线性表和合集的静态方法" class="headerlink" title="线性表和合集的静态方法"></a>线性表和合集的静态方法</h3><p>java.util.Colletion<br>sort(list : List)  : void<br>sort(list : List, c : Compaator) : void<br>binarySearch(list : list, key : Object) : int 采用二分查找法找到排好序的线性表中的键值<br>binarySearch(list : list, key : Object， c : Comparator) : int<br>reverse(list : List) : void 对指定的线性表进行逆序排序<br>reverseOrder() : Comparator 返回一个逆序排序的比较器<br>shuffle(list : List) : void  随机打乱指定的线性表<br>shuffle(list : List, rmd:Random) ： void 使用一个随机对象打乱指定的线性表<br>copy(des: List, src: List) : void 复制原线性表到目标线性表中<br>nCopies(n : int , o：Object) : List 返回一个由n个对象副本组成的线性表<br>fill(list : List , o:Object) : void<br>max(c: Collection) : Object<br>max(c: Collection, c: Comparator) : Object 使用比较器返回max对象<br>min(c: Collection) : Object<br>min(c:Collection, c : Comparator)<br>disjoint(c1 : Collection, c2:Collection) : boolean 如果c1和c2没有共同的元素，则返回真<br>frequency(c : Collection, o:Object) : int  返回合集中指定元素的出现次数<br>List<String> list = Array.asList(“red”, “yellow”,”blue”);<br>Collections.sort(list);   </p>
+<h3 id="结点"><a href="#结点" class="headerlink" title="结点"></a>结点</h3><p>链表中的每个元素都包含一个称为结点的结构  </p>
+<pre><code>class Node&lt;E&gt;{
+    E element;
+    Node&lt;E&gt; next;
+    public Node(E e){
+        element = e;
+    }
+}</code></pre><p>声明head和tail<br>Node<String> head=null;<br>Node<String> tail =null;<br>该线性表为空  </p>
+<p>head=new Node&lt;&gt;(“Chigo”);<br>tail=head;<br>向线性表追加第一个结点，头和尾结点都指向该结点  </p>
+<pre><code>tail.next = new Node&lt;&gt;(&quot;Denver&quot;);  
+tail = tail.next;  
+
+Node current = head;  
+while(current != null){  
+    System.out.println(current.element);  
+    current=current.next;  
+}  </code></pre><p>每个结点都包含元素和一个名为next的数据域，next指向下一个元素。如果结点是线性表中的最后一个，那么它的指针数据域next所包含的值是null。<br>变量head指向线性表的第一个结点，tail指向最后一个结点。<br>如果线性表为空，head和tail这两个变量均为null。  </p>
+<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection<E></h3><p>add(o:E) : boolean<br>addAll(c:Collection<? extends E>) : boolean  将合集c中的所以元素添加到该合集中  
+clear() : void  
+contains(o : Object) : boolean  
+containsAll(c : Collection<?>) : boolean 如果该合集包含C中所有 元素，则返回true<br>equals(o:Object) : boolean<br>hashCode() : int<br>isEmpty():boolean<br>remove(o:Object) : boolean<br>removeAll(c: Collection<?>) : boolean   
+retainAll(c: Colleaction<?>):booelan保留同时位于c和该合集中的元素<br>size()<br>toArray():Object[] 为该合集中的元素返回一个Object数组<br>Iterator<E><br>hasNext():boolean 如果该迭代器还要遍历更多元素<br>next():E 返回该迭代器中的下一个元素<br>remove():void 移除使用next方法获取的上一个元素<br>java.lang.Iterable<E><br>iterator() : Iterator<E>为该合集中的元素返回一个迭代器    </p>
+<h3 id="HashMap散列表"><a href="#HashMap散列表" class="headerlink" title="HashMap散列表"></a>HashMap散列表</h3><p>存储内容是键值对（key-value）<br>clear()<br>clone()<br>contains(Object value)<br>containsKey(Object key)<br>containsValue(Object value)<br>elements()返回“所有value”的枚举对象<br>entrySet()<br>equals(Object object)<br>get(Object key)<br>hashCode()<br>isEmpty()<br>keySet()<br>keys()<br>put(K key, V value)<br>putAll(Map&lt;? extends K, ? extends v&gt; map)<br>remove(object key)<br>size()<br>toString()<br>values()  </p>
+<h3 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h3><p>Character中的方法<br>Character.isDigit(ch) 判断字符是否是数字<br>                 isLetter(ch)                    字母<br>        isLetterOrDigit(ch)       字母或数字<br>        isLowerCase(ch)<br>        isUpperCase(ch)<br>        toLowerCase(ch)<br>        toUpperCase(ch)  </p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>java.util.Map&lt;K,V&gt;<br>clear()<br>containsKey(key:Object) : boolean 包含了指定键<br>containsValue(value:Object) : boolean 如果该映射表将一个或多个键映射到指定值，返回true<br>entrySet() : Set&lt;Map.Entry&lt;K,V&gt;&gt;  返回一个包含了该映射表中条目的集合<br>get(key : Object) : V 返回该表中指定键对应的值<br>isEmpty() : boolean 表中没包含任何条目<br>keySet() :  Set<k> 返回一个包含该映射表中所有键的集合<br>put(key : Object) : V 将一个条目放入表中<br>putAll(m :Map&lt;? extends K, ? extends V&gt;) : void 将m中所有条目添加到表中<br>remove(key : Object) : V 删除指定键对应的条目<br>size() : int 返回该映射表中的条目数<br>values() : Collection <V> 返回该映射表中所有值组成的合集<br>java.util.Map.Entry&lt;K,v&gt;<br>getKey( ) : K 返回该条目的键<br>getValue() : V 返回该条目的值<br>setValue(value : V) : void  将该条目中的值赋以新的值    </p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在程序运行过程中，一直不会改变的量称为常量，通常也叫”final常量”<br>final  数据类型  常量名称[=值]   </p>
+<p>成员变量<br>在类中所定义的变量称为成员变量，成员变量在整个类中都有效。类的成员变量又分为静态变量和实例变量。   </p>
+<pre><code>class var{
+    int x=45;
+    static int y=90;
+}</code></pre><p>静态变量的有效范围可以跨类，甚至可达到整个应用程序之内。对于静态变量，除了能在定义它的类内存取，还能直接以“类名.静态变量”的方法在其他类内使用。  </p>
+<h3 id="Java-字符串String类"><a href="#Java-字符串String类" class="headerlink" title="Java-字符串String类"></a>Java-字符串String类</h3><p>创建字符串：<br>String str = [null];<br>String s= new String(“Good”);  </p>
+<p>String(char a[], int offset, int length)<br>提取字符数组a中的一部分创建一个字符串对象。参数offset表示开始截取字符串的位置，length表示截取字符串的长度。<br>char a[] = {‘s’,’t’,’u’,’d’,’e’,’n’,’t’};<br>String s = new String(a,2,4);<br>String s=new String(“uden”);  </p>
+<p>获取字符串长度：<br>str.length()   </p>
+<p>字符串查找：<br>str.indexOf(substr【要搜索的字符串】) 返回首次出现的位置<br>str.lastIndexOf(String str);  </p>
+<p>获得指定索引位置的字符<br>str.charAt(int index);   </p>
+<p>获得子字符串<br>substring(int beginIndex)<br>substring(int beginIndex, int endIndex)   </p>
+<p>去除空格<br>str.trim();    </p>
+<p>字符串的替换<br>str.replace(char old, char new);    </p>
+<p>判断字符串的开始与结尾<br>startsWith()用于判断字符串是否以指定的内容开始<br>endsWith() 或结束    </p>
+<p>判断字符串是否相等<br>判断两个字符串是否相等不能简单用“==”因为比较运算符比较的是两个字符串的地址是否相同。即使两个字符串的内容相同，两个对象的内存地址也是不同的，使用比较运算符仍然会返回false;     </p>
+<p>equals()方法<br>如果两个字符串具有相同的字符和长度，则使用equals（）方法进行比较时，返回true<br>str.equals(String otherstr);    </p>
+<p>equalsIgnoreCase()方法   </p>
+<p>按字典顺序比较两个字符串<br>compareTo()方法为按字典顺序比较两个字符串，该比较基于字符串中的各个字符的Unicode值，按字典顺序对此String对象表示的字符序列与参数字符串所表示的字符序列进行比较。如果按字典顺序此String对象位于参数字符串之前，则比较结果为一个负整数；如果按字典顺序此String对象位于参数字符串之后，则比较结果为一个正整数；如果这两个字符串相等，则结果为0；<br>str.compareTo(String otherStr)   </p>
+<p>toLowerCase()方法    </p>
+<p>str.toLowerCase()    </p>
+<p>str.toUpperCase()    </p>
+<p>split(String sign)<br>split(String sign, int limit)     </p>
+<p>格式化字符串<br>format(String format, Object… args)<br> format:格式字符串<br>args：格式字符串中由格式说明符引用的参数。如果还有格式说明符以外的参数，则忽略这些额外的参数。此参数的数目是可变的，可以为0    </p>
+<p>format(Local 1, String format, Object args)   </p>
+<p>字符串生成器    </p>
+<h3 id="C-的头"><a href="#C-的头" class="headerlink" title="C++的头"></a>C++的头</h3><pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#incldue&lt;unordered_set&gt;
+
+using namespace std;
+int main(){
+
+}</code></pre><hr>
+<h2 id="C指针的温故与思考"><a href="#C指针的温故与思考" class="headerlink" title="C指针的温故与思考"></a>C指针的温故与思考</h2><p>一个变量的地址称为该变量的“指针”。如果有一个变量专门用来存放另一个变量的地址（即指针），则它称为“指针变量”。<br>指针变量就是地址变量，用来存放地址，指针变量的值是地址（即指针）<br>使用指针变量的例子：    </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int a=100, b=10;           
+    int *pointer_1, *pointer_2;   //定义指向整型数据的指针变量
+    pointer_1=&amp;a;                          //把变量a的地址赋给指针变量pointer_1;
+    pointer_2=&amp;b;                          //把变量b的地址赋给指针变量pointer_2；
+    printf(&quot;a=%d, b=%d\n&quot;,a,b);   //输出变量a和b的值
+    printf(&quot;*pointer_1=%d, *pointer_2=%d\n&quot;,*pointer_1, *pointer_2);
+    return 0;
+}</code></pre><p>定义指针变量：<br>类型名   *     指针变量名<br>int * pointer_1;       //可以用来指向整型的变量（但不能指向浮点型变量）<br>一个变量的指针的含义包括两个方面，一是以存储单元编号表示的地址，一是它指向的存储单元的数据类型（如int,char,float等）    </p>
+<p>如何表示指针类型。指向整型数据的指针类型表示为”int*”,读作“指向int的指针”或简称“int 指针”    </p>
+<p>怎样引用指针变量<br>（1）给指针变量赋值<br>        p=&a;<br>（2）引用指针变量指向的变量<br>如果已执行“p=&a;”,即指针变量p指向了整型变量a,则printf(“%d”,*p);<br>其作用是以整数形式输出指针变量p所指向的变量的值，即变量a的值。<br>    *p=1;<br>    表示将整数1赋给p当前所指向的变量，如果p指向变量a，则相当于把1赋给a，即“a=1;”。<br>（3）引用指针变量的值<br>printf(“%o”, p); 作用是以八进制形式输出指针变量p的值，如果p指向了a，就是输出了a的地址，即&a;   </p>
+<p>注意要熟练掌握两个有关的运算符：<br>（1）&amp; 取地址运算符。 &amp;a是变量a的地址<br>（2）* 指针运算符（或称“间接访问”运算符），*p 代表指针变量p指向的对象。    </p>
+<p>用指针方法来处理：不交换整型变量的值，而是交换两个指针变量的值。   </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(){
+    int *p1,*p2,*p,a,b;
+    printf(&quot;please enter two integer numbers:&quot;);
+    scanf(&quot;%d,%d&quot;, &amp;a, &amp;b);
+    p1=&amp;a;
+    p2=&amp;b;
+    if(a&lt;b){p=p1;p1=p2;p2=p;}
+    printf(&quot;a=%d,b=%d\n&quot;,a,b);
+    printf(&quot;max=%d, min=%d\n&quot;, *p1, *p2);
+    return 0;
+}</code></pre><p>通过指针引用数组<br>数组元素的指针<br>一个变量有地址，一个数组包含若干元素，每个数组元素都在内存中占用存储单元，它们都有相应的地址。<br>所谓数组元素的指针就是数组元素的地址；<br>int a[10]={1,3,4,5,7};<br>int * p;       //定义p为指向整型变量的指针变量<br>p=&amp;a[0];    //把a[0]元素的地址赋给指针变量p<br>引用数组元素可以用小标法也可以用指针法，即通过指向数组元素的指针找到所需要元素。使用指针法能使目标程序质量高（占内存少，运行速度快）<br>在C语言中，数组名（不包括形参数组名，形参数组并不占据实际的内存单元）代表数组中首元素（即序号为0的元素）的地址。<br>p=&amp;a[0];<br>p=a;   </p>
+<p>int <em>p;<br>p=&amp;a[0];   //不能写成</em>p = &amp;a[0];<br>等价于：<br>int <em>p = a;<br>它的作用是将a数组首元素（即a[0]）的地址赋给指针变量p（而不是赋给</em>p）<br><em>p++，由于++,</em>同优先级，先输出<em>p的值再使p值加1.<br>这样下一个循环时，</em>p就是下一个元素的值。<br><em>（p++）先去</em>p值，然后使p加1<br><em>（++p）先使p加1，再取</em>p。    </p>
+<p>实参数组名代表该数组首元素的地址，而形参是用来接收从实参传递过来的数组首元素地址的。因此，形参应该是一个指针变量（只有指针变量才能存放地址）。    </p>
+<p>C语言调用函数时虚实结合的方法都是采用“值传递”方式，当用变量名作为函数参数时传递的是变量的值，当用数组名作为函数参数时，由于数组名代表的是数组首元素地址，因此传递的值是地址，所以要求形参为指针变量。<br>实参数组名代表一个固定的地址，或者说是指针变量，但形参数组名并不是一个固定的地址，而是按指针变量处理。    </p>
+<pre><code>void inv(int * x,int n){
+    int *p, temp, *i, *j, m=(n-1)/2;
+    i=x; j=x+n-1; p=x+m;
+    for(; i&lt;=p; i++, j--){
+        temp=*i; *i = *j; *j=temp;
+    }
+    return;
+}</code></pre><hr>
+<p>二维数组a的有关指针   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">表示形式	含义	地址   </span><br><span class="line">a	二维数组名，指向一位数组a[0],即0行首地址	2000    </span><br><span class="line">a[0],*(a+0),*a	0行0列元素地址	2000    </span><br><span class="line">a+1,&amp;a[1]	1行首地址	2016   </span><br><span class="line">a[1],*(a+1)	1行0列元素，a[1][0]的地址	2016   </span><br><span class="line">a[1]+2,*(a+1)+2,&amp;a[1][2]	1行2列元素，a[1][2]的地址	2024   </span><br><span class="line">*(a[1]+2),*(*(a+1)+2),a[1][2]	1行2列元素，a[1][2]的值	元素值为3    </span><br><span class="line">*（*（p+j）+i)  就是 score[j][i]</span><br></pre></td></tr></table></figure>
+
+
+<p>通过指针引用字符串  </p>
+<p>字符串的引用方式<br>（1）用字符数组存放一个字符串，可以通过数组名和下标引用字符串中一个字符，也可以通过数组名和格式声明“%s”输出该字符串。<br>（2）用字符指针变量指向一个字符串常量，通过字符指针变量引用字符串常量。  </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(){
+    char *string = &quot;I love China!&quot;;
+    printf(&quot;%s\n&quot;,string);
+    return 0;
+}</code></pre><p>如果想把一个字符串从一个函数“传递”到另一个函数，可以用地址传递的方法，即用字符数组名作为参数，也可以用字符指针变量作参数。在被调用的函数中可以改变字符串的内容，在主调函数中可以引用改变后的字符串。<br>定义一个函数copy_string用来实现字符串复制的功能，在主函数中调用此函数，函数的形参和实参可以分别用字符数组名或字符指针变量。<br>（1）用字符数组名作为函数参数   </p>
+<pre><code>#include&lt;stdio.h&gt;   
+int main()
+{
+    void copy_string(char from[], char to[]);
+    char a[]=&quot;I am a teacher&quot;;
+    char b[]=&quot;You are a student&quot;;
+    copy_string(a,b);
+    return 0;
+}
+
+void copy_string(char from[], char to[]){
+    int i=0;
+    while(from[i] != &apos;\0&apos;){
+        to[i] = from[i];
+        i++;
+    }
+    to[i] = &apos;\0&apos;;
+}</code></pre><p>(2)用字符型指针变量做实参  </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(){
+    void copy_string(char from[], char to[]);
+    char a[]=&quot;I am boy&quot;;
+    char b[]=&quot;I am man&quot;
+    char *from=a;
+    char *to=b;
+    copy_string(from, to);
+    return 0;
+}
+void copy_string(char from[], char to[]){
+    int i=0;
+    while(from[i]!=&apos;\0&apos;){
+        to[i]=from[i];
+        i++;
+    }
+    to[i]=&apos;\0&apos;;
+}</code></pre><p>(3)用字符指针变量作形参和实参  </p>
+<pre><code>#include &lt;stdio.h&gt;
+int main(){
+    void copy_string(char *from, char *to);
+    char *a =&quot;I am a teacher.&quot;;
+    char  b[] = &quot;You are a student.&quot;;
+    char *p=b;
+    copy_string(a,p);
+    return 0;
+}
+void copy_string(char *from, char *to){
+    for(; *from!=&apos;\0&apos;; from++, to++){
+        *to =*from;
+    }
+    *to=&apos;\0&apos;;
+}
+
+改进版：
+void copy_string(char *from, char *to)
+{
+    while((*to = *from) != &apos;\0&apos;){
+        to++;
+        from++;
+    }
+}
+
+还可以改为：
+{
+    while((*to++ = *from++) != &apos;\0&apos;);
+}</code></pre><p>还可以改为  </p>
+<pre><code>while(*from != &apos;\0&apos;)
+    *to++ = *from++;
+*to = &apos;\0&apos;;</code></pre><p>上面可以简化为：<br>while(<em>to++=</em>from++);       等价于     while((<em>to++ = *from++) != ‘\0’);<br>将</em>from赋给<em>to，如果赋值后的</em>to值等于’\0’，则循环终止（’\0’已赋给*to）  </p>
+<hr>
+<pre><code>for(;(*to++=*from++) != 0;););</code></pre><p>或  </p>
+<pre><code>for(; *to++ = *from++;);</code></pre><hr>
+<pre><code>void copy_string(char from[], char to[]){
+    char *p1, *p2;
+    p1=from; p2=to;
+    while((*p2++=*p1++)!=&apos;\0&apos;);
+}</code></pre><p>使用字符指针变量和字符数组的比较<br>（1）字符数组由若干个元素组成，每个元素中放一个字符，而字符指针变量中存放的<br>是地址（字符串第1个字符的地址），绝不是将字符串放到字符指针变量中。<br>（2）赋值方式。可以字符指针变量赋值，但不能对数组名赋值。<br>（3）初始化的含义。对字符指针变量赋初值<br>（4）存储单元的内容。编译时为字符数组分配若干存储单元，以存放各元素的值，而对字符指针变量，只分配一个存储单元（Visual C++为指针变量分配4个字节）。<br>如果定义了字符数组，但未对它赋值，这时数组中 的元素的值是不可预料的。<br>（5）指针变量的值是可以改变的，而数组名代表一个固定的值（数组首元素的地址），不能改变。<br>（6）字符数组中各元素的值是可以改变的（可以对它们再赋值），但字符指针变量指向的字符串常量中的内容是不可以被取代的（不能再对它们赋值）<br>（7）引用数组元素。对字符数组可以用下标法（用数组名和下标）引用一个数组 元素，也可以用地址法引用数组元素。如果定义了字符指针变量p，并使它指向数组a的首元素，则可以用指针变量带下标的形式引用数组元素，同样，可以用地址法（*（p+5））引用数组元素a[5]<br>（8）用指针变量指向一个格式字符串，可以用它代替printf函数中的格式字符串。  </p>
+<p>函数指针<br>如果在程序中定义了一个函数，在编译时，编译系统为函数代码分配一段存储空间，这段存储空间的起始地址（又称为入口地址）称为这个函数的指针。<br>可以定义一个指向函数的指针变量，用来存放某一函数的起始地址，这就意味着此指针变量指向该函数。<br>int(<em>p)(int , int)<br>定义p是一个指向函数的指针变量，他可以指向函数的类型为整数且有两个整型参数的函数。p的类型用int(</em>)(int, int)表示.  </p>
+<p>用函数指针变量调用函数<br>如果想调用一个函数，除了可以通过函数名调用外，还可以通过指定函数的指针变量来调用该函数。  </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(){
+    int max(int,int);
+    int(*p)(int, int);
+    int a,b,c;
+    p=max;
+    printf(&quot;please enter a and b&quot;);
+    scanf(&quot;%d, %d&quot;, &amp;a, &amp;b);
+    c=(*p)(a,b);
+    return 0;
+}
+int max(int x, int y){
+    int z;
+    if(x&gt;y) z=x;
+    else z=y;
+    return (z);
+}</code></pre><p>类型名（*指针变量）（函数参数表列）  </p>
+<p>int(*p)(int, int) 这里的类型名是指函数返回值的类型。  </p>
+<p>说明：  </p>
+<p>（1）定义指向函数的指针变量，并不意味着这个指针变量可以指向任何函数，它只能指向在定义时指定的类型的函数。比如int(*p)(int, int)，表示指针变量p只能指向函数返回值为整型且有两格整型参数的函数。在程序中把哪一个函数（该函数值是整型的且有两个整型参数）的地址赋给它，他就指向哪一个函数。在一个程序中，一个指针变量可以先后指向同类型的不同函数。<br>（2）如果要用指针调用函数，必须先使指针变量指向该函数。<br>p=max;<br>这就把max函数的入口地址赋给了指针变量p；<br>在给函数指针赋值时，不需要给出形参，只须给出函数名<br>对指向函数的指针变量不能进行算术运算。<br>用函数名调用函数，只能调用所指定的一个函数，而通过指针变量调用函数比较灵活，可以根据不同情况先后调用不同的函数。  </p>
+<p>用指针函数的指针作函数参数<br>指向函数的指针变量的一个重要途径是把函数的地址作为参数传递到其他函数。   </p>
+<pre><code>void fun(int(*x1)(int), int(*x2)(int, int))
+{
+    int a, b, i=3, j=5;
+    a=(*x1)(i);
+    b=(*x2)(i,j);
+}
+(*x1)(i) 相当于f1
+(*x2)(i,j)相当于f2</code></pre><p>一个函数可以返回一个整型值、字符值、实型值等，也可以返回指针型的数据，即地址。<br>int * a(int x, int y)     a是函数名，调用它以后得到一个int * 型的指针，即整型数据的地址。   </p>
+<pre><code>#include &lt;stdio.h&gt;
+int main(){
+    float score[][4] = {{60,70,80,90},{56,89,67,88},{34,78,90,66}};
+    float *search(float(*pointer)[4], int n);
+    float *p;
+    int i,k;
+    scanf(&quot;%d&quot;,&amp;k);
+    printf(&quot;The score of No.%d are : \n&quot;, k);
+    p=search(score,k);
+    for(i=0; i&lt;4; i++){
+        printf(&quot;%5.2f\t&quot;,*(p+i));
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+float *search(float(*pointer)[4], int n)
+{
+    float *pt;
+    pt=*(pointer +n);
+    return (pt);
+}</code></pre><p>指针数组和多重指针  </p>
+<p>一个数组，若其元素均为指针类型，称为指针数组。也就是说指针数组中的每一个元素都存在一个地址，相当于一个指针变量。<br>int *p[4];<br>定义一维指针数组的一般形式为：<br>类型名 *数组名[数组长度]；<br>——————————————————————————————————————————————<br>将若干字符串按字母顺序（由小到大）输出  </p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(){
+    void sort(char *name[], int n);
+    void print(char *name[], int n);
+    char *name[] = {&quot;Follow me&quot;,&quot;Baya&quot;,&quot;Tom&quot;,&quot;Jerray&quot;,&quot;Lina&quot;,&quot;Pandy&quot;};
+    int n=6;
+    sort(name, n);
+    sort(name,n);
+    return 0;
+}
+
+void sort(char *name[], int n){
+    char *temp;
+    int i,j,k;
+    for(i=0; i&lt;n-1; i++){
+        k=i;
+        for(j=i+1; j&lt;n; j++){
+            if(strcmp(name[k],name[j])&gt;0) k=j;
+        }
+        if(k!=i)
+        { temp = name[i];name[i]=name[k];name[k] = temp;}
+    }
+}
+
+void print(char * name[], int n)
+{
+    int i;
+    for(i=0;i&lt;n;i++){
+        printf(”%s\n”, name[i]);
+    }
+}</code></pre><p>也可以写成：</p>
+<pre><code>void print(char * name[], int n){
+    int i=0;
+    char *p;
+    p=name[0];
+    while(i&lt;n){
+        p=*(name+i++);
+        printf(&quot;%s\n&quot;,p);
+    }
+}</code></pre><p>其中“<em>（name+i++）”表示先求</em>(name+i)的值，即name[i]（它是一个地址），然后使i加1，在输出时，按字符串形式<br>输出从p地址开始的字符串。</p>
+<pre><code>name数组
+name[0] -------- Follow
+name[1] ------- BASIC
+name[2] ---- Wall
+name[3] ---- For
+name[4] ------ Design</code></pre><p>p=name+2;<br>printf(“%d\n”,<em>p) 输出name[2]的值（是个地址）<br>printf(“%s\n”,</em>p)输出字符串“Great Wall”<br>使用指向指针数据的指针变量  </p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    char *name[] = {&quot;Follow me&quot;,&quot;BASIC&quot;,&quot;Great Wall&quot;,&quot;FORTRAN&quot;,&quot;Computer design&quot;};
+    char **p;
+    int i;
+    for(i=0; i&lt;5; i++){
+        p=name+i;
+        printf(&quot;%s\n&quot;, *p);
+    }
+    return 0;
+}</code></pre><p>依次输出<br>Flow me<br>BASIC<br>…  </p>
+<pre><code>int a[5]={1,3,5,6,7};
+int *num[5],i;
+int **p;
+for(i=0; i&lt;5; i++)
+{
+    num[i] = &amp;a[i];      //存入的是数组数据的地址
+}</code></pre><p>为了得到a[2]中的数据5，可以先使p=num+2，然后输出<strong>p。注意<br>*p是num[2]的值，而num[2]的值是a[2]的地址，因此</strong>p是a[2]的值<br>5；  </p>
+<p>指针数组作main函数的形参<br>指针数组的一个重要应用是作为main函数的形参。在以往的程序中，main函数第一行int main()或int main(void)<br>实际上，某些情况下。main函数可以有参数：<br>int main(int argc, char <em>argv[])<br>argc和argv就是main函数的形参，它们是程序的“命令行参数”。argc(英语含义参数个数)，argv（参数向量）<br>它是一个</em>char指针数组，数组中每一个元素（其值为指针）指向命令行中的一个字符串。   </p>
+<p>动态内存分配<br>全局变量分配在内存中的静态存储区，非静态的局部变量（包括形参）是分配在内存中的动态存储区的。这个存储区称为一个栈的区域。除此以外，还允许建立内存动态分配区域，以存放一些临时用的数据，这些数据不必在程序的声明部分定义，也不必等到函数结束时才释放，而是需要时随时开辟，不需要是随时释放。这些数据是临时存放在一个特别的自由存储区，称为堆区。可以根据需要，向系统申请所需要大小的空间。由于未在声明部分定义它们为变量或数组，因此不能通过变量名或数组名去引用这些数据，只能通过指针来引用。    </p>
+<p>怎样建立内存的动态分配：<br>对内存的动态分配是通过系统提供的库函数来实现的，主要有malloc、calloc、free、realloc这4个函数。<br>1.使用malloc函数<br>void *malloc（unsigned int size）<br>其作用是在内存的动态存储区中分配一个长度为size的连续空间。形参size的类型定位无符号整型（不允许为负数）<br>此函数返回值是所分配区域的第一个字节的地址。<br>malloc(100)；  //开辟100字节的临时分配域，函数值为其第1个字节的地址<br>注意指针的基类型为void，即不指向任何类型的数据，只提供一个地址。如果此函数未能成功地执行，则返回空指针（NULL）<br>2.使用calloc函数<br>其函数原型为：<br>void *calloc(unsigned n, unsigned size);<br>其作用是在内存的动态存储区中分配n个长度为size的连续空间，这个空间一般比较大，<br>用calloc函数可以为一维数组开辟动态动态存储空间，n为数组元素个数，每个元素长度为size。这是动态数组。函数返回指向所分配域的起始位置的指针；如果分配不成功，返回NULL.<br>p=calloc(50,4);<br>3.free函数<br>void free(void *p)<br>其作用是释放指针变量p所指向的动态空间，使这部分空间能重新被其他变量使用。p应是最近一次调用calloc或malloc函数时得到的函数返回值。<br>free(p);<br>free函数无返回值。<br>4.realloc函数<br>void *realloc(void *p, unsigned int size);<br>如果已经通过malloc函数或calloc函数获得了动态空间，想改变其大小，可以用realloc函数重新分配。<br>用realloc函数将p所指向的动态空间的大小改变为size。p的值不变。如果重分配不成功，返回NULL<br>realloc（p,50）;<br>以上4个函数在&lt;stdlib.h&gt;中<br>————————————————————————————————————————————————<br>void指针类型<br>它不指向任何类型的数据。可理解为“指向空类型”或“不指向确定的类型”的数据。在将它的值赋给<br>另一指针变量时有由系统对它进行类型转换，使之适合于被赋值的变量的类型。<br>当把void指针赋值给不同基类型的指针变量（或相反）时，编译系统会自动进行转换，不必用户自己<br>进行强制转换。     </p>
+<pre><code>int a=3；   
+int *p1 = &amp;a;
+void *p3;
+p3 = (void *)p1;
+p3=&amp;a;</code></pre><p>当把void指针赋值给不同基类型的指针变量（或相反）时，编译系统会自动进行转换，不必用户自己进行强制转换。<br>p3=&a;<br>相当于“p3=（void<em>）&a;”赋值后p3得到a的纯地址，但并不指向a，不能通过</em>p3输出a的值。   </p>
+<p>例子：建立动态数组，输入5个学生的成绩，另外用一个函数数检查其中有无低于60分的，输出不合格成绩。   </p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int main()
+{
+    void check(int *);
+    int *p1,i;
+    p1=(int *)malloc(5 * sizeof(int));
+    for(i=0; i&lt;5; i++){
+        scanf(&quot;%d&quot;, p1+i);
+    }
+    check(p1);
+    return 0;
+}
+void check(int *p){
+    int i;
+    printf(&quot;They are fail:&quot;);
+    for(i=0; i&lt;5; i++)
+        if(p[i]&lt;60) printf(&quot;%d&quot;, p[i]);
+    printf(&quot;\n&quot;);
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">变量定义	类型表示	含义    </span><br><span class="line">int i	int	定义整型变量i   </span><br><span class="line">int *p	int *	定义p为指向整型数据的指针变量   </span><br><span class="line">int a[5]	int[5]	定义整型数组a，它有5个元素    </span><br><span class="line">int *p[4]	int *[4]	定义指针数组p，它由4个指向整型数据的指针元素组成   </span><br><span class="line">int(*p)[4]	int(*)[4]	p为指向包含4个元素的一维数组的指针变量    </span><br><span class="line">int f()	int（）	f为返回整型函数值的函数    </span><br><span class="line">int *p()	int *()	p为返回一个指针的函数，该指针指向整型数据    </span><br><span class="line">int （*p）()	int （*）()	p为指向函数的指针，该函数返回一个整型值    </span><br><span class="line">int **p	int **	p是一个指针变量，它指向一个指向整型数据的指针变量   </span><br><span class="line">void *p	void *	p是一个指针变量，基类型为void (空类型),不指向具体的对象</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="定义和使用结构体变量"><a href="#定义和使用结构体变量" class="headerlink" title="定义和使用结构体变量"></a>定义和使用结构体变量</h3><p>C语言允许用户自己建立由不同类型数据组成的组合型的数据结构，它称为结构体。   </p>
+<pre><code>struct Student
+{
+    int num;
+    char name[20];
+    char sex;
+    int age;
+    float score;
+    char addr[30];
+};       //最后要有个分号
+
+struct 结构体名
+{成员表列}
+
+成员可以属于另一个结构体类型
+struct Date{
+    int month;
+    int day;
+    int year;
+};
+struct Student
+{
+    int num;
+    char name[30];
+    int age;
+    struct Date birthday;
+    char addr[30];
+};
+
+定义结构体
+struct Student student1,student2;
+
+在声明类型的同时定义变量
+struct Student
+{
+    int num;
+    char name[20];
+    char sex;
+    int age;
+    float score;
+    char addr[30];
+}student1,student2;
+
+3.不指定类型名而直接定义结构体类型变量
+struct{
+    成员列表
+}变量名表列；
+
+结构体变量的初始化和引用
+在定义结构体变量时，可以对它初始化，即赋矛初始值。然后可以引用这个变量。
+#include &lt;stdio.h&gt;
+int main(){
+    struct Student{
+        long int num;
+        char name[20];
+        char sex;
+        char addr[20];
+    }a={10101,&quot;Li Lin&quot;,&apos;M&apos;,&quot;12345 Beijing&quot;};   //定义结构体变量a并初始化
+    printf(&quot;NO. :%ld\nname:%s\nsex:%c\naddress:%s\n&quot;,a.num, a.name,a.sex,a.addr);
+}
+
+允许对某一成员初始化
+struct Student b={.name=&quot;HK&quot;};
+“.name”隐含代表结构变量b中的成员b.name。其他未被指定初始化的数值型成员被系统初始化为0，字符型成员被系统初始化为&apos;\0&apos;，指针型成员被系统初始化为NULL;
+
+(2)可以引用结构体变量中的成员的值，引用方法为：
+结构体变量名.成员名
+
+student1.birthday.month
+
+同类的结构体变量可以相互赋值
+student1 = student2;
+
+可以引用结构体变量成员的地址，也可以引用结构体变量的地址
+scanf(&quot;%d&quot;,&amp;student1.num); 输入sudent.num的值
+printf(&quot;%o&quot;, &amp;student1);  输出结构体变量的首地址
+
+定义结构体数组一般形式：
+struct 结构体名
+{成员表列} 数组名 [数组长度]
+结构体类型 数组名[数组长度]     struct Student leader[3];
+结构体数组初始化的形式是在定义数组的后面加上的
+={初值表列}
+struct Person leader[3]={&quot;Li&quot;,0, &quot;Zhang&quot;,0, &quot;Sun&quot;,0};
+
+#include&lt;stdio.h&gt;
+struct Student
+{
+    int num;
+    char name[20];
+    float score;
+};
+int main()
+{
+    struct Student stu[5]={{1010,"Zb",90},{1010,"Zb",90},{1010,"Zb",90},{1010,"Zb",90},{1010,"Zb",90}};
+    struct Student temp;
+    const int n=5;
+    int i,j,k;
+    printf(&quot;The order is:\n&quot;);
+    for(i=0;i&lt;n-1;i++){
+        k=i;
+        for(j=i+1; j&lt;n; j++){
+            if(stu[j].score &gt; stu[k].score)
+                k=j;
+        }
+        temp=stu[k];stu[k]=stu[i];stu[i]=temp;
+    }
+    for(i=0;i&lt;n;i++)
+        printf(&quot;%6d %8s %6.2f\n&quot;,stu[i].num,stu[i].name,stu[i].score);
+    printf(&quot;\n&quot;)
+    return 0;
+}
+
+指向结构体变量的指针
+指向结构体对象的指针变量既可指向结构体变量，也可指向结构体数组中的元素。指针变量的基类型必须与结构体变量的类型相同。
+struct Student stu_1;
+struct Student *p;
+p=&amp;stu_1;
+stu_1.num = 10101;
+stu_1.se     = &apos;M&apos;;
+stu_1.score=99.3;
+printf(&quot;No.:%ld\nname: %s \n se:%c\n score: %5.1f\n&quot;, stu_1.num, stu_1.name, stu_1.sex, stu_1.score);
+printf(&quot;No.:%ld\nname: %s \n se:%c\n score: %5.1f\n&quot;, (*p).num, (*p).name, (*p).sex, (*p).score);
+
+为了使用方便，（*p）.num用p-&gt;num来代替，表示p所指向的结构体变量中的num成员,如果使用*p那么其两边的括号不能省略，因为成员运算符&quot;.&quot;优先于“*”，*p.num就等价于*（p.num）
+
+建立简单的静态链表
+#include&lt;stdio.h&gt;
+struct Student{
+    int num;
+    float score;
+    struct Student *next;
+};
+int main(){
+    struct Student a,b,c,*head, *p;
+    a.num = 10101; a.score=89.5;
+    b.num = 10103;b.score=90;
+    c.num=10107; c.score=85;
+    head=&amp;a;
+    a.next=&amp;b;
+    b.next=&amp;c;
+    c.next=NULL;
+    p=head;
+    do{
+        p=p-&gt;next;
+    }while(p!=NULL);
+    return 0;
+}
+
+共用体类型
+有时想用同一段内存单元存放不同类型的变量。这种使几个不同的变量共享同一段内存的结构称为“共用体”类型的结构。
+union 共用体名
+{
+    成员表列
+}变量表列；
+
+union Data
+{
+    int i;
+    char ch;
+    float f;
+}a,b,c;
+
+union Data
+{
+    int I;
+    char ch;
+    float f;
+};
+union Data a,b,c;
+
+union
+{
+    int i;
+    char ch;
+    float f;
+}a, b, c;
+
+结构体变量所占内存长度是各成员占的内存长度之和。每个成员分别占有其自己的内存单元。而共用体变量所占的内存长度等于最长的成员的长度。
+
+使用枚举类型
+声明枚举类型用enum开头
+enum Weekday{sum,mon,tue};
+或
+enum{sun, mon, tue, wed, thu, fri, sat} workday, weekend;
+声明枚举类型的一般形式：
+enum[枚举名] {枚举元素列表}
+
+enum Color{red, yellow, blue, white, black};  //声明枚举类型enum Color
+enum Color i, j, k ,pri;                                          //定义枚举变量i,j,k,pri
+for(i=red; i&lt;=black  ; i++){
+    printf(&quot;%s&quot;,i);
+}
+
+用typedef声明新类型名
+除了标准类型名，还可以用typedef指定心得类型名来代替已有的类型名。
+
+typedef int Integer;
+Integer j;</code></pre><p>不同的源文件中用到同一类型数据时，常用typedef声明一些数据类型。可以把所有typedef名称声明单独放到一个文件里，然后在需要它的文件中#include包含这个文件。    </p>
+<p>智能指针<br>主要用于管理在堆上分配的内存，他将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放申请的内存，从而防止内存泄漏。   </p>
+<p>虚函数<br>在某基类中声明为 virtual   并在一个或多个派生类中被重新定义的成员函数，用法格式为：virtual 函数返回类型    函数名（参数表） {函数体}；实现多态性，通过指向派生类的基类指针或引用，访问派生类中同名覆盖成员函数。<br>简单地说，那些被virtual关键字修饰的成员函数，就是虚函数。虚函数的作用，用专业术语来解释就是实现多态性（Polymorphism），多态性是将接口与实现进行分离；用形象的语言来解释就是实现以共同的方法，但因个体差异，而采用不同的策略。   </p>
+<h3 id="Java一些常问的问题"><a href="#Java一些常问的问题" class="headerlink" title="Java一些常问的问题"></a>Java一些常问的问题</h3><p><a href="https://blog.csdn.net/u013806366/article/details/78952712" target="_blank" rel="noopener">https://blog.csdn.net/u013806366/article/details/78952712</a>  </p>
+<p>1、short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗？<br>答案：s1 = s1+1 ; 会提示“cannot convert from int to   short”,1本身是int类型，而s1是短整型，所以他们二者运算结果是int类型，要想使表达式成立，需要将结果强制转换成short类型<br>s1+=1;相当于s1 = (short)(s1 + 1);其中有隐含的强制类型转换。所以编译不会有问题。<br>2、int和Integer的区别？<br>答案：8大数据类型：（在栈中可以直接分配内存的数据是基本数据类型）<br>整型：char、short、int、long<br>浮点型：float、double<br>        逻辑型：boolean<br>        字符型：char<br>        基本数据类型和引用数据类型：<br>        基本数据类型：在栈中可以直接分配内存的数据是基本数据类型。<br>        引用数据类型：数据的引用在栈中，但是它的对象在堆中。<br>        对应字节数：<br>        boolean：1/8个（一个字节有8bit（位）boolean只有true和false两个逻辑值，在编译后的值是用0和1来表示，他们在内存中按位来计算，只需要一位就能表示）<br>        byte：1个（字节型）<br>        char：2个（字符型，一个char只能存储一个汉字）<br>        short：2个（短整型）<br>        int:4个（整数类型）<br>        long：8个（长整型）<br>        float：4个（浮点型）<br>        double：8个（双精度类型 ）<br>        java中默认的整数类型是int型，如果要定义成float型，需要在后面加上l或者L<br>        java中默认的浮点型是double，如果要定义成float型，需要在后面加上f或者F<br>        小可转大，大转小会丢失精度。<br>        对应的封装类：<br>        boolean→Boolean<br>        char→Character<br>        byte→Byte<br>        short→Short<br>        int→Integer<br>        long→Long<br>        float→Float<br>        double→Double   </p>
+<pre><code>正题：int和Integer的区别？   
+
+（1）Integer是int提供的封装类。int是基本数据类型中的一种。   
+（2）Integer的默认值是null。int的默认值是0 。   
+（3）Integer是一个对象，需要一个引用来指向这个对象，int是基本数据类型， 直接存储在内存中。  
+（4）声明为Integer的变量需要实例化，声明为int的变量不需要实例化。  </code></pre><p>3、java中的堆和栈？<br>java中把内存分为两种，一种是堆内存，一种是栈内存。<br>静态存储分配：是指在编译时就能确定每个数据目标在运行时的存储空间需求，即在编译时就能对应的给它分配对应的固定的内存空间。<br>栈式存储分配：可称为动态存储分配，是由一个类似于堆栈的运行栈来实现的。和静态存储分配相反，在栈式存储方案中，程序对在编译时候需要的内存空间都是未知的，只有运行的时候才能根据所需的数据区大小分配对应的内存空间。（栈式内存按照先进后出的原则分配。）<br>通俗一点说堆和栈的区别：堆主要用来存放对象的，栈主要用来执行程序的。<br>java中在函数中定义的一些基本类型的变量和对象的引用变量都在函数的栈内存中分配。当在一段代码块定义一个变量时，Java就在栈中为这个变量分配内存空间，当超过变量的作用域后，Java会自动释放掉为该变量所分配的内存空间，该内存空间可以立即被另作他用。<br>堆内存用来存放由new创建的对象和数组。    在堆中分配的内存，由Java虚拟机的自动垃圾回收器来管理。    在堆中产生了一个数组或对象后，还可以在栈中定义一个特殊的变量，让栈中这个变量的取值等于数组或对象在堆内存中的首地址，栈中的这个变量就成了数组或对象的引用变量。<br>引用变量就相当于是为数组或对象起的一个名称，以后就可以在程序中使用栈中的引用变量来访问堆中的数组或对象。<br>总结：<br>栈和堆都是java用来在内存中存放数据的地方，（与c++不同的是java自动管理栈和堆，程序员不能直接地设置栈和堆）<br>堆：（对象）<br>java的堆是一个运行时数据区，堆是由垃圾回收来负责的，堆的优势是可以动态地分配内存大小，生存期也不必事先告诉编译器，因为它是在运行时动态分配内存的，java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度比较慢。<br>栈：（基本数据）<br>栈的优势是，存取速度要比堆快，栈数据可以共享。但是缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。栈中主要存放一些基本类型的变量。     </p>
+<p>4、Math.round()的原理？<br>Math.round(11.5)取值结果是12，<br>Math.round(11.4)取值结果是11，<br>Math.round(11.6)取值结果是12<br>Math.round(-11.5)取值结果是-11<br>Math.round(-11.4)取值结果是-11<br>Math.round(-11.6)取值结果是-12<br>原理就是在给要求的值加0.5然后向下取整。<br>5、String、StringBuffer、StringBuilder的区别？<br>他们都可以操作和存储字符串。<br>String是只读字符串，string引用的字符串内容是不能被改变的。<br>StringBuffer和StringBuilder类表示的字符串对象可以直接进行修改。<br>StringBuilder是java5之后引入的，与StringBuffer的区别是StringBuilder它是在单线程环境下使用的，所以效率要比StringBuffer高。<br>6、重载（overload）和重写（override）的区别。重载的方法能否根据返回类型进行区分？<br>重载和重写都是多态的体现，二者的区别是：<br>重载说的是：编译时的多态性。它发生在同一个类中，指的是在一个类中，同名的方法如果参数类型不同或者参数个数不同或者参数类型和个数都不同。注：重载对返回类型没有特殊的要求。<br>重写说的是：运行时的多态性。它发生在父类和子类之间，当子类继承父类且子类中的方法和父类中的方法它们的方法名、参数个数和参数类型都相同，返回类型也相同（不过这一点在java5之后返回类型可以不同，但是必须是父类的返回值的子类，假如父类返回Object类，子类的返回值可以是String等）<br>7、&amp;和&amp;&amp;的区别？<br>&amp;：按位与，将左右两边先转换成二进制，然后再进行与的运算。<br>&amp;&amp;：逻辑与，左右两边表达式都是true才返回true，有一方false则结果false<br>8、抽象类和接口的区别？<br>什么时候用抽象类，什么时候用接口？<br>如果你拥有一些方法并且想让它们中的一些有默认实现，则可以使用抽象类。<br>如果你想实现多重继承，则需要使用接口（java不支持多继承，子类不能继承多个类，但是可以实现多个接口）   </p>
+<p>接口是对动作的抽象，抽象类是对根源的抽象。<br>抽象类表示的是，这个对象是什么，接口表示的是这个对象能做什么。<br>举例说：人是一个抽象类，猪也是一个抽象类，人有吃喝拉撒睡的动作，猪也有吃喝拉撒睡的动作，那么就可以把吃喝拉撒睡这些动作做成一个接口，然后分别去具体实现它们。    </p>
+<p>使用抽象类的目的：提高代码的复用性。可以重写抽象类中的方法来达到自己需要的目的。<br>使用接口的目的：体现多态性，让实现接口的对象可以以不同方式来实现同一个方法。    </p>
+<p>抽象方法：抽象方法必须用abstract关键字来修饰。如果一个类中存在抽象方法，那么这个类一定是抽象类，抽象类必须在类前用abstract关键字修饰。因为抽象类中含有没有具体实现的方法， 所以不能用抽象类创建对象。（注意：如果一个类中不包含抽象方法，只是用abstract修饰的话也是抽象类。即抽象类不一定必须含有抽象方法。）    </p>
+<p>抽象类存在的意义就是为了继承。如果定义了一个抽象类，却不去继承它。那么就等于白白创建了这个抽象类。   </p>
+<p>包含抽象方法的类是抽象类，但并不是说抽象类中只能有抽象方法，它和普通类一样，同样可以拥有成员变量和普通的成员方法。    </p>
+<p>抽象类和普通类的主要区别：<br>（1）抽象方法必须为public或者protected，默认为public，因为private无法被继承。<br>（2）抽象类不能用来创建对象。<br>（3）如果一个类继承于一个抽象类，则子类必须实现父类的抽象方法。如果子类没有实现父类的抽象方法，则必须将子类也定义为抽象类。   </p>
+<p>接口中可以含有变量和方法。实际上接口中的变量会被隐式地指定为public static final    变量（只能是）方法也会被隐式的指定为public abstract方法且只能是public abstract方法。<br>区别：<br>（1）接口可以多继承，抽象类只能单继承,抽象类可以实现多个接口。<br>（2）接口中所有的方法都是抽象的（默认public abstract修饰），不能有具体的实现。抽象类中可以有普通方法，也可以有抽象方法，也可以定义静态方法。<br>（3）接口中成员变量只能是public static final    （静态变量），抽象类中的变量可以是各种类型。<br>（4）接口中没有构造函数，抽象类中有构造函数，但是这里的构造函数不能用于new对象，他的作用主要用来初始化抽象类的操作。    </p>
+<p>举例：<br>有一个警报的接口。有一个门的抽象类。那么要写一个防盗门的类的话只需要继承门这个抽象类，实现警报这个接口即可。    </p>
+<p>接口可以继承接口，而且接口可以继承多个接口，抽象类可以实现接口，而且可以实现多个接口，抽象类可以继承具体类。    </p>
+<p>9、抽象的（abstract）方法是否可同时是静态的（static），是否可同时是本地方法？是否可同时被synchronized修饰？<br>答案：抽象方法将来是要被重写的，而静态方法是不能重写的，所以这个是错误的。本地方法是由本地代码实现的，而抽象方法是没有实现的，所以这个也是错误的。<br>synchronized作用主要体现在具体的方法实现上，同样抽象方法是没有实现额，所以这个也是错误的。<br>10、final关键字的用法？<br>答案:<br>(1)修饰类：表示该类不能被继承。<br>(2)修饰方法：表示该方法不能被重写。<br>(3)修饰变量：表示该变量赋值后值不能被修改，常量。<br>11、对象构造器的调用顺序？<br>先初始化静态成员变量—&gt;然后调用父类构造器–》再初始化非静态成员变量–&gt;最后调用自己构造器<br>12、是否可以从一个静态（static）方法内部发出对非静态方法的调用？<br>答案：不可以，静态方法只能访问静态成员，非静态方法的调用要先创建对象。<br>13、关于GC?<br>答案：GC是垃圾回收的意思，java的GC功能可以自动检测对象是否超过作用域从而达到自动回收内存的目的。<br>有效的防止内存泄漏，GC相当于一个单独的低优先级的线程运行，对内存堆中长时间没有使用的对象进行清除和回收。<br>14、数据类型之间的转换？<br>将字符串转换成基本数据类型：<br>调用基本数据类型对应的封装类的parseXXX()<br>将基本数据类型装换成字符串：<br>调用String.valueOf(xxx) 方法;<br>15、如何实现字符串的反转和转换？<br>答案：   </p>
+<pre><code>public static String reverse(String a) {
+
+    String newStr = &quot;&quot;; 
+      if(a == null || a.length() &lt;= 1) {
+          return a;
+      }else{
+          newStr=reverse(a.substring(1))+a.charAt(0); 
+          return newStr ;
+      }
+  }  </code></pre><p>16、java常见异常处理关键字“throws”、“throw”、“try”、“catch”、“finally”？<br>答案：java中每个异常都是一个对象，都是Throwable类或其子类的实例。当一个方法出现异常后便抛出一个异常对象，该对象中包含有异常信息，调用这个对象的方法可以捕获异常，并对异常作出处理。<br>throw：就是我们在开发的时候知道会出现什么异常，明确的抛出该异常。<br>throws：用来声明一个方法可能抛出的各种异常。<br>try：用来指定一个段或者说一块需要预防异常的程序，如果有异常对象，可通过它的类型来catch它或者通过总是执行代码块（finally）来处理。<br>17、常见的运行时异常？<br>ArithmeticException（算术异常）<br>ClassCastException（类转换异常）<br>IllegalArgumentException（非法参数异常）<br>IndexOutOfBoundsException（下表越界异常）<br>NullPointerException（空指针异常）<br>SecurityException(安全异常)<br>18、final、finally、finalize的区别？<br>final:修饰符（关键字）有三种用法：<br>如果一个类被声明为final，意味着它不能再派生出新的子类，即不能被继承，因此它和abstract是反义词，<br>将变量声明为final，可以保证它们在使用中不被改变，被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取不可修改。<br>如果方法被final修饰也同样只能使用，不能在子类中被重写。  </p>
+<p>finally：通常放在try……catch的后面构造总是执行代码块，这就意味着程序无论正常执行还是发生异常，这里的代码都是会被执行的。  </p>
+<p>finalize：Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。  </p>
+<p>19、List，Set，Map的用法和区别？<br>list，set都继承于Collection接口，map不是。    </p>
+<p>list（列表）：元素以线性方式存储，可以存放重复元素。  </p>
+<p>list主要实现类：<br>ArrayList():长度可以改变的数组，插入和删除元素效率较慢。检索效率快。<br>LinkedList():链表数据结构存储，插入和删除元素效率快，检索访问效率慢。<br>set（集合）：元素没有特定的排列顺序，存放的是对象引用，没有重复元素。   </p>
+<p>set主要实现类：<br>HashSet：按照哈希算法来存取集合中的对象，存取速度较快。<br>TreeSet：实现了SortedSet接口，能够对集合中的对象进行排序。   </p>
+<p>map（映射）：键对象和值对象映射的集合，每一个元素都有对应的键（key）和值（value）对象，从map中检索元素时候，只需要给出键对象就能返回对应的值对象。<br>一个map中不能包含相同的key，每个key只能映射一个value   </p>
+<p>主要实现类：<br>hashMap：底层使用数据+链表实现，同一个键可以放多个值，但取出的是最后一个值。（非同步）允许放空值空键。<br>hashTable：hashTable和hashMap一样，唯一的不同就是，它是线程安全的，put和get等操作都加锁，且不允许空值和空键。<br>LinkedHashMap和LinkedArrayList原理相似，可以放空值空键。（非同步）相比hashMap是一个单向链表来讲， 它是双向链表。（缺点是会保留原值）    </p>
+<hr>
+<p>1.从继承的角度来看，将构造函数声明为私有会有何作用？<br>可以确保类以外的地方都不能直接实例化这个类。在这种情况下，要创建这个类的实例，唯一的方法是提供一个公共静态方法，就像工厂方法模式那样。<br>此外，由于构造函数是私有的，因此这个类也不能被继承。  </p>
+<p>2.Java中，若在try-catch-finally的try语句块中插入return   语句，finally语句块是否还会执行？<br>是的，它会执行。当退出try语句块时，finally语句块将会执行。即使我们试图从try语句块里跳出来（通过return 语句、continue语句、break语句或任意异常），finally语句块仍将得以执行。  </p>
+<p>有些情况下finally语句块将不会执行：<br>如果虚拟机在try/catch语句块执行期间退出。<br>如果执行try/catch语句块的线程被杀死终止了。  </p>
+<p>3.final、finally和finalize之间有何差异？<br>final用于控制变量、方法或类是否“可更改”。<br>finally关键字用在try/catch语句块中，以确保一段代码一定会被执行。<br>一旦垃圾收集器确定没有任何引用指向某个对象，就会在销毁该对象之前调用finalize()方法。<br>更多细节：<br>1.final:<br>上下文不同，final语句含义有别。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• 应用于基本类型变量时：该变量的值无法更改。</span><br><span class="line">• 应用于引用变量时：该引用变量不能指向堆上的任何其他对象。</span><br><span class="line">• 应用于方法时：该方法不允许重写</span><br><span class="line">• 应用于类时：该类不能派生子类</span><br></pre></td></tr></table></figure>
+<p>2.finally<br>在try块或catch块之后，可以选择加一个finally语句块。finally语句块里的语句一定会被执行（除非Java虚拟机在执行try语句块期间退出）。我们会在finally语句块里编写资源回收和清理的代码。<br>3.finalize()<br>当垃圾收集器确定再无任何引用指向某个对象实例时，就会在销毁该对象之前调用finalize()方法，一般用于清理资源，比如关闭文件。  </p>
+<p>4.C++模板和Java泛型之间有何不同？<br>Java泛型的实现植根于“类型消除”这一概念。当源代码被转换成Java虚拟机字节码时，这种技术会消除参数化类型。  </p>
+<p>有了Java泛型，我们可以做的事情也并没有真正改变多少，只是可以让代码变得漂亮一些，因此有时也会被称为“语法糖”。  </p>
+<p>C++的模板截然不同，在C++中，模板本质上就是一套宏指令集，只是换了个名头，编译器会针对每种类型创建一份模板代码的副本。  </p>
+<p>由于架构设计上的差异，Java泛型和C++模板还有如下很多不同：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*C++模板可以使用int 等基本数据类型，Java则不行，必须转而使用Integer.  </span><br><span class="line">*在Java中，可以将模板的类型参数限定为某种特定类型。例如，你可能会使用泛型实现CarDeck，并规定类型参数必须扩展自CardGame.  </span><br><span class="line">*在C++中，类型参数可以实例化，但Java不支持  </span><br><span class="line">*在Java中，类型参数（即MyClass&lt;Foo&gt;中的Foo）不能用于静态方法和变量，因为他们会被MyClass&lt;Foo&gt;和MyClass&lt;Bar&gt;所共享。在C++中，这些类都是不同的，因此类型参数可以用于静态方法和静态变量。  </span><br><span class="line">*在Java中，不管类型参数是什么，MyClass的所有实例都是同一类型。类型参数会在运行时被抹去。在C++中，参数类型不同，实例类型也不同。</span><br></pre></td></tr></table></figure>
+<p>5.Java中的对象反射是什么？作用？<br>对象反射是Java的一项特性，提供了获取Java类和对象的反射信息的方法，可执行如下操作：<br>（1）运行时取得类的方法和字段的相关信息<br>（2）创建某个类的新实例<br>（3）通过取得字段引用直接获取和设置对象字段，不管访问修饰符为何。<br>实例：</p>
+<pre><code>Object[] doubleArgs  = new Object[] {4.2, 3.9}</code></pre><p>//取得类</p>
+<pre><code>Class rectangleDefinition = Class.forName(MyProj.Rectangle”);</code></pre><p>//等同于：</p>
+<pre><code>Rectangle rectangle = new Rectangle(4.2, 3.9);
+Class[] doubleArgsClass = new Class[] {double.class, double.class};
+Constructor doubleArgsConstructor = rectangleDefinition.getConstructor(doubleArgsClass);
+Rectangle rectangle = (Rectangle) doubleArgsConstructor.newInstance(doubleArgs);</code></pre><p>//等同于： </p>
+<pre><code>Double area=rectangle.area();
+Method m = rectangeDefinition.getDeclaredMethod(”area”);
+Double area =(Double) m.invoke(rectangle);</code></pre><p>上面代码等同于： </p>
+<pre><code>Rectangle rectangle = new Rectangle(4.2, 3.9);
+Double area = rectangle.area();</code></pre><p>对象反射有什么用？<br>（1）有助于观察或操作操纵应用程序的运行时行为。<br>（2）有助于调试或测试程序，因为我们可以直接访问方法、构造函数和成员字段。<br>（3）即使事前不知道某个方法，我们也可以通过名字调用该方法。  </p>
+<h3 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h3><p>static的作用<br>final的作用<br>overload与override的区别<br>组合与继承的区别<br>clone的作用<br>前置++与后置++<br>内部类<br>二维数组的表示<br>接口与抽象类的对比<br>反射机制<br>函数调用方式<br>重载函数<br>构造函数<br>合并两个有序链表<br>逻辑推理（智力题）<br>从100亿条记录的文本文件中取出重复数最多的前10条<br>判断单列表是否有环<br>二叉树的多种遍历算法实现<br>有读和写两个线程和一个队列，读线程从队列中读取数据，写线程往队列中写数据<br>stack和heap<br>TCP的流量控制和拥塞控制机制<br>写一个函数，返回一个字符串中出现一次的第一个字符<br>求一个数组中第k大的数的位置<br>面向对象继承、多态问题，例如多态的实现机制。<br>值传递与引用传递<br>什么是不变量<br>==与equal的区别<br>创建空类时，哪些成员函数是系统默认的？<br>有10万个IP段，这些IP段之间都不重合，随便给定一个IP，求出属于哪个IP段<br>网络编程（网络编程范式，非阻塞connect）<br>TCP/IP<br>Linux的命令、原理以及底层实现<br>Linux编程，包括所有互斥的方法、多线程编程，进程间通信。<br>一个一维数轴上有不同的线段，求重复最长的两个线段，例如a:1<del>3, b:2</del>7,   c:2~8，最长重复是b和c。<br>Java入口函数的特点<br>内存溢出与内存泄漏有什么区别   </p>
+<p>Java语言具有以下几方面优点：<br>（1）Java为纯面向对象的语言；<br>（2）平台无关性，具有很好地可移植性<br>（3）Java提供了很多内置的类库，通过这些类可以简化开发人员的程序设计工作，同时缩短项目的开发时间。<br>（4）提供了对Web应用开发的支持<br>（5）具有较好的安全性和健壮性。Java语言提供了一个防止恶意代码攻击的安全机制（数组边界检测和Bytecode校验等）Java的强类型机制、垃圾回收器、异常处理和安全检查机制使得用Java语言编写的程序有很好的健壮性。<br>（6）去除了C++语言中难以理解、容易混淆的特性，例如“头文件、指针、结构、单运算符重载、虚拟基础类、多重继承等，使得程序更加严谨、简洁”  </p>
+<h3 id="Java与C-C-有什么异同"><a href="#Java与C-C-有什么异同" class="headerlink" title="Java与C/C++有什么异同"></a>Java与C/C++有什么异同</h3><p>（1）Java为解释性语言，其运行过程为：程序员程序代码经过Java编译器编译成字节码，然后由JVM解释执行。而C/C++为编译型语言，源代码经过编译和链接后生成可执行的二进制代码。因此，Java的执行速度比C/C++慢，但是Java能够跨平台执行，而C/C++不能。  </p>
+<p>（2）Java为纯面向对象语言，所有代码（包括函数、变量等）必须在类中实现，除基本数据类型外，所有类型都是类  </p>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>集合类的基本接口是Collection接口，该接口有两个基本方法：  </p>
+<pre><code>public interface Collection&lt;E&gt;
+{
+    boolean add(E element);
+    Iterator&lt;E&gt; iterator();
+    ...
+}</code></pre><p>Iterator接口包含3个方法：  </p>
+<pre><code>public interface Iterator&lt;E&gt;
+{
+    E next();
+    boolean hasNext();
+    void remove();
+}</code></pre><p>通过反复调用next方法，可以逐个访问集合中的每个元素。但是，如果到达了集合的末尾，next方法将抛出一个NoSuchElementException,因此，需要在调用next之前调用hasNext方法（如果迭代器对象还有多个供访问的元素这个方法就返回true。  </p>
+<pre><code>Collection&lt;String&gt; c =&quot;...&quot;;
+Iterator&lt;String&gt; iter = c.iterator();
+while(iter.hasNext())
+{
+    String element = iter.next();
+    do something with element;
+}</code></pre><p>事实上，Collection接口声明了很多有用的方法，所有实现类都必须提供这些方法</p>
+<pre><code>int size()
+boolean isEmpty()
+boolean contains(Object obj)
+boolean containsAll(Collection&lt;?&gt; c)
+boolean equals(Object other)
+boolean addAll(Collection&lt;? extends E&gt; from)
+boolean remove(Object obj)
+boolean removeAll(Collection&lt;?&gt; c)
+void clear()
+boolean retainAll(Collection&lt;?&gt; c)
+Object[] toArray()
+&lt;T&gt; T[] toArray(T[] arrayToFill)</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">集合类型	描述</span><br><span class="line">ArrayList	一种可以动态增长和缩减的索引序列</span><br><span class="line">LinkedList	一种可以在任何位置进行高效地插入和删除操作的有序序列</span><br><span class="line">ArrayDeque	一种用循环数组实现的双端队列</span><br><span class="line">HashSet	一种没有重复元素的无序集合</span><br><span class="line">TreeSet	一种有序集</span><br><span class="line">EnumSet	一种包含枚举类型值得集</span><br><span class="line">LinkedHashSet	一种可以记住元素插入次序的集</span><br><span class="line">PriorityQueue	一种允许高效删除最小元素的集合</span><br><span class="line">HashMap	一种存储键&#x2F;值关联的数据结构</span><br><span class="line">TreeMap	一种键值有序排列的映射表</span><br><span class="line">EnumMap	一种键值属于枚举类型的映射表</span><br><span class="line">LinkedHashMap	一种可以记住键&#x2F;值项添加次序的映射表</span><br><span class="line">WeakHashMap	一种其值无用武之地后可以被垃圾回收器回收的映射表</span><br><span class="line">IdentityHashMap	一种用&#x3D;&#x3D;而不是用equals比较键值的映射表</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>List&lt;String&gt; staff =  new LinkedList&lt;&gt;();
+staff.add(&quot;Amy&quot;);
+staff.add(&quot;Bob&quot;);
+staff.add(&quot;Carl&quot;);
+Iterator itrer = staff.iterator();
+String first = iter.next();
+String second =  iter.next();
+iter.remove();
+
+
+List&lt;E&gt;
+ListIterator&lt;E&gt; listIterator()
+ListIterator&lt;E&gt; listIterator(int index)
+void add(int i, E element)
+void addAll(int i, Collection&lt;? extends E&gt; elements)
+E remove(int i)
+E get(int i)
+E set(int i, E element)
+int indexOf(Object element)
+int lastIndexOf(Object element)</code></pre><p>ListIterator<E></p>
+<pre><code>void add(E newElement)
+void set(E newElement)
+boolean hasPrevious()
+E previous()
+int nextIndex()
+int previousIndex()</code></pre><p>LinkedList<E></p>
+<pre><code>LinkedList()  构造一个空链表
+LinkedList(Collection&lt;? extends E&gt; elements)
+void addFirst(E element)
+void addLast(E element)
+E getFirst()
+E getLast()
+E removeFirst()
+E removeLast()
+
+HashSet&lt;E&gt;  </code></pre><hr>
+<pre><code>HashSet()构造一个空散列表
+HashSet(Collection&lt;? extends E&gt; elements)构造一个散列集，并将集合中的所有元素添加到这个散列集中
+HashSet(int initialCapacity) 构造一个空的具有指定容量（桶数）的散列集
+HashSet(int initialCapacity, float loadFactor)
+构造一个具有指定容量和装填因子（一个0.0~1.0之间的数值，确定散列表填充的百分比，当大于这个百分比时，散列表进行再散列）的空集合</code></pre><h2 id="java-lang-Object"><a href="#java-lang-Object" class="headerlink" title="java.lang.Object "></a>java.lang.Object </h2><pre><code>int hashCode()
+java.util.TreeSet&lt;E&gt;
+TreeSet()
+TreeSet(Collection&lt;? extends E&gt; elements)</code></pre>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/28/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="tag">程序语言的基本概念</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/29/Java%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java语言学习
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/28/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%94%B5%E8%84%91%E9%97%B4%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">如何在不同电脑间用hexo写博客</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+        app_key: '1OB4hLIBzNt40C7AAQ3ImBWG',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+  
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+    <div id="mvcomments">
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js'></script>
+<script>
+	new MiniValine({
+	  el: '#mvcomments',
+	  appId: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+	  appKey: '1OB4hLIBzNt40C7AAQ3ImBWG',
+	  placeholder: 'Write a Comment',
+	  lang: '',
+	  adminEmailMd5: '',
+	  math: true,
+	  md: true
+	});
+    const infoEle = document.querySelector('#mvcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #mvcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #mvcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #mvcomments-box #mvcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2020
+        <i class="ri-heart-fill heart_icon"></i> Chen Bin
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梦想岛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/">代码说</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://chenbin-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/">法律法规</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/VjamHOiTgk26EpK.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/FMJN75HGXRpDdP4.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 180,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
