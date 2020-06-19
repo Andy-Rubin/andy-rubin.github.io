@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-12T07:42:00.503Z</updated>
+  <updated>2020-06-19T06:05:05.503Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hand-Detection-using-multiple-proposals</title>
+    <link href="http://yoursite.com/2020/06/19/Hand-Detection-using-multiple-proposals/"/>
+    <id>http://yoursite.com/2020/06/19/Hand-Detection-using-multiple-proposals/</id>
+    <published>2020-06-19T05:27:54.000Z</published>
+    <updated>2020-06-19T06:05:05.503Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你不知道的JavaScript上</title>
+    <link href="http://yoursite.com/2020/06/13/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A/"/>
+    <id>http://yoursite.com/2020/06/13/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A/</id>
+    <published>2020-06-13T07:16:18.000Z</published>
+    <updated>2020-06-13T08:20:28.877Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>读书笔记</title>
@@ -38,7 +84,7 @@
     <link href="http://yoursite.com/2020/06/12/%E6%96%B0%E6%9C%BA%E5%99%A8%E9%85%8D%E7%BD%AEHEXO%E7%8E%AF%E5%A2%83/"/>
     <id>http://yoursite.com/2020/06/12/%E6%96%B0%E6%9C%BA%E5%99%A8%E9%85%8D%E7%BD%AEHEXO%E7%8E%AF%E5%A2%83/</id>
     <published>2020-06-12T03:06:24.000Z</published>
-    <updated>2020-06-12T07:10:22.087Z</updated>
+    <updated>2020-06-12T08:05:54.446Z</updated>
     
     <summary type="html">
     
@@ -120,11 +166,11 @@
     <link href="http://yoursite.com/2020/06/08/CS-NOTE/"/>
     <id>http://yoursite.com/2020/06/08/CS-NOTE/</id>
     <published>2020-06-08T05:52:55.000Z</published>
-    <updated>2020-06-12T07:10:33.970Z</updated>
+    <updated>2020-06-15T06:39:40.495Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;重建二叉树&quot;&gt;&lt;a href=&quot;#重建二叉树&quot; class=&quot;headerlink&quot; title=&quot;重建二叉树&quot;&gt;&lt;/a&gt;重建二叉树&lt;/h3&gt;
+      &lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
@@ -250,7 +296,7 @@
     <link href="http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/"/>
     <id>http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/</id>
     <published>2020-05-18T07:57:35.000Z</published>
-    <updated>2020-06-12T07:11:17.273Z</updated>
+    <updated>2020-06-15T06:57:56.890Z</updated>
     
     <summary type="html">
     
@@ -384,47 +430,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;IIC总线&quot;&gt;&lt;a href=&quot;#IIC总线&quot; class=&quot;headerlink&quot; title=&quot;IIC总线&quot;&gt;&lt;/a&gt;IIC总线&lt;/h3&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>码值转换问题分析</title>
-    <link href="http://yoursite.com/2020/05/08/%E7%A0%81%E5%80%BC%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/"/>
-    <id>http://yoursite.com/2020/05/08/%E7%A0%81%E5%80%BC%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90/</id>
-    <published>2020-05-08T08:50:25.000Z</published>
-    <updated>2020-05-13T01:21:06.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在工作中经常会遇到这样的问题：&lt;br&gt;一些操作系统、主CPU或者上位机软件只能接收一定区间的数据，比如[6000,30000]之间的数，如果不在这一区域就会显示质量码出错的提示，&lt;br&gt;因为在实际项目中遇到的都是线性数据，比如4ma对应的是4800的码值，20ma对应的是31200码值，而下位机实际对应的码值范围是[68,38699],也是有着相同的线性逻辑。  &lt;/p&gt;
-&lt;p&gt;如何将实际码值区间的数据映射到上位机区间的数据且对应的输入线性关系不变呢？&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-Array</title>
-    <link href="http://yoursite.com/2020/05/06/LeetCode-Array/"/>
-    <id>http://yoursite.com/2020/05/06/LeetCode-Array/</id>
-    <published>2020-05-06T10:48:46.000Z</published>
-    <updated>2020-05-06T10:48:48.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
     
     </summary>
     

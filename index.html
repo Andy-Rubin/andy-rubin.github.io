@@ -85,6 +85,159 @@
     
     
     
+    <article id="post-Hand-Detection-using-multiple-proposals" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/19/Hand-Detection-using-multiple-proposals/"
+    >Hand-Detection-using-multiple-proposals</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/19/Hand-Detection-using-multiple-proposals/" class="article-date">
+  <time datetime="2020-06-19T05:27:54.000Z" itemprop="datePublished">2020-06-19</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>​                                               Hand detection using multiple proposals</p>
+<p>​                                                                            摘要</p>
+<p>我们描述了一种在不受限的图像中检测手及其方向的两阶段方法。第一阶段使用三个互补检测器来搜索手边界图像。然后，由三个检测器分别对每个边界框进行评分，然后学习第二级分类器，以使用这些功能为建议计算最终的置信度得分。</p>
+<p>我们做出了以下贡献：（i）将基于上下文和基于皮肤的建议添加到基于滑动窗口形状的检测器中，以提高召回率；（ii）我们开发了一种基于超像素的非最大抑制新方法；（iii）</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-你不知道的JavaScript上" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/13/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A/"
+    >你不知道的JavaScript上</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/13/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A/" class="article-date">
+  <time datetime="2020-06-13T07:16:18.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="作用域是什么"><a href="#作用域是什么" class="headerlink" title="作用域是什么"></a>作用域是什么</h3><p>编译原理</p>
+<p>通常将JavaScript归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。但它不是提前编译的，编译结果也不能在分布式系统中进行移植。</p>
+<p>传统的编译语言程序的源代码在执行之前会经历三个步骤，统称为“编译”。</p>
+<ul>
+<li>分词/词法分析</li>
+<li>解析/语法分许</li>
+<li>代码生成</li>
+</ul>
+<p>LHS查询，RHS查询；【赋值操作的左侧和右侧】</p>
+<p>当变量出现在赋值操作的左侧时进行LHS查询，出现在右侧时进行RHS查询。</p>
+<p>进一步说，RHS查询与简单地查找某个变量的值别无二致，而LHS查询则是试图找到变量的容器本身，从而可以对其赋值。从这个角度说，RHS并不是真正意义上的“赋值操作的右侧”，更精准地说是“非左侧”。RHS可以理解成”retrieve his source value(取得它的源值)”意味着“得到某某的值”。</p>
+<p>console.log(a), RHS引用，因为这里a并没有赋予任何值，相应地，需要查找并取得a的值，这样才能将值传递给console.log(…).</p>
+<p>a=2，LHS引用，因为实际上我们并不关系当前值是什么，只是想要为=2这个赋值操作找到一个目标。</p>
+<p>遍历嵌套作用域链的规则很简单：引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。当抵达最外层的全局作用域时，无论找到还是没有找到，查找过程都会停止。</p>
+<p>作用域是一套规则，用于确定在何处查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。</p>
+<h3 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-读书笔记" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -484,7 +637,7 @@
       
 
       
-      <h3 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h3>
+      <h3 id=""><a href="#" class="headerlink" title=""></a>
       
       <a class="article-more-link" href="/2020/06/08/CS-NOTE/">阅读更多...</a>
       
@@ -634,158 +787,6 @@
     <footer class="article-footer">
       
       
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-Java常用方法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/27/Java%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"
-    >Java常用方法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/27/Java%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2020-05-27T08:05:44.000Z" itemprop="datePublished">2020-05-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Java库中的具体集合："><a href="#Java库中的具体集合：" class="headerlink" title="Java库中的具体集合："></a>Java库中的具体集合：</h2><hr>
-      
-      <a class="article-more-link" href="/2020/05/27/Java%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" rel="tag">常用方法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-IAR工程创建" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/25/IAR%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA/"
-    >IAR工程创建</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/25/IAR%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA/" class="article-date">
-  <time datetime="2020-05-25T02:04:33.000Z" itemprop="datePublished">2020-05-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%88%E7%8E%87/">效率</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="创建IAR工程记录"><a href="#创建IAR工程记录" class="headerlink" title="创建IAR工程记录"></a>创建IAR工程记录</h3>
-      
-      <a class="article-more-link" href="/2020/05/25/IAR%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iar%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA/" rel="tag">iar工程创建</a></li></ul>
-
 
     </footer>
 

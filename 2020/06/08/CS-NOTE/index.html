@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">3.1k</span>
         </span>
     </span>
 
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
+            <span class="post-count">11 分钟</span>
         </span>
     </span>
 </div>
@@ -112,9 +112,135 @@
       
 
       
-      <h3 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h3><a id="more"></a>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">preorder: <span class="number">3</span> <span class="number">9</span> <span class="number">20</span> <span class="number">15</span> <span class="number">7</span></span><br><span class="line">inorder:  <span class="number">9</span> <span class="number">3</span> <span class="number">15</span> <span class="number">20</span> <span class="number">7</span></span><br><span class="line"></span><br><span class="line">        <span class="number">3</span></span><br><span class="line">      /    \</span><br><span class="line">     <span class="number">9</span>      <span class="number">20</span>   </span><br><span class="line">           /  \</span><br><span class="line">          <span class="number">15</span>   <span class="number">7</span></span><br><span class="line"><span class="comment">//前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两个部分，左部分为树的左子树中序遍历结果，右部分为数的右子树遍历结果。</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">package</span> 重建二叉树;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReconstructBinaryTree</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> Map&lt;Integer, Integer&gt; indexForInOrders = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructTree</span><span class="params">(<span class="keyword">int</span>[] pre, <span class="keyword">int</span>[] in)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; in.length; i++) &#123;</span><br><span class="line">			indexForInOrders.put(in[i], i); </span><br><span class="line">            <span class="comment">//in</span></span><br><span class="line">            <span class="comment">//9    0</span></span><br><span class="line">            <span class="comment">//3	   1</span></span><br><span class="line">            <span class="comment">//15   2</span></span><br><span class="line">            <span class="comment">//20   3</span></span><br><span class="line">            <span class="comment">//7    4</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> reConstructTree(pre, <span class="number">0</span>, pre.length - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> TreeNode <span class="title">reConstructTree</span><span class="params">(<span class="keyword">int</span>[] pre, <span class="keyword">int</span> preL, <span class="keyword">int</span> preR, <span class="keyword">int</span> inL)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (preL &gt; preR) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125; </span><br><span class="line">		TreeNode root = <span class="keyword">new</span> TreeNode(pre[preL]);   </span><br><span class="line">		<span class="keyword">int</span> inIndex = indexForInOrders.get(root.val); </span><br><span class="line"> 		<span class="keyword">int</span> leftTreeSize = inIndex - inL;             </span><br><span class="line">		root.left = reConstructTree(pre, preL + <span class="number">1</span>, preL + leftTreeSize, inL);</span><br><span class="line">    </span><br><span class="line">		root.right = reConstructTree(pre, preL + leftTreeSize + <span class="number">1</span>, preR, inL + leftTreeSize + <span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">int</span> preorder[] = &#123; <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">7</span> &#125;;</span><br><span class="line">		<span class="keyword">int</span> inorder[] = &#123; <span class="number">9</span>, <span class="number">3</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">7</span> &#125;;</span><br><span class="line">		ReconstructBinaryTree test = <span class="keyword">new</span> ReconstructBinaryTree();</span><br><span class="line">		TreeNode Res = test.reConstructTree(preorder, inorder);</span><br><span class="line">		System.out.println(<span class="string">"The End!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <h3 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h3><h2 id="第一章-网络"><a href="#第一章-网络" class="headerlink" title="第一章 网络"></a>第一章 网络</h2><p>网络将主机连接了起来，而互联网将多种不同的网络连接起来，因此互联网是网络的网络。</p>
+<p>互联网服务提供商ISP可以从互联网管理机构获得许多IP地址，同时拥有通信线路以及路由器等联网设备，个人或机构向ISP缴纳一定的费用就可以接入互联网。</p>
+<p>目前的互联网是一种多层次ISP结构，ISP根据覆盖面积的大小分为第一层ISP，区域ISP和接入ISP.互联网交换点IXP允许两个ISP直接相连而不用经过第三个ISP。</p>
+<h4 id="主机之间的通信方式"><a href="#主机之间的通信方式" class="headerlink" title="主机之间的通信方式"></a>主机之间的通信方式</h4><ul>
+<li>客户-服务器（C/S）</li>
+</ul>
+<p>客户是服务的请求方，服务器是服务的提供方。</p>
+<ul>
+<li>对等（P2P）</li>
+</ul>
+<p>不区分客户和服务器</p>
+<hr>
+<p>计算机网络体系</p>
+<table>
+<thead>
+<tr>
+<th align="center">OSI</th>
+<th align="center">五层协议</th>
+<th align="center">TCP/IP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用层</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">表示层</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">会话层</td>
+<td align="center">应用层</td>
+<td align="center">应用层</td>
+</tr>
+<tr>
+<td align="center">运输层</td>
+<td align="center">运输层</td>
+<td align="center">运输层</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">网络层</td>
+<td align="center">网际层</td>
+</tr>
+<tr>
+<td align="center">数据链路层</td>
+<td align="center">数据链路层</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">物理层</td>
+<td align="center">物理层</td>
+<td align="center">网络接口层</td>
+</tr>
+</tbody></table>
+<p><strong>1.五层协议</strong></p>
+<ul>
+<li><p>应用层</p>
+<p>为特定应用程序提供数据传输服务，例如，HTTP、DNS等协议。数据单位为报文。</p>
+</li>
+<li><p>传输层</p>
+<p>为进程提供通用数据传输服务。由于应用层协议很多，定义通过的传输层协议就可以支持不断增多的应用层协议。传输层包括两种协议：传输控制协议TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议UPS，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报，TCP主要是提供完整性服务，UDP主要提供及时性服务。</p>
+</li>
+<li><p>网络层：</p>
+<p>为主机提供数据传输服务。而传输层协议层是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据段封装成分组。</p>
+</li>
+<li><p>数据链路层</p>
+<p>网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。</p>
+</li>
+<li><p>物理层</p>
+<p>考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
+</li>
+</ul>
+<p><strong>2.OSI</strong></p>
+<p>其中表示层和会话层用途如下：</p>
+<ul>
+<li>表示层 ：数据压缩、加密以及数据描述，这使得应用程序不必关系在各台主机中数据内部格式不同的问题。</li>
+<li>会话层 ：建立及管理会话。</li>
+</ul>
+<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理。</p>
+<p><strong>3.TCP/IP</strong></p>
+<p>只有4层，TCP/IP体系结构不严格遵循OSI分层概念，应用层可能会直接使用IP层或者网络接口层。</p>
+<p><strong>4.数据在各层之间的传递过程</strong></p>
+<p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
+<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层。</p>
+<p><strong>物理层</strong></p>
+<p>通信方式：</p>
+<p>单工通信：单向传输</p>
+<p>半双工通信：双向交替传输</p>
+<p>全双工通信：双向同时传输</p>
+<p>带通调制：</p>
+<p>模拟信号是连续的信号，数字信号是离散的信号。带通调制把数字信号转换为模拟信号。</p>
+<p><strong>链路层</strong></p>
+<p>基本问题：</p>
+<p>1.封装成帧，将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。</p>
+<p>2.透明传输，透明表示一个实际存在的事物看起来好像不存在一样。帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以还原出原始数据。这个过程透明传输的内容是转义字符，用户察觉不到转义字符的存在。</p>
+<p>3.差错检测，目前数据链路层广泛使用循环冗余检验CRC来检查比特差错。</p>
+<p><strong>信道分类</strong></p>
+<p>1.广播信道</p>
+<p>一对多通信，一个节点发送的数据能够被广播信道上所有的节点接收到。所有的节点都在同一个广播信道上发送数据，因此需要有专门的控制方法进行协调，避免冲突。一种是信道复用技术，一种是CSMA/CD协议。</p>
+<p>2.点对点通道</p>
+<p>一对一通信</p>
+<p>因为不会发生碰撞，因此也比较简单，使用PPP协议进行控制</p>
+<ul>
+<li>信道复用技术</li>
+</ul>
+<p>1.频分复用</p>
+<p>频分复用的所有主机在相同的时间占用不同的频率带宽资源。</p>
+<p>2.时分复用</p>
+<p>时分复用的所有主机在不同的时间占用相同的频率宽资源。</p>
+<p>3.统计时分复用</p>
+<p>是对时分复用的一种改进，不固定每个用户在时分复用帧中的位置，只要有数据就集中起来组成统计时分复用帧然后发送。</p>
+<p>4.波分复用</p>
+<p>光的频分复用。由于光的频率很高，因此习惯上波长而不是频率来表示所用的光载波。</p>
+<p>5.码分复用</p>
+<p><strong>CSMA/CD协议</strong></p>
+<p>CSMA/CD表示载波监听多点接入/碰撞检测。</p>
+<ul>
+<li><p>多点接入：说明这是总线型网络，许多主机以多点的方式连接到总线上。</p>
+</li>
+<li><p>载波监听：每个主机都必须不断地监听信道。在发送前，如果监听到信道正在使用，就必须等待。</p>
+</li>
+<li><p>碰撞检测：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于电磁波的传播时延的存在，还是有可能会发生碰撞。</p>
+<p>记端到端的传播时延为t，最先发送的站点最多经过2t就可以知道是否发生了碰撞，称为2t争用期。</p>
+</li>
+</ul>
+<h3 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">preorder: <span class="number">3</span> <span class="number">9</span> <span class="number">20</span> <span class="number">15</span> <span class="number">7</span></span><br><span class="line">inorder:  <span class="number">9</span> <span class="number">3</span> <span class="number">15</span> <span class="number">20</span> <span class="number">7</span></span><br><span class="line"></span><br><span class="line">        <span class="number">3</span></span><br><span class="line">      /    \</span><br><span class="line">     <span class="number">9</span>      <span class="number">20</span>   </span><br><span class="line">           /  \</span><br><span class="line">          <span class="number">15</span>   <span class="number">7</span></span><br><span class="line"><span class="comment">//前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两个部分，左部分为树的左子树中序遍历结果，右部分为数的右子树遍历结果。</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">package</span> 重建二叉树;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReconstructBinaryTree</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> Map&lt;Integer, Integer&gt; indexForInOrders = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructTree</span><span class="params">(<span class="keyword">int</span>[] pre, <span class="keyword">int</span>[] in)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; in.length; i++) &#123;</span><br><span class="line">			indexForInOrders.put(in[i], i); </span><br><span class="line">            <span class="comment">//in</span></span><br><span class="line">            <span class="comment">//9    0</span></span><br><span class="line">            <span class="comment">//3	   1</span></span><br><span class="line">            <span class="comment">//15   2</span></span><br><span class="line">            <span class="comment">//20   3</span></span><br><span class="line">            <span class="comment">//7    4</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> reConstructTree(pre, <span class="number">0</span>, pre.length - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> TreeNode <span class="title">reConstructTree</span><span class="params">(<span class="keyword">int</span>[] pre, <span class="keyword">int</span> preL, <span class="keyword">int</span> preR, <span class="keyword">int</span> inL)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (preL &gt; preR) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125; </span><br><span class="line">		TreeNode root = <span class="keyword">new</span> TreeNode(pre[preL]);   </span><br><span class="line">		<span class="keyword">int</span> inIndex = indexForInOrders.get(root.val); </span><br><span class="line"> 		<span class="keyword">int</span> leftTreeSize = inIndex - inL;             </span><br><span class="line">		root.left = reConstructTree(pre, preL + <span class="number">1</span>, preL + leftTreeSize, inL);</span><br><span class="line">    </span><br><span class="line">		root.right = reConstructTree(pre, preL + leftTreeSize + <span class="number">1</span>, preR, inL + leftTreeSize + <span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">int</span> preorder[] = &#123; <span class="number">3</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">15</span>, <span class="number">7</span> &#125;;</span><br><span class="line">		<span class="keyword">int</span> inorder[] = &#123; <span class="number">9</span>, <span class="number">3</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">7</span> &#125;;</span><br><span class="line">		ReconstructBinaryTree test = <span class="keyword">new</span> ReconstructBinaryTree();</span><br><span class="line">		TreeNode Res = test.reConstructTree(preorder, inorder);</span><br><span class="line">		System.out.println(<span class="string">"The End!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 重建二叉树;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	TreeNode left;</span><br><span class="line">	TreeNode right;</span><br><span class="line"></span><br><span class="line">	TreeNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">		val = x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
