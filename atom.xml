@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-19T06:05:05.503Z</updated>
+  <updated>2020-06-27T12:04:27.842Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,98 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux</title>
+    <link href="http://yoursite.com/2020/06/26/Linux/"/>
+    <id>http://yoursite.com/2020/06/26/Linux/</id>
+    <published>2020-06-26T10:07:12.000Z</published>
+    <updated>2020-06-27T12:04:27.842Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>基本的传感器</title>
+    <link href="http://yoursite.com/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/"/>
+    <id>http://yoursite.com/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/</id>
+    <published>2020-06-24T05:16:42.000Z</published>
+    <updated>2020-06-24T07:02:52.355Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcoded-400</title>
+    <link href="http://yoursite.com/2020/06/24/Leetcoded-400/"/>
+    <id>http://yoursite.com/2020/06/24/Leetcoded-400/</id>
+    <published>2020-06-24T01:04:45.000Z</published>
+    <updated>2020-06-24T01:06:26.211Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>技术栈</title>
+    <link href="http://yoursite.com/2020/06/20/%E6%8A%80%E6%9C%AF%E6%A0%88/"/>
+    <id>http://yoursite.com/2020/06/20/%E6%8A%80%E6%9C%AF%E6%A0%88/</id>
+    <published>2020-06-20T06:12:02.000Z</published>
+    <updated>2020-06-20T08:53:09.883Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hand-Detection-using-multiple-proposals</title>
@@ -166,7 +258,7 @@
     <link href="http://yoursite.com/2020/06/08/CS-NOTE/"/>
     <id>http://yoursite.com/2020/06/08/CS-NOTE/</id>
     <published>2020-06-08T05:52:55.000Z</published>
-    <updated>2020-06-15T06:39:40.495Z</updated>
+    <updated>2020-06-24T07:34:46.731Z</updated>
     
     <summary type="html">
     
@@ -231,7 +323,7 @@
     <link href="http://yoursite.com/2020/05/27/Java%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2020/05/27/Java%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</id>
     <published>2020-05-27T08:05:44.000Z</published>
-    <updated>2020-05-29T07:07:58.000Z</updated>
+    <updated>2020-06-20T07:26:32.152Z</updated>
     
     <summary type="html">
     
@@ -296,7 +388,7 @@
     <link href="http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/"/>
     <id>http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/</id>
     <published>2020-05-18T07:57:35.000Z</published>
-    <updated>2020-06-15T06:57:56.890Z</updated>
+    <updated>2020-06-20T08:31:44.315Z</updated>
     
     <summary type="html">
     
@@ -354,86 +446,6 @@
     
     
       <category term="法律法规" scheme="http://yoursite.com/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python</title>
-    <link href="http://yoursite.com/2020/05/13/Python/"/>
-    <id>http://yoursite.com/2020/05/13/Python/</id>
-    <published>2020-05-13T07:52:02.000Z</published>
-    <updated>2020-05-13T07:52:04.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>专业词汇</title>
-    <link href="http://yoursite.com/2020/05/13/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/"/>
-    <id>http://yoursite.com/2020/05/13/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/</id>
-    <published>2020-05-13T02:35:46.000Z</published>
-    <updated>2020-05-13T04:48:46.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>纸上练习的程序</title>
-    <link href="http://yoursite.com/2020/05/10/%E7%BA%B8%E4%B8%8A%E7%BB%83%E4%B9%A0%E7%9A%84%E7%A8%8B%E5%BA%8F/"/>
-    <id>http://yoursite.com/2020/05/10/%E7%BA%B8%E4%B8%8A%E7%BB%83%E4%B9%A0%E7%9A%84%E7%A8%8B%E5%BA%8F/</id>
-    <published>2020-05-10T07:41:45.000Z</published>
-    <updated>2020-05-29T07:57:54.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;纸上练习的程序&quot;&gt;&lt;a href=&quot;#纸上练习的程序&quot; class=&quot;headerlink&quot; title=&quot;纸上练习的程序&quot;&gt;&lt;/a&gt;纸上练习的程序&lt;/h3&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一些通信协议</title>
-    <link href="http://yoursite.com/2020/05/08/%E4%B8%80%E4%BA%9B%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://yoursite.com/2020/05/08/%E4%B8%80%E4%BA%9B%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</id>
-    <published>2020-05-08T12:21:52.000Z</published>
-    <updated>2020-05-13T01:21:06.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;IIC总线&quot;&gt;&lt;a href=&quot;#IIC总线&quot; class=&quot;headerlink&quot; title=&quot;IIC总线&quot;&gt;&lt;/a&gt;IIC总线&lt;/h3&gt;
-    
-    </summary>
-    
-    
     
   </entry>
   

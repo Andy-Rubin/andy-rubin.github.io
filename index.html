@@ -85,6 +85,827 @@
     
     
     
+    <article id="post-Linux" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/26/Linux/"
+    >Linux</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/26/Linux/" class="article-date">
+  <time datetime="2020-06-26T10:07:12.000Z" itemprop="datePublished">2020-06-26</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="Linux-驱动开发"><a href="#Linux-驱动开发" class="headerlink" title="Linux 驱动开发"></a><strong>Linux</strong> <strong>驱动开发</strong></h2><h3 id="Linux操作系统与驱动的关系"><a href="#Linux操作系统与驱动的关系" class="headerlink" title="Linux操作系统与驱动的关系"></a>Linux操作系统与驱动的关系</h3><p>应用程序一般依赖于函数库，而函数库是由系统调用来编写的，所以应用程序间接地依赖于系统调用。</p>
+<p>系统调用层是内核空间和用户空间的接口层。通过这个系统调用层，应用程序不需要直接访问内核空间的程序，增加了内核的安全性。同时，应用程序也不能访问硬件设备，只能通过系统调用层来访问硬件设备。如果应用程序需要访问硬件设备，那么应用程序先访问系统调用层，由系统调用层去访问内核层的设备驱动程序。</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200626184242247.png" alt="image-20200626184242247"></p>
+<h3 id="用户态和内核态"><a href="#用户态和内核态" class="headerlink" title="用户态和内核态"></a><strong>用户态和内核态</strong></h3><p>Linux操作系统分为用户态和内核态。用户态处理上层的软件工作。内核态用来管理用户态的程序，完成用户态请求的工作。驱动程序与底层的硬件交互，所以工作在内核态。</p>
+<p>Linux操作系统分为两个状态的原因主要是，为应用程序提供一个统一的计算机硬件抽象。工作在用户态的应用程序完全可以不考虑底层的硬件操作，这些操作由内核态程序来完成。这些内核态程序大部分是设备驱动程序。一个好的操作系统的驱动程序对用户态应用程序应该是透明的，也就是说，应用程序可以在不了解硬件工作原理的情况下，很好地操作硬件设备，同时不会使硬件设备进入非法状态。Linux操作系统很好的做到了这一点。</p>
+<p>另一个值得注意的问题是：用户态和内核态是可以相互转换的。每当应用程序执行系统调用或者被硬件中断挂起时，Linux操作系统都会从用户态切换到内核态。当系统调用完成或者中断处理完成后，操作系统会从内核态返回用户态，继续执行应用程序。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-基本的传感器" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/"
+    >基本的传感器</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/" class="article-date">
+  <time datetime="2020-06-24T05:16:42.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="DY-SV5W"><a href="#DY-SV5W" class="headerlink" title="DY-SV5W"></a><strong>DY-SV5W</strong></h2><ul>
+<li>完全支持FAT16/FAT32文件系统，最大支持32G的TF卡；</li>
+<li>自带5W D类功放，可直接驱动4欧，3~5W喇叭</li>
+<li>UART串口控制语音播放功能，可控制播放，暂停，选曲，音量加减等功能，最大选曲65535首曲目，波特率9600bit/s</li>
+<li>支持IO触发播放，8个IO口单独触发8首曲目或者8个IO组合触发255首曲目。</li>
+<li>支持3个配置IO进行多达7种工作模式选择，拨码开关设置简单。</li>
+</ul>
+<h3 id="外部引脚说明："><a href="#外部引脚说明：" class="headerlink" title="外部引脚说明："></a><strong>外部引脚说明：</strong></h3><table>
+<thead>
+<tr>
+<th>引脚名称</th>
+<th>引脚描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5V电源负极</td>
+<td>接5V电源负极（GND）</td>
+</tr>
+<tr>
+<td>5V电源正极</td>
+<td>接5V电源正极</td>
+</tr>
+<tr>
+<td>TXD/IO0</td>
+<td>IO触发模式下为输入引脚IO0;UART控制模式下为TX引脚，连接控制端（MCU）的RX</td>
+</tr>
+<tr>
+<td>RXD/IO1</td>
+<td>IO触发模式下为输入引脚IO1;UART控制模式下为RX引脚，连接控制端（MCU）的TX</td>
+</tr>
+<tr>
+<td>IO2</td>
+<td>IO触发模式下为输入引脚IO2</td>
+</tr>
+<tr>
+<td>IO3</td>
+<td>IO触发模式下为输入引脚IO3</td>
+</tr>
+<tr>
+<td>IO4</td>
+<td>IO触发模式下为输入引脚IO4</td>
+</tr>
+<tr>
+<td>IO5</td>
+<td>IO触发模式下为输入引脚IO5</td>
+</tr>
+<tr>
+<td>IO6</td>
+<td>IO触发模式下为输入引脚IO6</td>
+</tr>
+<tr>
+<td>IO7</td>
+<td>IO触发模式下为输入引脚IO7</td>
+</tr>
+<tr>
+<td>BUSY</td>
+<td>播放曲目时输出低电压（0V），播放结束输出高电平（3.3V）</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>参考地端（与控制端GND连接）</td>
+</tr>
+</tbody></table>
+<h3 id="拨码开关模式配置："><a href="#拨码开关模式配置：" class="headerlink" title="拨码开关模式配置："></a><strong>拨码开关模式配置：</strong></h3><table>
+<thead>
+<tr>
+<th>控制模式</th>
+<th>配置引脚</th>
+<th>I/O功能</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>CON3</td>
+<td>CON2</td>
+<td>CON1</td>
+<td>IO7</td>
+<td>IO6</td>
+<td>IO5</td>
+<td>IO4</td>
+<td>IO3</td>
+<td>IO2</td>
+<td>IO1</td>
+<td>IO0</td>
+</tr>
+<tr>
+<td>I/O组合模式0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>按键组合播放，可播放2^8-1(255)首曲目</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>I/O组合模式1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>电平组合播放，可播放2^8-1(255)首曲目</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>I/O独立模式0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>曲目8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>曲目1</td>
+</tr>
+<tr>
+<td>I/O独立模式1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>曲目8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>曲目1</td>
+</tr>
+<tr>
+<td>UART串口模式</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>RXD</td>
+<td>TXD</td>
+</tr>
+<tr>
+<td>一线串口</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>RXD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>标准MP3模式</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>RPT</td>
+<td>EQ</td>
+<td>P/P/MODE</td>
+<td>PREV/V-</td>
+<td>NEXT/V+</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>“按键组合播放”是指IO0-IO7输出对应的电平后恢复原来的高电平，类似于按键触发一次</p>
+<p>“电平组合播放”是指IO0-IO7输出对应的电平后保持电平不变</p>
+<p>“I/O组合（独立）模式0”与“I/O组合（独立）模式1”的区别在于前者释放电平后继续播放当前曲目至结束，后者模式释放电平后立即停止播放曲目。</p>
+</blockquote>
+<p>I/O组合模式0（按键组合播放）：</p>
+<p>单片机控制I/0组合触发（低电平有效）指定的曲目后释放（IO0-IO7恢复高电平），播放完当前曲目停止；播放中途重新触发，播放新的曲目，播放结束停止后；若一直触发（不释放电平），循环播放；播放过程busy有效。</p>
+<blockquote>
+<p>曲目名称必须按照5位数字进行命名。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>IO7</th>
+<th>IO6</th>
+<th>IO5</th>
+<th>IO4</th>
+<th>IO3</th>
+<th>IO2</th>
+<th>IO1</th>
+<th>IO0</th>
+<th>播放曲目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>00001.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>00002.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>00003.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>00004.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>00005.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>00006.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>00007.mp3</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>00255.mp3</td>
+</tr>
+</tbody></table>
+<h3 id="IO组合模式1（电平组合播放）"><a href="#IO组合模式1（电平组合播放）" class="headerlink" title="IO组合模式1（电平组合播放）"></a><strong>IO组合模式1（电平组合播放）</strong></h3><p>单片机控制IO组合触发（低电平有效）指定的曲目，一直循环播放指定曲目，电平释放（IO0-IO7恢复高电平）即立即停止。播放中途释放电平，即刻停止播放。播放过程busy有效。</p>
+<table>
+<thead>
+<tr>
+<th>IO7</th>
+<th>IO6</th>
+<th>IO5</th>
+<th>IO4</th>
+<th>IO3</th>
+<th>IO2</th>
+<th>IO1</th>
+<th>IO0</th>
+<th>播放曲目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>00001.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>00002.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>00003.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>00004.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>00005.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>00006.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>00007.mp3</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>00255.mp3</td>
+</tr>
+</tbody></table>
+<p><strong>IO独立模式0（按键独立控制）</strong></p>
+<p>IOO-IO7独立控制8首曲目，IO触发（低电平有效）指定的曲目后释放（IO0-IO7恢复高电平），播放完当前曲目停止；播放中途重新触发，播放新的曲目，播放结束停止；若一直触发不（不释放电平），循环播放；播放过程busy有效。</p>
+<table>
+<thead>
+<tr>
+<th>IO7</th>
+<th>IO6</th>
+<th>IO5</th>
+<th>IO4</th>
+<th>IO3</th>
+<th>IO2</th>
+<th>IO1</th>
+<th>IO0</th>
+<th>播放曲目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>00001.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>00002.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>00003.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>00004.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>00005.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>00006.mp3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>00007.mp3</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>00008.mp3</td>
+</tr>
+</tbody></table>
+<h4 id="IO独立模式1（电平独立控制）"><a href="#IO独立模式1（电平独立控制）" class="headerlink" title="IO独立模式1（电平独立控制）"></a><strong>IO独立模式1（电平独立控制）</strong></h4><p>IO0-IO7独立控制8首曲目，IO触发（低电平有效）指定的曲目，一直循环播放指定曲目，电平释放（IO0-IO7恢复高电平）即停止播放。播放中途释放电平，即刻停止播放。播放过程busy有效。</p>
+<h3 id="UART串口模式"><a href="#UART串口模式" class="headerlink" title="UART串口模式"></a><strong>UART串口模式</strong></h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-Leetcoded-400" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/24/Leetcoded-400/"
+    >Leetcoded-400</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/24/Leetcoded-400/" class="article-date">
+  <time datetime="2020-06-24T01:04:45.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-技术栈" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/20/%E6%8A%80%E6%9C%AF%E6%A0%88/"
+    >技术栈</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/06/20/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="article-date">
+  <time datetime="2020-06-20T06:12:02.000Z" itemprop="datePublished">2020-06-20</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>通常将JavaScript归类为“动态”或“解释执行“语言，但事实上它是一门编译语言。</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>可以将变量绑定到所在的任意作用域中，let为其声明的变量隐式地了所在的快作用域。</p>
+<p>var foo = true;</p>
+<p>if(foo){</p>
+<p>​    let bar = foo * 2;</p>
+<p>​    bar = something(bar);</p>
+<p>​    console.log(bar);</p>
+<p>}</p>
+<p>console.log(bar);</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-Hand-Detection-using-multiple-proposals" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -517,302 +1338,13 @@
 
 </article>
     
-    <article id="post-hello-world" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/11/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/11/hello-world/" class="article-date">
-  <time datetime="2020-06-11T08:56:07.995Z" itemprop="datePublished">2020-06-11</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-CS-NOTE" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/08/CS-NOTE/"
-    >CS-NOTE</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/08/CS-NOTE/" class="article-date">
-  <time datetime="2020-06-08T05:52:55.000Z" itemprop="datePublished">2020-06-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">软件设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id=""><a href="#" class="headerlink" title=""></a>
-      
-      <a class="article-more-link" href="/2020/06/08/CS-NOTE/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-专利" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/04/%E4%B8%93%E5%88%A9/"
-    >专利</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/04/%E4%B8%93%E5%88%A9/" class="article-date">
-  <time datetime="2020-06-04T02:15:50.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-Scala" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/04/Scala/"
-    >Scala</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/04/Scala/" class="article-date">
-  <time datetime="2020-06-04T01:40:17.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>如何搭建Scala环境</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
