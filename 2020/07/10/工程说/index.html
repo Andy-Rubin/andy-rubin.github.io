@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="学习，生活，思考，代码，博客" />
+   
+  <meta name="description" content="梦想的萌生岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    工程说 |  梦想岛
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="梦想岛" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-工程说" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  工程说
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/10/%E5%B7%A5%E7%A8%8B%E8%AF%B4/" class="article-date">
+  <time datetime="2020-07-10T02:19:01.000Z" itemprop="datePublished">2020-07-10</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(n)         <span class="comment">//作用：C编译器将按照n个字节对齐</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack()          <span class="comment">//作用：取消自定义字节对齐方式</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(push,1)    <span class="comment">//作用：是指把原来对齐方式设置压栈，并设新的对齐方式设置为一个字节对齐</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(pop)       <span class="comment">//作用：恢复对齐状态</span></span></span><br><span class="line"></span><br><span class="line">加入push和pop可以使对齐恢复到原来状态，而不是编译器默认，可以说后者更优，但是很多时候两者差别不大</span><br><span class="line">    </span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(push)      <span class="comment">//保存对齐状态</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(4)         <span class="comment">//设定为4字节对齐     相当于  #pragma pack(push,4)</span></span></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(1)         <span class="comment">//作用：调整结构体的边界对齐，让其以一个字节对齐；</span></span></span><br><span class="line">&lt;结构体按<span class="number">1</span>字节方式对齐&gt;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack()</span></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">    </span><br><span class="line">例如：    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(1)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sample</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">double</span> b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack()</span></span><br><span class="line">--------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<p>应用实例</p>
+<p>在网络协议编程中，经常会处理不同协议的数据报文。一种方法是通过指针偏移的方法得到各种信息，但这样做不仅编程复杂，而且一旦协议变化，程序修改起来比较麻烦。在了解编译器对结构空间的分配原则后，我们完全可以利用这一特性定义自己的协议结构，通过访问结构的成员来获取各种信息。</p>
+<p>下面以TCP协议首部为例，说明如何定义协议结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#pragma pack(1)     &#x2F;&#x2F;按照1字节进行对齐</span><br><span class="line"></span><br><span class="line">struck TCPHEADER&#123;</span><br><span class="line">	short SrcPort; &#x2F;&#x2F;16位源端口号</span><br><span class="line">	short DstPort; &#x2F;&#x2F;16位目的端口号</span><br><span class="line">	int SeriaNo;   &#x2F;&#x2F;32位序列号</span><br><span class="line">	int AckNO;     &#x2F;&#x2F;32位确认号</span><br><span class="line">	unsigned char  HaderLen : 4;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="用结构体实现位段"><a href="#用结构体实现位段" class="headerlink" title="用结构体实现位段"></a><strong>用结构体实现位段</strong></h2><p>位段作用:位段是在字段的声明后面加一个冒号以及一个表示字段位长的整数来实现。这种用法又被叫：深入逻辑元件的编程。</p>
+<p>使用位段理由：1.他能把长度为奇数的数据包装在一起，从而节省存储的空间；2.他可以很方便地访问一个整型值得部分内容。</p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>位段成员只有三种类型：int, unsigned int 和 signed int这三种；</li>
+<li>成员名后面的一个冒号和一个整数，这个整数指定该位段的位长(bit);</li>
+<li>许多编译器把位段成员的字长限制在一个int的长度范围之内；</li>
+<li>位段成员在内存的实现是从左到右还是从右到左是由编译器来决定的，但二者皆对。</li>
+</ul>
+</blockquote>
+<p>磁盘控制器用于和软驱通信，下面是一个磁盘控制器的寄存器：</p>
+<p>5    5    9      8     1    1     1     1      1</p>
+<p>上面的位段从左到右依次代表：5位的命令，5位的扇区，9位的磁道，8位的错误代码，1位的HEAD LOADED，1位的写保护，1位的DISK SPINNING, 1位的错误判断符，还有1位的READY位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DISK_FORMAT</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> command : <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> sector  :    <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> track : <span class="number">9</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> err_code : <span class="number">8</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> ishead_loaded : <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> iswrit_proted : <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> isdisk_spinning : <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">unsigned</span> iserr_ocur : <span class="number">1</span>;</span><br><span class="line">	undigned isready : <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>代码中除了第一行使用了unsigned int 来声明位段后就省去了int,这是可行的，ANCI C标准 </p>
+</blockquote>
+<hr>
+<h2 id="函数的调用过程"><a href="#函数的调用过程" class="headerlink" title="函数的调用过程"></a><strong>函数的调用过程</strong></h2><p>在c语言中，遇到某函数时，会跳转执行这个函数，执行完毕再执行下一条指令，这些操作会通过形成一个栈帧完成。栈帧是编译器用来实现函数调用过程的一种数据结构。每个栈帧对应着一个未运行完的函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> z=<span class="number">0</span>;</span><br><span class="line">	z=a+b;</span><br><span class="line">	<span class="keyword">return</span> z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">120</span>;</span><br><span class="line">	<span class="keyword">int</span> b=<span class="number">20</span>;</span><br><span class="line">	<span class="keyword">int</span> ret;</span><br><span class="line">    ret=Add(a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ret);</span><br><span class="line">    sys</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用main函数之前在调试-窗口-调用堆栈，中可以看到main函数是在mainCRTStartup被调用，这个过程要为函数开辟栈空间，这块栈空间我们称为函数栈帧。栈帧需要ebp和esp两个寄存器，在函数调用的过程中这两个寄存器存放了维护这个栈的栈底和栈顶指针。在汇编窗口可以看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">push   ebp</span><br><span class="line">mov    ebp,esp</span><br><span class="line">sub    esp, 0E4h</span><br><span class="line">push   ebx</span><br><span class="line">push   esi</span><br><span class="line">push   edi</span><br><span class="line">lea    edi, [ebp - 0E4h]</span><br><span class="line">mov    ecx, 39h</span><br><span class="line">mov    eax, 0CCCCCCh</span><br><span class="line">rep    stos    dword ptr es:[edi]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>1.压栈，把ebp放入栈顶，而esp始终指向栈顶</p>
+<p>2.将esp值传给ebp，也就是让esp,ebo移到一起</p>
+<p>3.sub为减的意思，即将esp-0E4h赋给esp,且函数调用分配由高地址向低地址增长，因此esp向上移动，即开辟了新空间，也就是为main函数开辟空间。</p>
+<p>4.三个push压栈分别将ebx，esi,edi按顺序压入栈顶，而esp也会指向栈顶</p>
+<p>5.lea指令，加载有效地址；将ebp-0E4h的地址放入edi中，也就是edi指向ebp-0E4h，把39h放到ecx中，把0ccccccch放在eax中；</p>
+<p>从edi所指向的地址开始向高地址进行拷贝，拷贝的次数为ecx内容，拷贝的内容为eax内…</p>
+<h2 id="栈帧的总结"><a href="#栈帧的总结" class="headerlink" title="栈帧的总结"></a><strong>栈帧的总结</strong></h2><p>1.堆栈是C语言程序运行时必须的一个记录调用路径和参数的空间：</p>
+<p>函数调用框架；</p>
+<p>传递参数；</p>
+<p>保存返回地址；</p>
+<p>提供局部变量空间；</p>
+<p>2.堆栈寄存器和堆栈操作</p>
+<p>堆栈相关的寄存器</p>
+<p>esp,堆栈指针（stack pointer）</p>
+<p>ebp,基址指针（base pointer）</p>
+<p>堆栈操作</p>
+<p>push 栈顶地址减少4个字节（32位）</p>
+<p>pop 栈顶地址增加4个字节</p>
+<p>ebp在C语言中用作记录当前函数调用基址</p>
+<hr>
+<p>表面上：</p>
+<p>调用函数大连路边上浅层解释的步骤是：</p>
+<p>1.通过函数名找到函数入口地址</p>
+<p>2.给形参分配空间</p>
+<p>3.传值：把实参变量对应内存空间的值传递给形参变量对应的空间</p>
+<p>4.执行函数体语句</p>
+<p>5.函数返回值并释放函数空间</p>
+<p>在函数参数传递的过程中如何确定传值和传地址：</p>
+<p>当只读（只使用不修改）实参变量的值时，传实参变量名；</p>
+<p>当写（既使用也修改）实参变量对应内存空间的值，传实参变量对应内存空间的地址。</p>
+<hr>
+<p>另一种解释：</p>
+<p>当一个程序开始运行时，他的代码被装入到内存，保存在代码区，包括主函数和其他函数的代码。另外，还有三块内存区域用来存放数据。第一块是全局变量区域，存放了程序当中的所有全局变量。由于全局变量的个数和大小是已知的，所以这一块区域所占用的内存大小在开始即可确定下来，它们被称为是静态分配。位于此区域内的变量，它们在程序的整个运行过程中，都一直存在，只有当整个程序运行结束了，这一块内存区域才会释放。第二块区域是栈区域，包含了所有的栈帧，所谓的栈帧就是在调用一个函数时，系统会自动分配一块内存区域给这个函数，用来保存它的运行上下文、形参和局部变量等信息，这样的一块内存区域，就叫做栈帧。栈帧是在函数调用时分配的，当函数调用结束后，相应的栈帧就会被释放。所以，对于一个函数的局部变量来说，只有当函数调用发生时，系统才会给这个函数的形参和局部变量分配存储空间；当函数调用结束后，这些局部变量就被释放了。另外，由于栈区域是由系统自动来分配的，用户并不需要去关心，所以也称为是自动分配。第三块区域是堆区域，他主要是用作动态分配的内存。</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">SIDPUAPI <span class="keyword">void</span> <span class="title">SVPHB</span><span class="params">(SVPHBAlg* pAlg)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>extern “C”的主要作用就是为了能够正确实现C++代码调用其他C语言代码。加上extern “C”后，会指示编译器这部分代码按C语言（而不是C++）的方式编译。</p>
+<h3 id="可重入函数和不可重入函数"><a href="#可重入函数和不可重入函数" class="headerlink" title="可重入函数和不可重入函数"></a><strong>可重入函数和不可重入函数</strong></h3><p>在函数中如果我们使用静态变量了，导致产生中断调用别的函数的过程可能还会调用这个函数，于是原来的静态变量被这里改变了，然后返回主体函数</p>
+<h2 id="Kconfig-Makefile和-config"><a href="#Kconfig-Makefile和-config" class="headerlink" title="Kconfig,Makefile和.config"></a><strong>Kconfig,Makefile和.config</strong></h2><p>Makefile : 一个文本形式的文件，其中包含一些规则告诉make编译哪些文件以及怎样编译这些文件，</p>
+<p>Kconfig：一个文本形式的文件，其中主要作用是在内核配置时候，作为配置选项。</p>
+<p>.config:文件是在进行内核配置的时候，经过配置后生成的内核编译参考文件。</p>
+<h2 id="Kconfig"><a href="#Kconfig" class="headerlink" title="Kconfig"></a>Kconfig</h2><p>一个典型的内核配置菜单如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu <span class="string">"Network device support"</span></span><br><span class="line"><span class="built_in">config</span> NETDEVICES</span><br><span class="line">	<span class="keyword">bool</span> <span class="string">"Enable Net Devices"</span></span><br><span class="line">    depends on NET</span><br><span class="line">    defailt y</span><br><span class="line">    help</span><br><span class="line">    	This is help desciption.</span><br><span class="line">...</span><br><span class="line"><span class="built_in">end</span> menu</span><br></pre></td></tr></table></figure>
+
+<p>包含在menu/endmenu中的内容会成为Network device support的子菜单。每个子菜单项都是由config来定义的。config下方的那些bool, depends on,help等为config的属性，用于定义该菜单的类型、依赖项、默认值、帮助信息等。</p>
+<p>2、补充说明一下类型定义部分</p>
+<p>每个config菜单项都要有类型定义：bool布尔类型，tristate三态（内建，模块，移除）、string字符串、hex十六进制、integer整型。</p>
+<p>例如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">config</span> HELLO_MODULE</span><br><span class="line"><span class="keyword">bool</span> <span class="string">"hello test module"</span></span><br></pre></td></tr></table></figure>
+
+<p>bool类型的只能选中或不选中，显示为[]；tristate类型的菜单项多了编译成内核模块的选项，显示为&lt;&gt;，假如选中内建，就是直接编译成内核影响，就会在.config中生成一个CONFIG_HELLO_MODULE=m的配置，假如选择内建，就是直接编译成内核影响，就会在.config中生成一个CONFIG_HELLO_MODULE=y的配置，hex十六进制类型显示为（）。</p>
+<p>3、目录层次迭代</p>
+<p>在Kconfig中有类似语句：source “divers/usb/Kconfig”</p>
+<p>用来包含（或嵌套）新的Kconfig文件，这样便可以使各个目录管理各自的配置内容，使不必把那些配置都写在同一文件里，方便修改和管理。</p>
+<hr>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a><strong>Makefile</strong></h3><p>2.6内核的Makefile分为5个组成部分：</p>
+<p>1.最顶层的Makefile</p>
+<p>2.内核的.config配置文件</p>
+<p>3.在arch/$(ARCH)目录下的体系结构相关的Makefile</p>
+<p>4.在s目录下的Makefile.*文件，是一些Makenfile的通用规则</p>
+<p>5.各级目录下的大概约500个kbuild Makefile文件</p>
+<p>顶层的Makefile文件读取.config文件的内容，并总体上负责build内核和模块。Arch Make则提供补充体系结构相关的信息。s目录下的Makefile文件包含了所有用来根据kbuild Makefile构建内核所需的定义和规则。</p>
+<p>Kuild Makefile核心内容是：</p>
+<p>1.目标定义</p>
+<p>目标定义是用来定义哪些内容要做为模块编译，哪些要编译连接进内核。</p>
+<p>obj-y += foo.o</p>
+<p>表示要由foo.c或者foo.s文件编译到得到foo.o并连接进内核，而obj-m则表示该文件要作为模块编译。除了y,m以外的obj-x形式的目标都不会被编译。而更常见的做法是根据.config文件的CONFIG_变量来决定文件的编译方式。如：</p>
+<p>obj-$(CONFIG_EXT2) += ext2.o</p>
+<p>除了Obj-形式的目标以外，还有lib-y library 库，hostprogs-y主机程序等目标，但是基本都应用在特定的目录和场合下。</p>
+<hr>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200721131854374.png" alt="image-20200721131854374"></p>
+<p>上面是有问题的程序</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/10/%E5%B7%A5%E7%A8%8B%E8%AF%B4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/07/20/TCP-IP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            TCP/IP网络编程
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/07/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">深度学习</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+        app_key: '1OB4hLIBzNt40C7AAQ3ImBWG',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+  
+<!-- minivaline评论 -->
+<div id="mvcomments-box">
+    <div id="mvcomments">
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js'></script>
+<script>
+	new MiniValine({
+	  el: '#mvcomments',
+	  appId: 'bbpQw161m67zfpKoIaX0DjRP-gzGzoHsz',
+	  appKey: '1OB4hLIBzNt40C7AAQ3ImBWG',
+	  placeholder: 'Write a Comment',
+	  lang: '',
+	  adminEmailMd5: '',
+	  math: true,
+	  md: true
+	});
+    const infoEle = document.querySelector('#mvcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #mvcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #mvcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #mvcomments-box #mvcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2020
+        <i class="ri-heart-fill heart_icon"></i> Chen Bin
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梦想岛"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/">代码说</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://chenbin-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%B3%95%E5%BE%8B%E6%B3%95%E8%A7%84/">法律法规</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/about/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/VjamHOiTgk26EpK.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://i.loli.net/2020/04/24/FMJN75HGXRpDdP4.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 180,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+<!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

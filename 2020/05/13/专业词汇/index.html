@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">686</span>
+            <span class="post-count">932</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -111,6 +111,53 @@
 <p>子网掩码是一个32位地址，是与IP地址结合使用的一种技术。它的主要作用有两个，<br>一是用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上。<br>二是用于将一个大的IP网络划分为若干小的子网络。  </p>
 <p><strong>网络地址</strong><br>在计算机领域中，网络就是用物理链路将各个孤立的工作站或主机相连在一起，组成数据链路，从而达到资源共享和通信的目的。<br>网络地址（Network address）则是互联网上的节点在网络中具有的逻辑地址，可对节点进行寻址。<br>IP地址是在互联网上给主机编址的方式，为每个计算机分配一个逻辑地址，<br>这样不但能够对计算机进行识别，还能进行信息共享。   </p>
 <p><strong>主机地址</strong><br>IP地址是TCP/IP网络中用来唯一标识每台主机或设备的地址，IP地址由32位（共四个八位组）的二进制组成。IP地址分为两部分，左边网络编号部分用来标识主机所在的网络；<br>右边部分用来标识主机本身，这部分称为主机地址。连接到同一网络的主机必须拥有相同的网络编号。一个 IP地址的网络部分被称为网络号或者网络地址,<br>主机可以与具有相同的网络号的设备直接通讯，在没有连接设备的情况下，即使共享相同的物理网段，网络号不同则无法进行通讯，<br>IP 地址的网络地址使路由器可以将分组置于正确的网段上 ,IP 地址网络号后的主机号可以使路由器能够二层帧封装的分组传送到网络上的一台特定的主机，<br>使主机号与 MAC 地址进行正确的映射中的关键问题在于使用子网掩码来确定或者获取远程主机的网络地址信息。网络地址之后的部分为主机地址。  </p>
+<p><strong>C语言的库函数</strong></p>
+<p>动态存储分配函数</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>函数原型</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>calloc</td>
+<td>void * calloc(unsigned n, unsign size);</td>
+<td>分配n个数据项的内存连续空间，每个数据项的大小为size</td>
+<td>分配内存单元的起始地址，如不成功，返回0</td>
+</tr>
+<tr>
+<td>free</td>
+<td>void free(od *p);</td>
+<td>释放p所指的内存区</td>
+<td>无</td>
+</tr>
+<tr>
+<td>malloc</td>
+<td>void * malloc(unsigned size);</td>
+<td>分配size字节的存储区</td>
+<td>所分配的内存起始地址，如内存不够，返回0</td>
+</tr>
+<tr>
+<td>realloc</td>
+<td>void * realloc(void *p, unsigned size);</td>
+<td>将p所指出的已分配内存区的大小 改为size,size可以比原来分配的空间大或小</td>
+<td>返回指向该内存区的指针</td>
+</tr>
+</tbody></table>
+<p>struct 结构体名</p>
+<p>union 共用体名</p>
+<p>enum 枚举类型名</p>
+<p>用typedef定义与共用体的定义形式为</p>
+<p>struct 结构体名</p>
+<p>{成员表列}；</p>
+<p>union 共用体名</p>
+<p>{成员表列}</p>
+<p>变量的定义形式为：</p>
+<p>存储类别   数据类型  变量表列</p>
+<p>static float a,b,c;</p>
 
       
       <!-- reward -->

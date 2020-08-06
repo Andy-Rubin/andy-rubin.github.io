@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    工作生活一点通 |  梦想岛
+    C++常用的东西 |  梦想岛
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -46,7 +46,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-工作生活一点通" class="article article-type-post" itemscope
+  <article id="post-C-常用的东西" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  工作生活一点通
+  C++常用的东西
 </h1>
  
 
@@ -63,8 +63,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" class="article-date">
-  <time datetime="2020-05-18T07:57:35.000Z" itemprop="datePublished">2020-05-18</time>
+      <a href="/2020/07/06/C-%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/" class="article-date">
+  <time datetime="2020-07-06T08:31:07.000Z" itemprop="datePublished">2020-07-06</time>
 </a>
       
       
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">388</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -108,69 +108,254 @@
       
 
       
-      <h3 id="打印机状态暂停怎么处理"><a href="#打印机状态暂停怎么处理" class="headerlink" title="打印机状态暂停怎么处理"></a>打印机状态暂停怎么处理</h3><hr>
-<p>控制面板 —-  查看设备和打印机 —- 将鼠标悬停在“查看现在正在打印什么”条目上。—在展开的子菜单中，选择正在使用的打印机进行点击，选择左上角“打印机”—将“暂停打印”前的对勾点掉。</p>
-<a id="more"></a>
+      <h3 id="inline"><a href="#inline" class="headerlink" title="inline"></a><strong>inline</strong></h3><p>C++关键字，函数返回类型前加inline,即可以把函数指定为内联函数。这样可以解决一些频繁调用的函数大量消耗栈空间（栈内存）的问题。关键字inline必须与函数定义放在一起才能使函数成为内联函数。是一种“用于实现”的关键字。</p>
+<p>：：</p>
+<p>表示作用域，和所属关系。比如一个A类：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">	pulic:</span><br><span class="line">		<span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="涉及到后端的技术"><a href="#涉及到后端的技术" class="headerlink" title="涉及到后端的技术"></a>涉及到后端的技术</h3><p>Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</p>
-<h3 id="Web-Application-技术栈例"><a href="#Web-Application-技术栈例" class="headerlink" title="Web Application 技术栈例"></a>Web Application 技术栈例</h3><ul>
-<li>后端：Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</li>
-<li>前端：JavaScript, TypeScript, Angular, React, Vue.js</li>
-<li>云服务：AWS, GCP</li>
-<li>容器化：Kubernetes, Docker</li>
-<li>DevOps：Terraform, Packer</li>
-<li>监视：Mackerel、Kibana、New Relic, Sentry, Datadog</li>
-<li>数据分析：Fluentd, BigQuery, Google Data Studio, Logstash</li>
-<li>效率化：GitHub, JIRA, Confluence, Jenkins, Slack, Hubot</li>
-<li>开发方式：Scrum + XP</li>
+<p>存在一个函数test属于A</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">A::test</span><span class="params">()</span>    <span class="comment">//表示test是属于A的</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>::是运算符中等级最高的，它分为三种：</p>
+<ul>
+<li><p>全局作用符，（：：name）</p>
+</li>
+<li><p>类作用域符，（class :: name）</p>
+</li>
+<li><p>命名空间作用域符 ， 用法（namespace :: name）</p>
+</li>
 </ul>
-<h3 id="保护眼睛的一些背景色代码"><a href="#保护眼睛的一些背景色代码" class="headerlink" title="保护眼睛的一些背景色代码"></a>保护眼睛的一些背景色代码</h3><table>
+<p>：</p>
+<ul>
+<li><p>类名后加冒号用来定义类的继承</p>
+</li>
+<li><p>构造函数后加冒号是初始化表达式：比如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">iStack(<span class="keyword">int</span> capacity) : _stack(capacity), _top(<span class="number">0</span>)&#123;&#125;</span><br><span class="line"><span class="comment">//冒号后面的内容是初始化类的数据成员_top;_stak;</span></span><br><span class="line"><span class="comment">//也这样写;</span></span><br><span class="line">iStack(<span class="keyword">int</span> capacity)</span><br><span class="line">&#123;</span><br><span class="line">	_stack(capacity);</span><br><span class="line">	_top(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>表示机构内位域的定义（即该变量占几个bit空间）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> struct_XXX&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> a:<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> c;</span><br><span class="line">&#125;; XXX</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用于public和privare后，表示后面的所有成员是公有或者私有；</p>
+</li>
+</ul>
+<h3 id="pragma-pack"><a href="#pragma-pack" class="headerlink" title="#pragma pack"></a><strong>#pragma pack</strong></h3><p>语法： #pragma pack([sow] | [push | pop] [,identifier], n)</p>
+<p>pack为struct,union和class等的成员对齐指定字节边界。</p>
+<ul>
+<li><p>#pragma pack(n)       将当前字节对齐值设为n</p>
+</li>
+<li><p>#pragma pack()    将当前字节对齐值设备默认值（通常是8） </p>
+<p>…</p>
+</li>
+</ul>
+<h3 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a><strong>对齐</strong></h3><p>各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对齐数据存放进行对齐，会在存取效率上带来损失。</p>
+<p><strong>结构体对齐规则</strong></p>
+<p>结构体中各个成员按照它们被声明的顺序在内存中顺序存储；</p>
+<p>1）将结构体内所有数据成员的长度值相加，记为sum_a;</p>
+<p>2）将各数据成员内存对齐，按各自对齐模数而填充的字节数累加到和sum_a上，记为sum_b。对齐模数是【该数据成员所占内存】与【#pragma pack指定的数值】中的较小者。</p>
+<p>3）将和sum_b向结构体模数对齐，该模数是【#pragma pack指定的数值】、【未指定#pragma pack时，系统默认的对齐模数8字节】和【结构体内部最大的基本数据类型成员】长度中数值较小者。结构体的长度应该是该模数的整数倍。</p>
+<h3 id="基本数据类型所占内存大小"><a href="#基本数据类型所占内存大小" class="headerlink" title="基本数据类型所占内存大小"></a><strong>基本数据类型所占内存大小</strong></h3><table>
 <thead>
 <tr>
-<th>颜色</th>
-<th>代码</th>
-<th>RGB数值</th>
+<th></th>
+<th>char</th>
+<th>bool</th>
+<th>short</th>
+<th>int</th>
+<th>unsigned int</th>
+<th>float</th>
+<th>long</th>
+<th align="center">double</th>
+<th>long long</th>
+<th>long double</th>
+<th>指针</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>银河白</td>
-<td>#FFFFFF</td>
-<td>rgb(255, 255, 255)</td>
+<td>32bit编译器</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td align="center">8</td>
+<td>8</td>
+<td>8</td>
+<td>4</td>
 </tr>
 <tr>
-<td>杏仁黄</td>
-<td>#FAF9DE</td>
-<td>rgb(250, 249, 222)</td>
-</tr>
-<tr>
-<td>秋叶褐</td>
-<td>#FFF2E2</td>
-<td>rgb(255, 242, 226)</td>
-</tr>
-<tr>
-<td>胭脂红</td>
-<td>#FDE6E0</td>
-<td>rgb(253, 230, 224)</td>
-</tr>
-<tr>
-<td>青草绿</td>
-<td>#E3EDCD</td>
-<td>rgb(227, 237, 205)</td>
-</tr>
-<tr>
-<td>海天蓝</td>
-<td>#DCE2F1</td>
-<td>rgb(220, 226, 241)</td>
+<td>64bit编译器</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td align="center">8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
 </tr>
 </tbody></table>
-<h3 id="如何关闭WINDOW自动更新"><a href="#如何关闭WINDOW自动更新" class="headerlink" title="如何关闭WINDOW自动更新"></a>如何关闭WINDOW自动更新</h3><p>Windows键+R</p>
-<p>在运行处输入 “services.msc” 点击确定。</p>
-<p>在弹出来的服务中，找到“Windows Update”</p>
-<p>找到后双击进入，在启动类型处·选择“禁用”然后点击应用。再点击确定即可</p>
-<h3 id="如何更改Eclipse-的注释颜色"><a href="#如何更改Eclipse-的注释颜色" class="headerlink" title="如何更改Eclipse 的注释颜色"></a>如何更改Eclipse 的注释颜色</h3><p>Windows– preferences – java – editor –syntax coloring –comments 中的前两个就是修改注释的颜色。</p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>WIN+方向键 可以将窗口放置在指定位置</p>
-<p>WIN+L 锁屏</p>
-<h3 id="墨菲定律"><a href="#墨菲定律" class="headerlink" title="墨菲定律"></a><strong>墨菲定律</strong></h3><p>“一种担心事情发生的即使千万分之一，但它总会发生”    【生命安全的教训】</p>
+<p>按32bit编译器处理为例子：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(4)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test1</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> c;        <span class="comment">//1  </span></span><br><span class="line">	short sh;      <span class="comment">//2 </span></span><br><span class="line">	<span class="keyword">int</span> a;         <span class="comment">//4</span></span><br><span class="line">	<span class="keyword">float</span> f;       <span class="comment">//4</span></span><br><span class="line">	<span class="keyword">int</span> *p;        <span class="comment">//</span></span><br><span class="line">	<span class="keyword">char</span> *s;</span><br><span class="line">	<span class="keyword">double</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总共占28Bytes，c的偏移量为0，占1Byte, sh占2Byte, 它的对齐模数是2（2&lt;4,取小者），存放起始地址应该是2的整数倍，因此c后填充1个空字符，sh的起始地址是2。a占4Byte,对齐模式是4，因此在sh后存放即可，偏移量为4。f占4个字节，对齐模式是4，存放地址是4的整数倍，起始地址是8。p,s的起始地址分别是12,16.d占8个字节，对齐模式是4（4&lt;8）,d从偏移地址为20处存放。存放后结构体占28个字节，是4的整数倍不用补空字符。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>C</td>
+<td>null</td>
+<td>sh</td>
+<td>sh</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+</tr>
+<tr>
+<td>3</td>
+<td>f</td>
+<td>f</td>
+<td>f</td>
+<td>f</td>
+</tr>
+<tr>
+<td>4</td>
+<td>p</td>
+<td>p</td>
+<td>p</td>
+<td>p</td>
+</tr>
+<tr>
+<td>5</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+</tr>
+<tr>
+<td>6</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+</tr>
+<tr>
+<td>7</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+</tr>
+</tbody></table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test2</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">double</span> d;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	short sh;</span><br><span class="line">	<span class="keyword">float</span> f;</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">	<span class="keyword">char</span> *s;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>c</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+</tr>
+<tr>
+<td>2</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+</tr>
+<tr>
+<td>3</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+<td>d</td>
+</tr>
+<tr>
+<td>4</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+<td>a</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sh</td>
+<td>sh</td>
+<td>null</td>
+<td>null</td>
+</tr>
+<tr>
+<td>6</td>
+<td>f</td>
+<td>f</td>
+<td>f</td>
+<td>f</td>
+</tr>
+<tr>
+<td>7</td>
+<td>p</td>
+<td>p</td>
+<td>p</td>
+<td>p</td>
+</tr>
+<tr>
+<td>8</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+<td>s</td>
+</tr>
+</tbody></table>
+<p><strong>函数是什么</strong></p>
+<p><strong>函数的调用过程</strong></p>
+<p>在c语言中到某一个函数时，它就会跳转过去执行这个函数，执行完毕后接着再去执行下一条指令。在执行调用函数的过程中，计算机通常还要根据函数完成一些工作，这些操作通过形成一个栈帧来完成。栈帧是编译器用来实现函数调用过程的一种数据结构。C语言中，每个栈帧对应着一个未运行完的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在数据结构中, 栈是限定仅在表尾进行插入或删除操作的线性表。栈是一种数据结构，它按照后进先出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
       <!-- reward -->
@@ -239,7 +424,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/06/C-%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%9C%E8%A5%BF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -255,19 +440,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/19/MPU-6050/" class="article-nav-link">
+      <a href="/2020/07/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            MPU-6050
+            深度学习
           
         </div>
       </a>
     
     
-      <a href="/2020/05/16/%E7%9B%B8%E6%9C%BA%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8/" class="article-nav-link">
+      <a href="/2020/07/06/Linux%E5%91%BD%E4%BB%A4/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">相机小白入门</div>
+        <div class="article-nav-title">Linux命令</div>
       </a>
     
   </nav>

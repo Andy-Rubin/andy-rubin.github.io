@@ -85,6 +85,681 @@
     
     
     
+    <article id="post-分治" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/%E5%88%86%E6%B2%BB/"
+    >分治</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E5%88%86%E6%B2%BB/" class="article-date">
+  <time datetime="2020-04-28T04:59:05.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>1. 给表达式加括号</strong>    </p>
+<blockquote>
+<p>Input: “2-1-1”.<br>((2-1)-1) = 0<br>(2-(1-1)) = 2<br>Output : [0, 2]  </p>
+</blockquote>
+<pre><code>public List&lt;Integer&gt; diffWaysToCompute(String input){
+    List&lt;Integer&gt; ways = new ArrayList&lt;&gt;();
+    for(int i=0; i&lt;input.length(); i++){
+        char c=input.charAt(i);
+        if(c == &apos;+&apos; || c==&apos;-&apos; || c== &apos;*&apos;){
+            List&lt;Integer&gt; left = diffWaysToComputer(input.substring(0,i));
+            List&lt;Integer&gt; right = diffWaysToCompute(input.substring(i+1));
+            for(int l : left){
+                for(int r : right){
+                    switch(c){
+                        case &apos;+&apos;:
+                            ways.add(l + r);
+                            break;
+                        case &apos;-&apos;:
+                            ways.add(l - r);
+                            break;
+                        case &apos;*&apos;:
+                            ways.add(l * r);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    if(ways.size() == 0){
+        ways.add(Integer.valueOf(input));
+    }
+    return ways;
+}</code></pre>
+      
+      <a class="article-more-link" href="/2020/04/28/%E5%88%86%E6%B2%BB/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" rel="tag">分治算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-数据结构-链表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/"
+    >数据结构-链表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2020-04-28T02:42:03.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>两个链表交点  </p>
+<pre><code>public ListNode getIntersectionNode(ListNode headA, ListNode headB){
+    ListNode l1 = headA,  l2 = headB;
+    while(l1 != l2){
+        l1 = (l1 == null) ? headB : l1.next;
+        l2 = (l2 == null) ? headA : l2.next;
+    }
+    return l1;
+}</code></pre>
+      
+      <a class="article-more-link" href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8-%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">-链表 - 算法与程序设计</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-数据结构-哈希表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/"
+    >数据结构-哈希表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/" class="article-date">
+  <time datetime="2020-04-28T02:41:42.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>1.数组中两个数的和为给定值<br>Two Sum</strong></p>
+<p>可以先对数组进行排序，然后使用双指针方法或者二分查找方法。这样做的时间复杂度为 O(NlogN)，空间复杂度为 O(1)。<br>用 HashMap 存储数组元素和索引的映射，在访问到 nums[i] 时，判断 HashMap 中是否存在 target - nums[i]，如果存在说明 target - nums[i] 所在的索引和 i 就是要找的两个数。该方法的时间复杂度为 O(N)，空间复杂度为 O(N)，使用空间来换取时间。  </p>
+      
+      <a class="article-more-link" href="/2020/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8-%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">-哈希表 - 算法与程序设计</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-《程序员面试经典》" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E3%80%8B/"
+    >RD指南</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E3%80%8B/" class="article-date">
+  <time datetime="2020-04-28T02:38:40.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="行为面试题"><a href="#行为面试题" class="headerlink" title="行为面试题"></a>行为面试题</h2><p>问：<br>Tell us about yourself. 谈谈你自己</p>
+<p>Why should we hire you? 我们为什么要雇佣你</p>
+<p>Why did you leave your last job? 你为什么离职</p>
+<p>Tell me about your scholastic record 谈谈你在学校的表现</p>
+<p>Tell  me about your extra-curricular activities and interests谈谈你的课余活动和爱好</p>
+<p>How would your last boss describe you. 你的前老板是怎么评价你的？</p>
+<p>What salary are you expecting? 你期待得到怎样的薪资待遇</p>
+<p>What is your greatest weakness?你认为自己最大的弱点是什么</p>
+<p>How would your friends or coleagues describe you? 你的朋友或者同事会怎样评价你</p>
+<p>Give me summary of your cureent job description. 简单描述一下你现在的工作</p>
+<p>How do you rate yourself as a professional?作为专业人员，你如何评价你自己</p>
+<p>What make you think you would be a success in this position?<br>是什么让你认为自己能胜任这份工作？</p>
+<p>What contribution did you make to your current(previous) organization<br>你对之前的单位有何贡献</p>
+<p>What traits do you admire?<br>你欣赏哪种性格的人</p>
+<p>What provide you with a sense of accomplishment?</p>
+      
+      <a class="article-more-link" href="/2020/04/28/%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E3%80%8B/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-编辑部的故事" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/28/%E7%BC%96%E8%BE%91%E9%83%A8%E7%9A%84%E6%95%85%E4%BA%8B/"
+    >编辑部的故事</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/28/%E7%BC%96%E8%BE%91%E9%83%A8%E7%9A%84%E6%95%85%E4%BA%8B/" class="article-date">
+  <time datetime="2020-04-28T01:28:30.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="一部连续剧带来的思靠"><a href="#一部连续剧带来的思靠" class="headerlink" title="一部连续剧带来的思靠"></a>一部连续剧带来的思靠</h3>
+      
+      <a class="article-more-link" href="/2020/04/28/%E7%BC%96%E8%BE%91%E9%83%A8%E7%9A%84%E6%95%85%E4%BA%8B/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-基础算法稳固-排序" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E6%8E%92%E5%BA%8F/"
+    >基础算法稳固-排序</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time datetime="2020-04-27T08:49:13.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>冒泡排序</strong>  </p>
+<pre><code>public class SelectSort{
+    public static void main(String[] args){
+        int[] array={63, 4, 24, 1, 3, 15};
+        SelectSort sorter = new SelectorSort();
+        sorter.sort(array);
+    }
+}</code></pre>
+      
+      <a class="article-more-link" href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E6%8E%92%E5%BA%8F/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-基础算法稳固-递归" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E9%80%92%E5%BD%92/"
+    >基础算法稳固-递归</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E9%80%92%E5%BD%92/" class="article-date">
+  <time datetime="2020-04-27T08:44:38.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>2020-4-20 我感觉递归的思维是从小入手，小得满足大的也满足，步步验证合理性。  </p>
+<pre><code>/*接受一个整型值（无符号0，把它转换为字符并打印它，前导零被删除*/
+#include &lt;stdio.h&gt;
+int binary_to_ascii(unsigned int value){
+    unsigned int quotient;
+    quotient = value / 10;
+    if(quotient != 0){
+        binary_to_ascill(quotient);
+    }
+    putchar(value % 10 + &apos;0&apos;);
+}</code></pre>
+      
+      <a class="article-more-link" href="/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E7%A8%B3%E5%9B%BA-%E9%80%92%E5%BD%92/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-剑指OFFER" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/27/%E5%89%91%E6%8C%87OFFER/"
+    >剑指未来</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/27/%E5%89%91%E6%8C%87OFFER/" class="article-date">
+  <time datetime="2020-04-27T08:42:00.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>数组中重复的数字</strong>   </p>
+<p>在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。</p>
+      
+      <a class="article-more-link" href="/2020/04/27/%E5%89%91%E6%8C%87OFFER/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-数据结构-图" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -244,666 +919,13 @@
 
 </article>
     
-    <article id="post-数据结构-数组和矩阵" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E7%9F%A9%E9%98%B5/"
-    >数据结构-数组和矩阵</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E7%9F%A9%E9%98%B5/" class="article-date">
-  <time datetime="2020-04-27T08:10:46.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><strong>1. 把数组中的 0 移到末尾</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For example, given nums &#x3D; [0, 1, 0, 3, 12], </span><br><span class="line">after calling your function, nums should be [1, 3, 12, 0, 0].</span><br></pre></td></tr></table></figure>
-
-<pre><code>public void moveZeroes(int[] nums){
-    int idx = 0;
-    for(int num : nums){
-        if(num != 0){
-            nums[idx++] = num;
-        }
-    }
-    while(idx &lt; nums.length){
-        nums[idx++] = 0;
-    }
-}</code></pre>
-      
-      <a class="article-more-link" href="/2020/04/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E7%9F%A9%E9%98%B5/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E4%B8%8E%E7%9F%A9%E9%98%B5/" rel="tag">数组与矩阵</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-个人心情思考随笔" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/%E4%B8%AA%E4%BA%BA%E5%BF%83%E6%83%85%E6%80%9D%E8%80%83%E9%9A%8F%E7%AC%94/"
-    >个人心情思考随笔</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/%E4%B8%AA%E4%BA%BA%E5%BF%83%E6%83%85%E6%80%9D%E8%80%83%E9%9A%8F%E7%AC%94/" class="article-date">
-  <time datetime="2020-04-27T02:49:24.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="凡思了训"><a href="#凡思了训" class="headerlink" title="凡思了训"></a>凡思了训</h3><hr>
-      
-      <a class="article-more-link" href="/2020/04/27/%E4%B8%AA%E4%BA%BA%E5%BF%83%E6%83%85%E6%80%9D%E8%80%83%E9%9A%8F%E7%AC%94/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%90%90%E4%BA%8B%E6%80%9D%E8%80%83/" rel="tag">琐事思考</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-HEXO的使用记录" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/HEXO%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"
-    >HEXO的使用记录</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/HEXO%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time datetime="2020-04-27T02:34:37.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Hexo的使用记录"><a href="#Hexo的使用记录" class="headerlink" title="Hexo的使用记录"></a>Hexo的使用记录</h2><p>使用hexo已经两天了，有很多方法用了但是想记录下，从今天此刻起2020-4-27 10：35,我想把以后用的方法记录下来，以沉淀知识，备好记录。</p>
-<h3 id="如何在默认创建的文件中创建自定义文件标题头"><a href="#如何在默认创建的文件中创建自定义文件标题头" class="headerlink" title="如何在默认创建的文件中创建自定义文件标题头"></a>如何在默认创建的文件中创建自定义文件标题头</h3><p><a href="https://segmentfault.com/q/1010000007049523" target="_blank" rel="noopener">方法来自网络问题搜索</a></p>
-<p>在本地blog文件中有个scaffolds文件里有个post.md， 在头上添加上需要的配置就可以啦。  </p>
-<p><img src="https://i.loli.net/2020/04/27/U8rmOJgI1YSeFMh.png" alt="Test image post"></p>
-      
-      <a class="article-more-link" href="/2020/04/27/HEXO%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0hexo/" rel="tag">学习hexo</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-什么是bootstrap" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/%E4%BB%80%E4%B9%88%E6%98%AFbootstrap/"
-    >什么是bootstrap</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/%E4%BB%80%E4%B9%88%E6%98%AFbootstrap/" class="article-date">
-  <time datetime="2020-04-27T02:25:56.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%9F%BA%E7%A1%80/">基础</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="什么是Bootstrap"><a href="#什么是Bootstrap" class="headerlink" title="什么是Bootstrap"></a>什么是Bootstrap</h2><p>Bootstrap来自 Twitter，是目前很受欢迎的前端框架。Bootstrap是基于HTML、CSS、JavaScript的，它简洁灵活，使得Web开发更加快捷。它由Twitter的设计师MarkOtto和JacobThornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC（微软全国广播公司）的Breaking News都使用了该项目。国内一些移动开发者较为熟悉的框架，如WeX5前端开源框架等，也是基于Bootstrap源码进行性能优化而来。</p>
-      
-      <a class="article-more-link" href="/2020/04/27/%E4%BB%80%E4%B9%88%E6%98%AFbootstrap/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-动态规划" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/26/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
-    >动态规划</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/26/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
-  <time datetime="2020-04-26T08:52:44.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>递归和动态规划都是将原问题拆成多个子问题然后求解，他们之间最本质的区别是，动态规划保存了子问题，避免重复计算。</p>
-<h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p><strong>1.爬楼梯</strong><br>题目描述：有 N 阶楼梯，每次可以上一阶或者两阶，求有多少种上楼梯的方法。<br>定义一个数组 dp 存储上楼梯的方法数（为了方便讨论，数组下标从 1 开始），dp[i] 表示走到第 i 个楼梯的方法数目。  </p>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> <img src="https://i.loli.net/2020/04/27/F1W9B8M7umKSabk.png" alt=""></h2>
-      
-      <a class="article-more-link" href="/2020/04/26/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-搜索" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/26/%E6%90%9C%E7%B4%A2/"
-    >搜索</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/26/%E6%90%9C%E7%B4%A2/" class="article-date">
-  <time datetime="2020-04-26T08:38:43.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>广度优先搜索一层一层地进行遍历，每层遍历都是以上一层遍历的结果作为起点，遍历一个距离能访问到的所有节点。需要注意的是，遍历过的节点不能再次被遍历。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">第一层：  </span><br><span class="line">	• 0 -&gt; &#123;6,2,1,5&#125;  </span><br><span class="line">第二层：  </span><br><span class="line">	• 6 -&gt; &#123;4&#125;  </span><br><span class="line">	• 2 -&gt; &#123;&#125;  </span><br><span class="line">	• 1 -&gt; &#123;&#125;  </span><br><span class="line">	• 5 -&gt; &#123;3&#125;  </span><br><span class="line">第三层：  </span><br><span class="line">	• 4 -&gt; &#123;&#125;  </span><br><span class="line">	• 3 -&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
-      
-      <a class="article-more-link" href="/2020/04/26/%E6%90%9C%E7%B4%A2/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-二分查找法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/26/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/"
-    >二分查找法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/26/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/" class="article-date">
-  <time datetime="2020-04-26T08:24:18.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><strong>正常实现：</strong>  </p>
-<blockquote>
-<p>Input : [1,2,3,4,5]<br>key : 3<br>return the index : 2   </p>
-</blockquote>
-<pre><code>public int binarySearch(int[] nums, int key){
-    int l=0, h=nums.length-1;
-    while(l&lt;=h){
-        int m = l+(h-l)/2;
-        if(nums[m] == key){
-            return m;
-        }else if(nums[m] &gt; key){
-            h = m - 1;
-        }
-        else{
-            l = m+1;
-        }
-    }
-    return -1;
-}</code></pre>
-      
-      <a class="article-more-link" href="/2020/04/26/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-let&#39;s 程序设计-贪心算法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/26/let's%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"
-    >Let&#39;s 算法设计-贪心算法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/26/let's%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="article-date">
-  <time datetime="2020-04-26T07:52:02.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">算法与程序设计</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><strong>1.分配饼干</strong>  </p>
-<blockquote>
-<p>Input: grid[1,3], size[1,2,4]<br>Output: 2  </p>
-</blockquote>
-<p>题目描述：每个孩子都有一个满足度grid，每个饼干都有一个大小size，只有饼干的大小大于等于一个孩子的满足度，该孩子才会获得满足。求解最多可以获得满足的孩子数量。  </p>
-<ol>
-<li>给一个孩子的饼干应当尽量小并且又能满足该孩子，这样大饼干才能拿来给满足度比较大的孩子。  </li>
-<li>因为满足度最小的孩子最容易得到满足，所以先满足满足度最小的孩子。<br>在以上的解法中，我们只在每次分配时饼干时选择一种看起来是当前最优的分配方法，但无法保证这种局部最优的分配方法最后能得到全局最优解。我们假设能得到全局最优解，并使用反证法进行证明，即假设存在一种比我们使用的贪心策略更优的最优策略。如果不存在这种最优策略，表示贪心策略就是最优策略，得到的解也就是全局最优解。    </li>
-</ol>
-      
-      <a class="article-more-link" href="/2020/04/26/let's%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E9%A2%98%E8%A7%A3%E6%9E%90/" rel="tag">双指针题解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="tag">算法与程序设计</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
   </nav>
   
 </section>

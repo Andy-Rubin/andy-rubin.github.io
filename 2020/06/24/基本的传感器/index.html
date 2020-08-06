@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
+            <span class="post-count">8 分钟</span>
         </span>
     </span>
 </div>
@@ -646,7 +646,223 @@
 </tr>
 </tbody></table>
 <h4 id="IO独立模式1（电平独立控制）"><a href="#IO独立模式1（电平独立控制）" class="headerlink" title="IO独立模式1（电平独立控制）"></a><strong>IO独立模式1（电平独立控制）</strong></h4><p>IO0-IO7独立控制8首曲目，IO触发（低电平有效）指定的曲目，一直循环播放指定曲目，电平释放（IO0-IO7恢复高电平）即停止播放。播放中途释放电平，即刻停止播放。播放过程busy有效。</p>
-<h3 id="UART串口模式"><a href="#UART串口模式" class="headerlink" title="UART串口模式"></a><strong>UART串口模式</strong></h3>
+<h3 id="UART串口模式"><a href="#UART串口模式" class="headerlink" title="UART串口模式"></a><strong>UART串口模式</strong></h3><p>详见手册</p>
+<h3 id="调试心得"><a href="#调试心得" class="headerlink" title="调试心得"></a>调试心得</h3><p>使用是按键组合模式，先将所有开关搬到数字位置，然后先测试下CPU板的8个引脚是否配置无误；还要有个BUSY引脚，该引脚上电初始化默认为1，无操作一直为1。</p>
+<h2 id="STC8-EEPROM"><a href="#STC8-EEPROM" class="headerlink" title="STC8 EEPROM"></a><strong>STC8 EEPROM</strong></h2><p>STC8内部集成了大量的EEPROM，利用ISP/IAP技术可将内部Data Flash当EEPROM。</p>
+<p>EEPROM可分为若干扇区，每个扇区包含512字节。使用时，建议同一次修改的数据放在同一个扇区，不是同一次修改的数据放在不同的扇区，不一定要用满。数据存储器的擦除操作是按扇区进行的。</p>
+<p>EEPROM可用于保存一些需要在引用程序中修改并且掉电不丢失的数据。在用户程序中，可以对EEPROM进行字节读\字节编程\扇区擦除操作。在工作电压偏低时，建议不要进行EEPROM操作，以免发送数据丢失的情况。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>地址</th>
+<th>B7</th>
+<th>B6</th>
+<th>B5</th>
+<th>B4</th>
+<th>B3</th>
+<th>B2</th>
+<th>B1</th>
+<th>B0</th>
+<th>复位值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IAP_DATA</td>
+<td>IAP数据寄存器</td>
+<td>C2H</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1111,1111</td>
+</tr>
+<tr>
+<td>IAP_ADDRH</td>
+<td>IAP高地址寄存器</td>
+<td>C3H</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0000,0000</td>
+</tr>
+<tr>
+<td>IAP_ADDRL</td>
+<td>IAP低地址寄存器</td>
+<td>C4H</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0000,0000</td>
+</tr>
+<tr>
+<td>IAP_CMD</td>
+<td>IAP命令寄存器</td>
+<td>C5H</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>CMD[1:0]</td>
+<td>xxxx,xx00</td>
+</tr>
+<tr>
+<td>IAP_TRIG</td>
+<td>IAP触发寄存器</td>
+<td>C6H</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0000,0000</td>
+</tr>
+<tr>
+<td>IAP_CONTR</td>
+<td>IAP控制寄存器</td>
+<td>C7H</td>
+<td>IAPEN</td>
+<td>SWBS</td>
+<td>SWRST</td>
+<td>CMD_FAIL</td>
+<td>-</td>
+<td>IAP_WT[2:0]</td>
+<td>IAP_WT[2:0]</td>
+<td>IAP_WT[2:0]</td>
+<td>0000,x000</td>
+</tr>
+</tbody></table>
+<p><strong>EEPROM数据寄存器（IAP_DATA）</strong></p>
+<p>在进行EEPROM的读操作时，命令执行完成后读出的EEPROM数据保存在IAP_DATA寄存器中。在进行EEPROM的写操作时，在执行写命令前，必须将待写入的数据存在IAP_DATA寄存器中，再发送写命令。擦除EEPROM命令与IAP_DATA寄存器无关。</p>
+<p><strong>IAP_ADDRH</strong></p>
+<p><strong>IAP_ADDRL</strong></p>
+<p>EEPROM进行读、写、擦除操作的目标地址寄存器。IAP_ADDRH保存地址的高字节，IAP_ADDRL保存地址的低字节。</p>
+<p><strong>IAP_CMD</strong></p>
+<p>命令寄存器，发送操作命令</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>地址</th>
+<th>B7</th>
+<th>B6</th>
+<th>B5</th>
+<th>B4</th>
+<th>B3</th>
+<th>B2</th>
+<th>B1</th>
+<th>B0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IAP_CMD</td>
+<td>C5H</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>CMD[1]</td>
+<td>CMD[0]</td>
+</tr>
+</tbody></table>
+<p>CMD[1:0]:</p>
+<p>00:空操作</p>
+<p>01：读EEPROM命令，读取目标地址所在的1字节</p>
+<p>10：写EEPROM命令，写目标地址所在的1字节。</p>
+<p>11：擦除EEPROM,擦除目标地址所在的1页（1扇区/512字节）</p>
+<p>EEPROM触发寄存器</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>地址</th>
+<th>B7</th>
+<th>B6</th>
+<th>B5</th>
+<th>B4</th>
+<th>B3</th>
+<th>B2</th>
+<th>B1</th>
+<th>B0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IAP_TRIG</td>
+<td>C6H</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>每次EEPROM操作时，都要对IAP_TRIG先写入5AH，再写入A5H,相应的命令才会生效。写完触发命令后，CPU会处于IDLE等待状态，直到相应的IAP操作执行完成后CPU才会从IDLE状态返回正常状态继续执行CPU指令。</p>
+<p>IAP_CONTR EEPROM控制寄存器</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>地址</th>
+<th>B7</th>
+<th>B6</th>
+<th>B5</th>
+<th>B4</th>
+<th>B3</th>
+<th>B2</th>
+<th>B1</th>
+<th>B0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IAP_CONTR</td>
+<td>C7H</td>
+<td>IAPEN</td>
+<td>SWBS</td>
+<td>SWRST</td>
+<td>CMD_FAIL</td>
+<td>-</td>
+<td>IAP_WT[2:0]</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>IAPEN:EEPROM操作使能控制位       0：禁止EEPROM操作，  1 ： 使能EEPROM操作</p>
+<p>SWBS: 软件复位选择控制位（配合SWRST使用）   0 ： 软件复位后从用户代码开始执行程序  1：软件复位后从系统ISP监控代码区开始执行程序</p>
+<p>SWRST:软件复位控制位</p>
+<p>0：无动作</p>
+<p>1：产生软件复位</p>
+<p>CMD_FAIL ： EEPROM操作失败状态位，需要软件清零</p>
+<p>0：EEPROM操作正确</p>
+<p>1：EEPROM操作失败</p>
+<p>IAP_WT[2:0]: 设置EEPROM操作的等待时间。</p>
+<p>EEPROM总是从后向前进行规划的。</p>
+
       
       <!-- reward -->
       

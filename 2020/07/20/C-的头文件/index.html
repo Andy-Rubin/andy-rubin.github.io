@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    工作生活一点通 |  梦想岛
+    C++的头文件 |  梦想岛
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -46,7 +46,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-工作生活一点通" class="article article-type-post" itemscope
+  <article id="post-C-的头文件" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  工作生活一点通
+  C++的头文件
 </h1>
  
 
@@ -63,8 +63,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" class="article-date">
-  <time datetime="2020-05-18T07:57:35.000Z" itemprop="datePublished">2020-05-18</time>
+      <a href="/2020/07/20/C-%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2020-07-20T02:04:01.000Z" itemprop="datePublished">2020-07-20</time>
 </a>
       
       
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">388</span>
+            <span class="post-count">343</span>
         </span>
     </span>
 
@@ -108,69 +108,15 @@
       
 
       
-      <h3 id="打印机状态暂停怎么处理"><a href="#打印机状态暂停怎么处理" class="headerlink" title="打印机状态暂停怎么处理"></a>打印机状态暂停怎么处理</h3><hr>
-<p>控制面板 —-  查看设备和打印机 —- 将鼠标悬停在“查看现在正在打印什么”条目上。—在展开的子菜单中，选择正在使用的打印机进行点击，选择左上角“打印机”—将“暂停打印”前的对勾点掉。</p>
-<a id="more"></a>
+      <h2 id="C-的头文件细说"><a href="#C-的头文件细说" class="headerlink" title="C++的头文件细说"></a><strong>C++的头文件细说</strong></h2><h3 id="unistd-h"><a href="#unistd-h" class="headerlink" title="unistd.h"></a><strong>unistd.h</strong></h3><p>提供对POSIX操作系统API的访问功能，其中调用的接口大量都是对系统调用的封装。</p>
+<blockquote>
+<p>引申：    POSIX（Portable Operating System Interface of UNIX, POSIX）表示可移植操作系统接口，POSIX标准定义了操作系统应该为应用程序提供的接口标准，是IEEE为要在各种UNIX操作系统上运行的软件定义的一系列API标准的总称。</p>
+<p>主流操作系统有两种，一种是Window系统，另一种是LINUX系统，由于系统不同，API又分为WINDOWS API和Linux API。两者在各自平台上开发出来的软件就无法在对方上运行，导致软件移植困难，POSIX（可移植操作系统规范）应运而生。</p>
+<p>linux和Windows都要实现基本的posix标准，linux把fork函数封装成posix_fork（随便说的），windows把creatprocess也封装成posix_fork，都声明在unistd.h里。这样，程序员在编写普通应用的时候，只用包含unistd.h，调用posix_fork函数，程序就在源代码级别可移植了。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fork()  <span class="comment">//复制进程</span></span><br><span class="line">pipe()  <span class="comment">//管道，即把两个进程之间的标准输入和标准输出连接起来的机制，从而提供一种让多个进程间通信的方法</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="涉及到后端的技术"><a href="#涉及到后端的技术" class="headerlink" title="涉及到后端的技术"></a>涉及到后端的技术</h3><p>Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</p>
-<h3 id="Web-Application-技术栈例"><a href="#Web-Application-技术栈例" class="headerlink" title="Web Application 技术栈例"></a>Web Application 技术栈例</h3><ul>
-<li>后端：Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</li>
-<li>前端：JavaScript, TypeScript, Angular, React, Vue.js</li>
-<li>云服务：AWS, GCP</li>
-<li>容器化：Kubernetes, Docker</li>
-<li>DevOps：Terraform, Packer</li>
-<li>监视：Mackerel、Kibana、New Relic, Sentry, Datadog</li>
-<li>数据分析：Fluentd, BigQuery, Google Data Studio, Logstash</li>
-<li>效率化：GitHub, JIRA, Confluence, Jenkins, Slack, Hubot</li>
-<li>开发方式：Scrum + XP</li>
-</ul>
-<h3 id="保护眼睛的一些背景色代码"><a href="#保护眼睛的一些背景色代码" class="headerlink" title="保护眼睛的一些背景色代码"></a>保护眼睛的一些背景色代码</h3><table>
-<thead>
-<tr>
-<th>颜色</th>
-<th>代码</th>
-<th>RGB数值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>银河白</td>
-<td>#FFFFFF</td>
-<td>rgb(255, 255, 255)</td>
-</tr>
-<tr>
-<td>杏仁黄</td>
-<td>#FAF9DE</td>
-<td>rgb(250, 249, 222)</td>
-</tr>
-<tr>
-<td>秋叶褐</td>
-<td>#FFF2E2</td>
-<td>rgb(255, 242, 226)</td>
-</tr>
-<tr>
-<td>胭脂红</td>
-<td>#FDE6E0</td>
-<td>rgb(253, 230, 224)</td>
-</tr>
-<tr>
-<td>青草绿</td>
-<td>#E3EDCD</td>
-<td>rgb(227, 237, 205)</td>
-</tr>
-<tr>
-<td>海天蓝</td>
-<td>#DCE2F1</td>
-<td>rgb(220, 226, 241)</td>
-</tr>
-</tbody></table>
-<h3 id="如何关闭WINDOW自动更新"><a href="#如何关闭WINDOW自动更新" class="headerlink" title="如何关闭WINDOW自动更新"></a>如何关闭WINDOW自动更新</h3><p>Windows键+R</p>
-<p>在运行处输入 “services.msc” 点击确定。</p>
-<p>在弹出来的服务中，找到“Windows Update”</p>
-<p>找到后双击进入，在启动类型处·选择“禁用”然后点击应用。再点击确定即可</p>
-<h3 id="如何更改Eclipse-的注释颜色"><a href="#如何更改Eclipse-的注释颜色" class="headerlink" title="如何更改Eclipse 的注释颜色"></a>如何更改Eclipse 的注释颜色</h3><p>Windows– preferences – java – editor –syntax coloring –comments 中的前两个就是修改注释的颜色。</p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>WIN+方向键 可以将窗口放置在指定位置</p>
-<p>WIN+L 锁屏</p>
-<h3 id="墨菲定律"><a href="#墨菲定律" class="headerlink" title="墨菲定律"></a><strong>墨菲定律</strong></h3><p>“一种担心事情发生的即使千万分之一，但它总会发生”    【生命安全的教训】</p>
+<h3 id="arpa-inet-h"><a href="#arpa-inet-h" class="headerlink" title="arpa/inet.h"></a><strong>arpa/inet.h</strong></h3><p>定义了更多的网络类型和函数（包含netline/in.h）,如inet_addr,inet_aton等</p>
 
       
       <!-- reward -->
@@ -239,7 +185,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/20/C-%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -255,19 +201,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/19/MPU-6050/" class="article-nav-link">
+      <a href="/2020/07/24/ANDROID-0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            MPU-6050
+            ANDROID
           
         </div>
       </a>
     
     
-      <a href="/2020/05/16/%E7%9B%B8%E6%9C%BA%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8/" class="article-nav-link">
+      <a href="/2020/07/20/TCP-IP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">相机小白入门</div>
+        <div class="article-nav-title">TCP/IP网络编程</div>
       </a>
     
   </nav>

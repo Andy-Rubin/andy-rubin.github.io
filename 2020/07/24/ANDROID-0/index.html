@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    工作生活一点通 |  梦想岛
+    ANDROID |  梦想岛
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -46,7 +46,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-工作生活一点通" class="article article-type-post" itemscope
+  <article id="post-ANDROID-0" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  工作生活一点通
+  ANDROID
 </h1>
  
 
@@ -63,8 +63,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" class="article-date">
-  <time datetime="2020-05-18T07:57:35.000Z" itemprop="datePublished">2020-05-18</time>
+      <a href="/2020/07/24/ANDROID-0/" class="article-date">
+  <time datetime="2020-07-24T12:18:10.000Z" itemprop="datePublished">2020-07-24</time>
 </a>
       
       
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">388</span>
+            <span class="post-count">1.9k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">7 分钟</span>
         </span>
     </span>
 </div>
@@ -108,69 +108,100 @@
       
 
       
-      <h3 id="打印机状态暂停怎么处理"><a href="#打印机状态暂停怎么处理" class="headerlink" title="打印机状态暂停怎么处理"></a>打印机状态暂停怎么处理</h3><hr>
-<p>控制面板 —-  查看设备和打印机 —- 将鼠标悬停在“查看现在正在打印什么”条目上。—在展开的子菜单中，选择正在使用的打印机进行点击，选择左上角“打印机”—将“暂停打印”前的对勾点掉。</p>
-<a id="more"></a>
+      <h2 id="Android说"><a href="#Android说" class="headerlink" title="Android说"></a><strong>Android说</strong></h2><p><strong>res目录</strong></p>
+<p>存放Android项目的各种资源，比如layout,存放界面布局文件；values目录下则存放各种XML格式的资源文件，例如字符串资源文件：string.xml；颜色资源文件：colors.xml;尺寸资源文件：dimens.xml，drawable-ldpi,drawable-mdpi,drawable-hdpi,drawable-xhdpi这个4个子目录则分别用于存放分辨率、中分辨率、高分辨路、超高分辨率的4中图片文件。</p>
+<hr>
+<p>res目录是一个特殊的项目，里面存放了Android应用所用的全部资源，包括图片资源、字符串资源、颜色资源、尺寸资源等。</p>
+<p>按照约定，将不同的资源放在不同的文件夹内，这样可以方便地让aapt工具来扫描这些资源，并未它们生成对应的资源清单类：R.java</p>
+<p>例子： res/value/string.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="涉及到后端的技术"><a href="#涉及到后端的技术" class="headerlink" title="涉及到后端的技术"></a>涉及到后端的技术</h3><p>Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</p>
-<h3 id="Web-Application-技术栈例"><a href="#Web-Application-技术栈例" class="headerlink" title="Web Application 技术栈例"></a>Web Application 技术栈例</h3><ul>
-<li>后端：Scala, Play Framework, Akka, Kotlin, Spring Framework, Java</li>
-<li>前端：JavaScript, TypeScript, Angular, React, Vue.js</li>
-<li>云服务：AWS, GCP</li>
-<li>容器化：Kubernetes, Docker</li>
-<li>DevOps：Terraform, Packer</li>
-<li>监视：Mackerel、Kibana、New Relic, Sentry, Datadog</li>
-<li>数据分析：Fluentd, BigQuery, Google Data Studio, Logstash</li>
-<li>效率化：GitHub, JIRA, Confluence, Jenkins, Slack, Hubot</li>
-<li>开发方式：Scrum + XP</li>
+<p>上面资源文件中定义了一个字符串常量，常量的值为HelloWorld,一旦定义了这份字符串常量，Android项目就允许分别在java代码、XML文件中使用这份资源文件中的字符串资源。</p>
+<p><strong>1.在Java代码中使用资源</strong></p>
+<p>为了在Java代码中使用资源，AAPT会为Android项目自动生成一份R.java文件，R类里为每份资源分别定义了一个内部类，其中每个资源项对应于内部类里一个Int类型的Field。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> app_name=<span class="number">0x7f040000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>借助于AAPT自动生成R类的帮助，在JAVA代码中通过R.string.app_name引用到“Hello World”字符串常量。</p>
+<p><strong>2.在xml文件中使用资源</strong></p>
+<p>在XML文件中使用资源更加简单，只要按照如下格式来访问即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="tag">&lt;<span class="name">资源对应的内部类的类名</span>&gt;</span>/<span class="tag">&lt;<span class="name">资源项的名称</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>比如我们要访问上面的字符串资源中定义的“HelloWorld”字符串常量，则使用如下形式引用：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@string/app_name</span><br></pre></td></tr></table></figure>
+
+<p>还有一种情况：为该组件分配标识符</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@+id/<span class="tag">&lt;<span class="name">标识符代号</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:id="@+id/ok"</span><br></pre></td></tr></table></figure>
+
+<p>接下来就可以在程序中引用该组件。</p>
+<p>如果在Java中获取该组件，通过调用Activity的findViewById()方法即可实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@id&#x2F;&lt;标识符代号&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>src目录</strong></p>
+<p>只是一个普通的、保存Java源文件的目录。</p>
+<p><strong>AndroidManifest.xml</strong></p>
+<p>文件时Android项目的系统清单文件，它用于控制Android应用的名称、图标、访问权限等整体属性。除此之外，Android应用的Activity、Service、ContentProvider、BroadcastReceiver这4大组件都需要在该文件中配置。</p>
+<p><strong>gen目录</strong></p>
+<p>用于保存自动生成的、位于Android项目包下的R.java文件。R.java可以理解成Android应用的资源字典。</p>
+<p>AAPT:</p>
+<p>aapt即Android Asset Packaging Tool，在SDK的build-tools目录下。该工具可以查看，创建， 更新ZIP格式的文档附件(zip, jar, apk)。也可将资源文件编译成<a href="https://baike.so.com/doc/6848461-7065887.html" target="_blank" rel="noopener">二进制文件</a>，尽管你可能没有直接使用过aapt工具，但是build scripts和IDE<a href="https://baike.so.com/doc/1483288-1568456.html" target="_blank" rel="noopener">插件</a>会使用这个工具打包apk文件构成一个Android 应用程序。在使用aapt之前需要在环境变量里面配置SDK-tools路径，或者是路径+aapt的方式进入aapt。</p>
+<p>AAPT生成R.java文件的规则主要是如下两条：</p>
+<ul>
+<li>每类资源都对应于R类的一个内部类。比如所有界面布局资源对应于layout内部类；所有字符串资源对应于string内部类；所有标识符资源对应于id内部类；</li>
+<li>每个具体的资源项都对应于内部类的一个public staitc final int类型的Field。</li>
 </ul>
-<h3 id="保护眼睛的一些背景色代码"><a href="#保护眼睛的一些背景色代码" class="headerlink" title="保护眼睛的一些背景色代码"></a>保护眼睛的一些背景色代码</h3><table>
-<thead>
-<tr>
-<th>颜色</th>
-<th>代码</th>
-<th>RGB数值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>银河白</td>
-<td>#FFFFFF</td>
-<td>rgb(255, 255, 255)</td>
-</tr>
-<tr>
-<td>杏仁黄</td>
-<td>#FAF9DE</td>
-<td>rgb(250, 249, 222)</td>
-</tr>
-<tr>
-<td>秋叶褐</td>
-<td>#FFF2E2</td>
-<td>rgb(255, 242, 226)</td>
-</tr>
-<tr>
-<td>胭脂红</td>
-<td>#FDE6E0</td>
-<td>rgb(253, 230, 224)</td>
-</tr>
-<tr>
-<td>青草绿</td>
-<td>#E3EDCD</td>
-<td>rgb(227, 237, 205)</td>
-</tr>
-<tr>
-<td>海天蓝</td>
-<td>#DCE2F1</td>
-<td>rgb(220, 226, 241)</td>
-</tr>
-</tbody></table>
-<h3 id="如何关闭WINDOW自动更新"><a href="#如何关闭WINDOW自动更新" class="headerlink" title="如何关闭WINDOW自动更新"></a>如何关闭WINDOW自动更新</h3><p>Windows键+R</p>
-<p>在运行处输入 “services.msc” 点击确定。</p>
-<p>在弹出来的服务中，找到“Windows Update”</p>
-<p>找到后双击进入，在启动类型处·选择“禁用”然后点击应用。再点击确定即可</p>
-<h3 id="如何更改Eclipse-的注释颜色"><a href="#如何更改Eclipse-的注释颜色" class="headerlink" title="如何更改Eclipse 的注释颜色"></a>如何更改Eclipse 的注释颜色</h3><p>Windows– preferences – java – editor –syntax coloring –comments 中的前两个就是修改注释的颜色。</p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>WIN+方向键 可以将窗口放置在指定位置</p>
-<p>WIN+L 锁屏</p>
-<h3 id="墨菲定律"><a href="#墨菲定律" class="headerlink" title="墨菲定律"></a><strong>墨菲定律</strong></h3><p>“一种担心事情发生的即使千万分之一，但它总会发生”    【生命安全的教训】</p>
+<p><strong>bin目录</strong></p>
+<p>该目录用于存放生成的目标文件，如Java的二进制文件、资源打包文件（.ap_后缀），Dalvik虚拟机的可执行性文件（.dex后缀）等</p>
+<hr>
+<p><strong>AnndroidManifest.xml ： Android应用清单文件</strong></p>
+<p>是整个Android应用的全局描述文件，说明了该应用的名称，所使用的图标以及包含的组件等。</p>
+<p>包含信息如下：</p>
+<ul>
+<li>应用程序的包名，该包名将会作为该应用的唯一标识</li>
+<li>应用程序所包含的组件，如Activity,Service,BroadcastReceiver和ContentProvider等</li>
+<li>应用程序兼容的最低版本</li>
+<li>应用程序使用系统所需的权限声明</li>
+<li>其他程序访问该程序所需的权限声明</li>
+</ul>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200725210654538.png" alt="image-20200725210654538"></p>
+<p>Android应用基本组件</p>
+<h2 id="1-Activity"><a href="#1-Activity" class="headerlink" title="1.Activity"></a><strong>1.Activity</strong></h2><p>Activity是Android应用中负责与用户交互的组件——大致上可以想象成Swing编程中的JFrame组件。区别就是：JFrame本身可以设置布局管理器，不断地向JFrame中添加组件，但Activity只能通过setContentView(view)来显示指定的组件。</p>
+<p>View组件是所有UI控件、容器控件的基类，View组件就是Android应用中用户实实在在看到部分。但View组件需要放到容器组件中，或者使用Activity将它显示出来。如果需要通过某个Activity把指定View显示出来，调用Activity的setContentView()方法即可。</p>
+<p>setContentView()方法可接收一个View对象作为参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个线性布局管理器</span></span><br><span class="line">LinearLayout layout = <span class="keyword">new</span> LinearLayout(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//设置该Activity显示layout</span></span><br><span class="line">setContentView(layout);</span><br></pre></td></tr></table></figure>
+
+<p>setContentView()方法也接受一个布局管理资源的ID作为参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置该Activity显示main.xml文件定义的View</span></span><br><span class="line">setContentView(R.layout.main);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Service"><a href="#2-Service" class="headerlink" title="2.Service"></a><strong>2.Service</strong></h2><p>​       Service与Activity的地位是并列的，他也代表一个单独的Android组件。Service与Activity区别在于它一直在后台运行，一般不需要与用户交互，因此Service组件没有图像用户界面。</p>
+<p>​       和Activity组件需要继承Activity基类相似，Service组件需要继承Service基类。一个Service组件被运行起来之后，他将拥有自己独立的生命周期，Service组件通常用于为其他组件提供后台服务或者监控其它组件的运行状态。</p>
+<h2 id="3-BroadcastReceiver"><a href="#3-BroadcastReceiver" class="headerlink" title="3.BroadcastReceiver"></a><strong>3.BroadcastReceiver</strong></h2><p>是Android应用中另一个重要的组件，BroadcastReceiver代表广播消息接收器。从代码实现角度看，BroacastReceiver非常类似于事件编程中的监听器。与普通事件监听器不同的是，普通事件监听器监听的事件源是程序中的对象；而BroadcastReceiver监听的事件源是Android应用中的其他组件。</p>
+<p>使用BroadcastReceiver组件接收广播消息比较简单，开发者只要实现自己的BroadcastReceiver子类，并重写onReceive(Context context, Intent intent)方法即可。当其他组件通过sendBroadcast()、sendStickyBroadcast()或sendOrderedBroad()方法发送广播消息时，如果该BroadcastReceiver也对该消息“感兴趣”（通过IntentFilter配置），BroadcastReceiver的onReceive（Context context, Intent intent）方法将会被触发。</p>
+<p>开发者实现了自己的BroadcastReceiver之后，通常有两种方法来注册这个系统级的“事件监听器”</p>
+<ul>
+<li>在Java代码中通过Context.registReceiver()方法注册BroadcastReceiver</li>
+<li>在AndroidManifest.xml文件中使用&lt;reciever…/&gt;元素完成注册。</li>
+</ul>
+<h2 id="4-ContentProvider"><a href="#4-ContentProvider" class="headerlink" title="4.ContentProvider"></a><strong>4.ContentProvider</strong></h2><p>Android会有各个应用程序之间交换数据的时候，Android系统为这种跨应用的数据交换提供了一个标准：ContentProvider。当用户实现自己ContentProvider时，需要实现如下抽象方法：</p>
+<ul>
+<li>insert(Uri, ContentValues):向ContentProvider插入数据。</li>
+<li>delete(Uri,ContentValues)：删除ContentProvider中指定数据</li>
+<li>updata(Uri,ContentValues,String, String[]) ：更新ContentProvider中指定数据</li>
+<li>query(Uri,String[], String,String[],String):从ContentProvider查询数据。</li>
+</ul>
+<p>通常与ContentProvider结合使用的是ContentResolver,一个应用程序使用ContentProvider暴露自己的数据，而另一个应用程序则通过ContentResolver来访问数据。</p>
+<h3 id="使用Android-Studio-对-Android应用签名"><a href="#使用Android-Studio-对-Android应用签名" class="headerlink" title="使用Android Studio 对 Android应用签名"></a><strong>使用Android Studio 对 Android应用签名</strong></h3><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729153412733.png" alt="image-20200729153412733"></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729153504203.png" alt="image-20200729153504203"></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729153541663.png" alt="image-20200729153541663"></p>
+<p>如果有私密玥要文件就用有的再输入密码就可以。没有就接着看：</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729154113853.png" alt="image-20200729154113853"></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729154128210.png" alt="image-20200729154128210"></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729154335791.png" alt="image-20200729154335791"></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729154440350.png" alt="image-20200729154440350"></p>
+<p>有时候新建Android工程会缺少R.java文件，就需要在</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729165710922.png" alt="image-20200729165710922"></p>
+<p>这里勾上Build Auto….</p>
 
       
       <!-- reward -->
@@ -239,7 +270,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/18/%E5%B7%A5%E4%BD%9C%E7%94%9F%E6%B4%BB%E4%B8%80%E7%82%B9%E9%80%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/24/ANDROID-0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -255,19 +286,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/19/MPU-6050/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            MPU-6050
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/16/%E7%9B%B8%E6%9C%BA%E5%B0%8F%E7%99%BD%E5%85%A5%E9%97%A8/" class="article-nav-link">
+      <a href="/2020/07/20/C-%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">相机小白入门</div>
+        <div class="article-nav-title">C++的头文件</div>
       </a>
     
   </nav>

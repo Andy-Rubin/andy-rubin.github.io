@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">605</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -94,6 +94,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -106,7 +108,41 @@
       
 
       
-      
+      <h2 id="Python程序设计基础"><a href="#Python程序设计基础" class="headerlink" title="Python程序设计基础"></a><strong>Python程序设计基础</strong></h2><h3 id="常用到的算法"><a href="#常用到的算法" class="headerlink" title="常用到的算法"></a><strong>常用到的算法</strong></h3><ul>
+<li><strong>枚举算法：</strong></li>
+</ul>
+<p>例子：将苹果、橘子、香蕉、梨、菠萝5种水果做成水果拼盘，且每个水果拼盘要求有三种不同的水果，且有序摆放，问有多少种可能。</p>
+<p>算法伪代码 ：</p>
+<p>​        1 建立水果列表fruit</p>
+<p>​            2 使变量x遍历fruit</p>
+<p>​                 3 对于x的每个值，使变量y遍历fruit</p>
+<p>​                     4 对于x,y的每个值，使变量y遍历fruit</p>
+<p>​                          5 若x不等于y, x不等于z，且y不等于z就打印该方案。</p>
+<p>优化：</p>
+<p>​            对于x的每一取值，是变量y遍历fruit，若x不等于y，使变量z遍历fruit，若z不等于x且z不等于y，打印该方案。 </p>
+<ul>
+<li><strong>迭代算法</strong></li>
+</ul>
+<p>例子：谷角静夫的猜想</p>
+<p>一个自然数n，若为偶数，则将其除以2；若为奇数，则将其乘以3加1，如此有限次运算后，总可以得到1.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200806110314284.png" alt="image-20200806110314284"></p>
+<ul>
+<li><strong>递推与迭代</strong></li>
+</ul>
+<p>设要求问题规模为n的解，当n=1时，解已知或能方便得到，根据递推关系，能从i-1规模的解，推出i规模的解（i=2,3,4,…,n），这就是递推。也可以反过来，从n,n-1,…,3,2反推到1.</p>
+<p>例子：5个同学种树，站在一排后问种了多少，第一个同学种了5棵，后一同学依次都说比前一个同学多种两棵。</p>
+<p>例子：杨辉三角特点：1.第i行有i个数；2.每行的首尾两数均为1；3.除首尾两数外，其余各项数为上一行两肩上的数之和。</p>
+<p>伪代码形式：</p>
+<p>（1）输入n（杨辉三角行数）（2）设置二维数组a[n,n]; （3）循环（i从1到n）对于每行的首尾数，a[i,1]=1,a[i,i]=1,（首尾两数均为1）。对于每行的其他数：a[i,j]=a[i-1,j-1]+a[i-1,j]； （4）输出二维数组a[n,n]的值。</p>
+<ul>
+<li><p>贪心算法</p>
+<p>例子：买某个物品34.5元，顾客交给售货员100元，需要找65.5元，问按照现有货币体系需要找的最少超票数。4：50，10，5，0.5，</p>
+</li>
+</ul>
+<p>贪心算法是指在问题求解时总是做出当前看最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局势最优解。</p>
+<hr>
+<p>Python的内置类型</p>
+
       
       <!-- reward -->
       
