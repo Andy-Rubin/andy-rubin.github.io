@@ -1171,7 +1171,24 @@ public class Muster{
 </ul>
 <p>贪心算法是指在问题求解时总是做出当前看最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局势最优解。</p>
 <hr>
-<p>Python的内置类型</p>
+<p><strong>Python的内置类型</strong></p>
+<ul>
+<li>简单数据类型：</li>
+</ul>
+<p>整型int  , 浮点型float , 复数complex , 布尔类型 bool</p>
+<ul>
+<li>序列对象：</li>
+</ul>
+<p>字符串str, 元祖tuple, 列表list</p>
+<ul>
+<li>其他类型</li>
+</ul>
+<p>集合类型 set   字典类型 dict</p>
+<hr>
+<h2 id="算法与程序设计基础Py版"><a href="#算法与程序设计基础Py版" class="headerlink" title="算法与程序设计基础Py版"></a><strong>算法与程序设计基础</strong>Py版</h2><h4 id="字符查找"><a href="#字符查找" class="headerlink" title="字符查找"></a><strong>字符查找</strong></h4><p>​        如果需要在某个字符串中查找特定的字符，即可以通过对字符串进行遍历，又可以通过字符串的函数处理。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    str=input(<span class="string">"请输入一个字符串（quit 退出）\n"</span>);</span><br><span class="line">    <span class="keyword">if</span>(str==<span class="string">"quit"</span>):</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        findok=<span class="literal">False</span>;</span><br><span class="line">        <span class="keyword">for</span> mychar int str:</span><br><span class="line">            <span class="keyword">if</span> mychar == <span class="string">"梦"</span>：</span><br><span class="line">            	findok=Treu</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">         <span class="keyword">if</span> finddok:</span><br><span class="line">            print(<span class="string">"find it"</span>)</span><br><span class="line">         <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"Not find"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​        </p>
 ]]></content>
   </entry>
   <entry>
@@ -5733,7 +5750,46 @@ private int maxCount(Map&lt;Integer, Integer&gt; countForNum){
 <p>Machine Learning Foundations  </p>
 <p>本学习旨在将基础变为工具  </p>
 <p>机器学习：理论和实际工具的混合体   </p>
-]]></content>
+<p>主要任务有，</p>
+<p>分类：将实例数据划分到合适的分类中。</p>
+<p>回归：主要用于预测数值型数据。数据拟合曲线：通过给定数据点的最优拟合曲线。</p>
+<p>分类和回归属于监督学习。是因为这类的算法必须知道预测什么，即目标变量的分类信息。</p>
+<p>无监督学习中：数据没有类别信息，也不会给定目标值。在无监督学习中，将数据集合分成有类似的对象组成的多个类的过程被称为聚类；将寻找描述数据统计值的过程称之为密度估计。此外，无监督学习还可以减少数据特征的维度，以便用二维或三维图形更加直观地展示数据信息。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th align="center">监督学习算法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">k-近邻算法，线性回归，朴素贝叶斯算法，局部加权线性回归，支持向量机，Ridge回归，决策树，Lasso最小回归系数估计</td>
+</tr>
+<tr>
+<td align="center"><strong>无监督学习算法</strong></td>
+</tr>
+<tr>
+<td align="center">K-均值，最大期望算法，DBSCAN,Parzen窗设计</td>
+</tr>
+</tbody></table>
+<p>如何选择：</p>
+<p>想要预测目标变量的值,可以选择监督学习算法，进一步如果目标变量是离散型的，就选择分类算法；如果目标变量是连续性的就选择回归算法。</p>
+<p>如果不想预测目标变量的值，则可以选择无监督学习算法。进一步分析是否需要将数据划分为离散的组。如果这是唯一的需求，就使用聚类算法。如果还需要估计数据与每个分组的相似程度，则需要使用密度估计算法。</p>
+<p>但上述选择方法并非是一成不变的，方法选择原则并非规定统一。主要还是充分了解数据的特性，了解实际数据越充分越容易创建符合实际需求的应用程序。</p>
+<h3 id="开发机器学习应用的步骤："><a href="#开发机器学习应用的步骤：" class="headerlink" title="开发机器学习应用的步骤："></a><strong>开发机器学习应用的步骤：</strong></h3><ul>
+<li>收集数据</li>
+<li>准备输入数据</li>
+<li>分析输入数据</li>
+<li>训练算法</li>
+<li>测试算法</li>
+<li>使用算法</li>
+</ul>
+<h3 id="k-近邻算法-KNN"><a href="#k-近邻算法-KNN" class="headerlink" title="k-近邻算法(KNN)"></a><strong>k-近邻算法(KNN)</strong></h3><p>优点：精度高，对异常值不敏感，无数据输入假定</p>
+<p>缺点：计算复杂度高、空间复杂度高</p>
+<p>适用数据范围：数值型和标称型</p>
+<hr>
+<p>工作原理：存在一个样本数据集合，也称作训练样本集，并且样本集中每个数据都存在标签，即我们知道样本集中每一数据与所属分类的对应关系。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据（最近邻）的分类标签。一般来说只选择样本数据集中前k个最相似的数据，一般k为不大于20的整数</p>
+<h2 id="利用PCA来简化数据"><a href="#利用PCA来简化数据" class="headerlink" title="利用PCA来简化数据"></a><strong>利用PCA来简化数据</strong></h2>]]></content>
       <categories>
         <category>基础</category>
       </categories>
@@ -12373,6 +12429,112 @@ struct semaphore sema;
 <p>有时候新建Android工程会缺少R.java文件，就需要在</p>
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200729165710922.png" alt="image-20200729165710922"></p>
 <p>这里勾上Build Auto….</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>回溯算法</title>
+    <url>/2020/08/17/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;(); </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 主函数，输入一组不重复的数字，返回它们的全排列 */</span> </span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;    </span><br><span class="line">    <span class="comment">// 记录「路径」    </span></span><br><span class="line">    LinkedList&lt;Integer&gt; track = <span class="keyword">new</span> LinkedList&lt;&gt;();    </span><br><span class="line">    backtrack(nums, track);    </span><br><span class="line">    <span class="keyword">return</span> res; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 路径：记录在 track 中 </span></span><br><span class="line"><span class="comment">// 选择列表：nums 中不存在于 track 的那些元素 </span></span><br><span class="line"><span class="comment">// 结束条件：nums 中的元素全都在 track 中出现 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span>[] nums, LinkedList&lt;Integer&gt; track)</span> </span>&#123;    </span><br><span class="line">    <span class="comment">// 触发结束条件    </span></span><br><span class="line">    <span class="keyword">if</span> (track.size() == nums.length) &#123;        </span><br><span class="line">        res.add(<span class="keyword">new</span> LinkedList(track));        </span><br><span class="line">        <span class="keyword">return</span>;    </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) </span><br><span class="line">    &#123;        </span><br><span class="line">        <span class="comment">// 排除不合法的选择       </span></span><br><span class="line">        <span class="keyword">if</span> (track.contains(nums[i]))            </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 做选择        </span></span><br><span class="line">        track.add(nums[i]);  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 进入下一层决策树        </span></span><br><span class="line">        backtrack(nums, track); </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 取消选择        </span></span><br><span class="line">        track.removeLast();    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>数据库</title>
+    <url>/2020/08/18/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h4><p>数据库管理系统（DBMS）：有一个相互关联的数据的集合和一组用于访问这些数据的程序组成。这个数据集合通常称作数据库，其中包含了关于某个企业的信息。其主要目标是要提供一种可以方便、高效地存取数据库信息的途径。</p>
+<p>传统的文件处理系统存在很多弊端：</p>
+<p>数据的冗余和不一致；数据访问困难；数据孤立；完整性问题；</p>
+<p>原子性问题：比如银行系统中借和贷，从A中取出500，放进B账户时，系统故障，恢复后可能会A中没了500，但是B中没有多500。如同任何别的设备一样，计算机系统也会发生故障，一旦故障发生，数据就应被恢复到故障发生以前的一致的状态，对很多应用来说，这样的保证是至关重要的。显然，为了数据库一致性，这里借和贷两个操作必须是要么发生，要么都不发生。也就是说转账必须是原子的——它要么全部发生要么根本不发生。</p>
+<p>并发访问异常；安全性问题；</p>
+<h4 id="数据视图"><a href="#数据视图" class="headerlink" title="数据视图"></a><strong>数据视图</strong></h4><p>数据库系统是一些相互关联的数据以及一组使得用户可以访问和修改这些数据的程序的集合。数据库系统的一个主要目的是给用户提供数据的抽象视图，即系统隐藏关于数据存储和维护的某些细节。</p>
+<h5 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a><strong>数据抽象</strong></h5><p>一个可用的系统必须能高效地检索数据。这种高效性的需求促使设计者在数据库中使用复杂的数据结构表示数据。而用户不能直接懂这些专业知识，这就需要开发人员对一下几层，用户屏蔽复杂性，简化交互：</p>
+<ul>
+<li><strong>物理层</strong></li>
+</ul>
+<p>最低层次的抽象，描述数据实际上是怎样存储的。物理层详细描述复杂的底层数据结构。</p>
+<ul>
+<li><strong>逻辑层</strong></li>
+</ul>
+<p>比物理层层次稍高的抽象，描述数据库中存储什么数据及这些数据间存在什么关系。这样逻辑层就通过少量相对简单的结构描述了整个数据库。虽然逻辑层的简单结构的实现可能涉及复杂的物理层结构，但逻辑层的用户不必知道这样的复杂性。这称作物理数据独立性。数据库管理员使用抽象的逻辑层，他必须确定数据库中应该保存哪些信息。</p>
+<ul>
+<li><strong>视图层</strong></li>
+</ul>
+<p>最高层次的抽象，只描述整个数据库的某个部分。尽管在逻辑层使用了比较简答的结构，但由于一个大型数据库中所存储的信息的多样性，仍存在一定程度的复杂性。数据库系统的很多用户并不需要关系所有的信息，而只需要访问数据库的一部分。视图层抽象的定义正是为了使这样的用户与系统的交互更简单。系统可以同一数据库提供多个视图。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">type instructor = recode</span><br><span class="line">	ID: char(5);</span><br><span class="line">	name:char(20);</span><br><span class="line">	dept_name:char(20);</span><br><span class="line">	salary:numeric(8,2);</span><br><span class="line">	<span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码定义了一个具有四个字段的新纪录</p>
+<p>在物理层，一个instrutor记录可能被描述为连续存储位置组成的存储块。</p>
+<p>在逻辑层，，每个这样的记录通过类型定义进行描述。在逻辑层上同时还要定义这些记录类型的相互关系。程序设计人员正是这个抽象层次上使用程序语言进行工作。</p>
+<p>在视图层，计算机用户看见的是为其屏蔽了数据类型细节的一组应用程序。</p>
+<p><strong>过程化数据操作语言：</strong></p>
+<p>它使得用户可以访问或操纵哪些按照某种适当的数据模型组织起来的数据。以下访问类型：</p>
+<ul>
+<li>对存储在数据库中的信息进行检索</li>
+<li>从数据库中删除信息</li>
+<li>向数据库中插入新的信息</li>
+<li>修改数据库中存储的信息</li>
+</ul>
+<p><strong>关系数据库</strong></p>
+<p>关系数据库基于关系模型，使用一系列来表达数据以及这些数据之间的联系。关系数据库也包括DML（过程化数据操作语言）和DDL（数据定义语言）</p>
+<p>instructor</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+<th>DEPT_NAME</th>
+<th>SALARY</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12121</td>
+<td>WU</td>
+<td>HISTORY</td>
+<td>60000</td>
+</tr>
+</tbody></table>
+<p>department</p>
+<table>
+<thead>
+<tr>
+<th>DEPT_NAME</th>
+<th>BUILDING</th>
+<th>BUDGET</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Music</td>
+<td>Packard</td>
+<td>80000</td>
+</tr>
+</tbody></table>
+<h4 id="表"><a href="#表" class="headerlink" title="表"></a>表</h4><p> 每个表有很多列，每个列有唯一的名字。比如instructor表，表示，ID为12121的WU老师，是物理系成员，工资60000.</p>
+<p>关系模型是基于记录的模型的一个实例。基于记录的模型，之所以有次称谓，因为数据库的结构是几种固定格式的记录。每个表包含一种特定类型的记录。每种记录类型定义固定数目的字段或属性。表的列对应记录类型的属性。</p>
+<h4 id="数据操纵语言"><a href="#数据操纵语言" class="headerlink" title="数据操纵语言"></a><strong>数据操纵语言</strong></h4><p>SQL查询语言是非过程化的。它以几个表作为输入，总是仅返回一个表。例如：找出历史系的所有教员的名字：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> instruct.name</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> instructor.dept_name=<span class="string">'History'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个查询指定了从instrcut表中，要取回的是dept_name为History的那些行，并且这些行的name属性要显示出来。更具体点，执行本查询的结果是一个表，它有一列name和若干行，每一行都是dept_name为History的一个老师的名字。</p>
+</blockquote>
+<p>查询可以涉及来自不止一个表的信息。下面将找出经费超过95000的系相关的所有教员的ID和系名。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> instructor.ID, department.dept_name</span><br><span class="line"><span class="keyword">from</span> instruct, department</span><br><span class="line"><span class="keyword">where</span> instructor.dept_name=departname.dept_name <span class="keyword">and</span> department.budget &gt; <span class="number">95000</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据定义语言"><a href="#数据定义语言" class="headerlink" title="数据定义语言"></a><strong>数据定义语言</strong></h4><p>SQL提供了一个丰富的DDL语言，通过它，我们可以定义表、完整性约束、断言，等。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> tabel department</span><br><span class="line">	(dept_name <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">    building <span class="built_in">char</span>(<span class="number">15</span>),</span><br><span class="line">    budget <span class="built_in">numeric</span>(<span class="number">12</span>,<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="实体-联系模型"><a href="#实体-联系模型" class="headerlink" title="实体-联系模型"></a><strong>实体-联系模型</strong></h4><p>实体-联系(E-R)数据模型使用一组称作实体的基本对象，以及这些对象间的联系。实体是现实世界中可区别于其他对象的一件“事情”或一个“物体”。</p>
+<p>数据库中实体通过“<strong>属性</strong>”集合来描述。例如ID,name和salary.</p>
+<p>联系是几个实体之间的关联。例如,member联系将一位教师和她所在的系关联在一起。同一类型的所有实体的集合称作<strong>实体集</strong>，同一类型的所有联系的集合称作<strong>联系集</strong>。</p>
+<p>数据库的总体逻辑结构（模式）可以用实体-联系图进行图形化表示。有几种方法来画这样的图。最常用的方法之一是采用统一建模语言（UML）。</p>
+<ul>
+<li><p>实体集用矩形表示，实体名在头部，属性名列在下面</p>
+</li>
+<li><p>联系集用连接一对相关的实体集的菱形表示，联系名在菱形里。</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200818145549679.png" alt="image-20200818145549679"></p>
+</li>
+</ul>
+<p>除了实体和联系外，E-R模型还描述了数据库必须遵守的对其内容的某些约束。一个重要的约束是<strong>映射基数</strong>。它表示通过某个联系集能与一实体进行关联的实体数目。</p>
+<h4 id="数据存储和查询"><a href="#数据存储和查询" class="headerlink" title="数据存储和查询"></a><strong>数据存储和查询</strong></h4><p>数据库系统划分为不同的模块，每个模块完成</p>
 ]]></content>
   </entry>
 </search>

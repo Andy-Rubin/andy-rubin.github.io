@@ -85,6 +85,243 @@
     
     
     
+    <article id="post-Python" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/13/Python/"
+    >Python</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/13/Python/" class="article-date">
+  <time datetime="2020-05-13T07:52:02.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="Python程序设计基础"><a href="#Python程序设计基础" class="headerlink" title="Python程序设计基础"></a><strong>Python程序设计基础</strong></h2><h3 id="常用到的算法"><a href="#常用到的算法" class="headerlink" title="常用到的算法"></a><strong>常用到的算法</strong></h3><ul>
+<li><strong>枚举算法：</strong></li>
+</ul>
+<p>例子：将苹果、橘子、香蕉、梨、菠萝5种水果做成水果拼盘，且每个水果拼盘要求有三种不同的水果，且有序摆放，问有多少种可能。</p>
+<p>算法伪代码 ：</p>
+<p>​        1 建立水果列表fruit</p>
+<p>​            2 使变量x遍历fruit</p>
+<p>​                 3 对于x的每个值，使变量y遍历fruit</p>
+<p>​                     4 对于x,y的每个值，使变量y遍历fruit</p>
+<p>​                          5 若x不等于y, x不等于z，且y不等于z就打印该方案。</p>
+<p>优化：</p>
+<p>​            对于x的每一取值，是变量y遍历fruit，若x不等于y，使变量z遍历fruit，若z不等于x且z不等于y，打印该方案。 </p>
+<ul>
+<li><strong>迭代算法</strong></li>
+</ul>
+<p>例子：谷角静夫的猜想</p>
+<p>一个自然数n，若为偶数，则将其除以2；若为奇数，则将其乘以3加1，如此有限次运算后，总可以得到1.</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200806110314284.png" alt="image-20200806110314284"></p>
+<ul>
+<li><strong>递推与迭代</strong></li>
+</ul>
+<p>设要求问题规模为n的解，当n=1时，解已知或能方便得到，根据递推关系，能从i-1规模的解，推出i规模的解（i=2,3,4,…,n），这就是递推。也可以反过来，从n,n-1,…,3,2反推到1.</p>
+<p>例子：5个同学种树，站在一排后问种了多少，第一个同学种了5棵，后一同学依次都说比前一个同学多种两棵。</p>
+<p>例子：杨辉三角特点：1.第i行有i个数；2.每行的首尾两数均为1；3.除首尾两数外，其余各项数为上一行两肩上的数之和。</p>
+<p>伪代码形式：</p>
+<p>（1）输入n（杨辉三角行数）（2）设置二维数组a[n,n]; （3）循环（i从1到n）对于每行的首尾数，a[i,1]=1,a[i,i]=1,（首尾两数均为1）。对于每行的其他数：a[i,j]=a[i-1,j-1]+a[i-1,j]； （4）输出二维数组a[n,n]的值。</p>
+<ul>
+<li><p>贪心算法</p>
+<p>例子：买某个物品34.5元，顾客交给售货员100元，需要找65.5元，问按照现有货币体系需要找的最少超票数。4：50，10，5，0.5，</p>
+</li>
+</ul>
+<p>贪心算法是指在问题求解时总是做出当前看最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局势最优解。</p>
+<hr>
+<p><strong>Python的内置类型</strong></p>
+<ul>
+<li>简单数据类型：</li>
+</ul>
+<p>整型int  , 浮点型float , 复数complex , 布尔类型 bool</p>
+<ul>
+<li>序列对象：</li>
+</ul>
+<p>字符串str, 元祖tuple, 列表list</p>
+<ul>
+<li>其他类型</li>
+</ul>
+<p>集合类型 set   字典类型 dict</p>
+<hr>
+<h2 id="算法与程序设计基础Py版"><a href="#算法与程序设计基础Py版" class="headerlink" title="算法与程序设计基础Py版"></a><strong>算法与程序设计基础</strong>Py版</h2><h4 id="字符查找"><a href="#字符查找" class="headerlink" title="字符查找"></a><strong>字符查找</strong></h4><p>​        如果需要在某个字符串中查找特定的字符，即可以通过对字符串进行遍历，又可以通过字符串的函数处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    str=input(<span class="string">"请输入一个字符串（quit 退出）\n"</span>);</span><br><span class="line">    <span class="keyword">if</span>(str==<span class="string">"quit"</span>):</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        findok=<span class="literal">False</span>;</span><br><span class="line">        <span class="keyword">for</span> mychar int str:</span><br><span class="line">            <span class="keyword">if</span> mychar == <span class="string">"梦"</span>：</span><br><span class="line">            	findok=Treu</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">         <span class="keyword">if</span> finddok:</span><br><span class="line">            print(<span class="string">"find it"</span>)</span><br><span class="line">         <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"Not find"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​        </p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-专业词汇" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/13/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/"
+    >专业词汇</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/13/%E4%B8%93%E4%B8%9A%E8%AF%8D%E6%B1%87/" class="article-date">
+  <time datetime="2020-05-13T02:35:46.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>子网掩码（netmask）</strong>：</p>
+<p>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，<br>以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。<br>子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。  </p>
+<p>子网掩码是一个32位地址，是与IP地址结合使用的一种技术。它的主要作用有两个，<br>一是用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上。<br>二是用于将一个大的IP网络划分为若干小的子网络。  </p>
+<p><strong>网络地址</strong><br>在计算机领域中，网络就是用物理链路将各个孤立的工作站或主机相连在一起，组成数据链路，从而达到资源共享和通信的目的。<br>网络地址（Network address）则是互联网上的节点在网络中具有的逻辑地址，可对节点进行寻址。<br>IP地址是在互联网上给主机编址的方式，为每个计算机分配一个逻辑地址，<br>这样不但能够对计算机进行识别，还能进行信息共享。   </p>
+<p><strong>主机地址</strong><br>IP地址是TCP/IP网络中用来唯一标识每台主机或设备的地址，IP地址由32位（共四个八位组）的二进制组成。IP地址分为两部分，左边网络编号部分用来标识主机所在的网络；<br>右边部分用来标识主机本身，这部分称为主机地址。连接到同一网络的主机必须拥有相同的网络编号。一个 IP地址的网络部分被称为网络号或者网络地址,<br>主机可以与具有相同的网络号的设备直接通讯，在没有连接设备的情况下，即使共享相同的物理网段，网络号不同则无法进行通讯，<br>IP 地址的网络地址使路由器可以将分组置于正确的网段上 ,IP 地址网络号后的主机号可以使路由器能够二层帧封装的分组传送到网络上的一台特定的主机，<br>使主机号与 MAC 地址进行正确的映射中的关键问题在于使用子网掩码来确定或者获取远程主机的网络地址信息。网络地址之后的部分为主机地址。  </p>
+<p><strong>C语言的库函数</strong></p>
+<p>动态存储分配函数</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>函数原型</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>calloc</td>
+<td>void * calloc(unsigned n, unsign size);</td>
+<td>分配n个数据项的内存连续空间，每个数据项的大小为size</td>
+<td>分配内存单元的起始地址，如不成功，返回0</td>
+</tr>
+<tr>
+<td>free</td>
+<td>void free(od *p);</td>
+<td>释放p所指的内存区</td>
+<td>无</td>
+</tr>
+<tr>
+<td>malloc</td>
+<td>void * malloc(unsigned size);</td>
+<td>分配size字节的存储区</td>
+<td>所分配的内存起始地址，如内存不够，返回0</td>
+</tr>
+<tr>
+<td>realloc</td>
+<td>void * realloc(void *p, unsigned size);</td>
+<td>将p所指出的已分配内存区的大小 改为size,size可以比原来分配的空间大或小</td>
+<td>返回指向该内存区的指针</td>
+</tr>
+</tbody></table>
+<p>struct 结构体名</p>
+<p>union 共用体名</p>
+<p>enum 枚举类型名</p>
+<p>用typedef定义与共用体的定义形式为</p>
+<p>struct 结构体名</p>
+<p>{成员表列}；</p>
+<p>union 共用体名</p>
+<p>{成员表列}</p>
+<p>变量的定义形式为：</p>
+<p>存储类别   数据类型  变量表列</p>
+<p>static float a,b,c;</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-纸上练习的程序" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -629,152 +866,6 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%AF%B4/" rel="tag">代码说</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-openpose" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/30/openpose/"
-    >openpose</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/30/openpose/" class="article-date">
-  <time datetime="2020-04-30T02:03:08.000Z" itemprop="datePublished">2020-04-30</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="Realtime-Multi-Person-2D-Pose-Estimation-using-Part-Affinity-Fields"><a href="#Realtime-Multi-Person-2D-Pose-Estimation-using-Part-Affinity-Fields" class="headerlink" title="Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields"></a>Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</h3>
-      
-      <a class="article-more-link" href="/2020/04/30/openpose/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-ML-贝塞尔曲线" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/30/ML-%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF/"
-    >ML-贝塞尔曲线</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/30/ML-%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF/" class="article-date">
-  <time datetime="2020-04-30T01:25:29.000Z" itemprop="datePublished">2020-04-30</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/">机器学习算法</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>贝塞尔曲线，是应用于二维图形应用程序的数学曲线。曲线定义：起始点、终止点（锚点）、控制点。通过调整控制点，贝塞尔曲线的形状会发生变化。<br>B(t)为 t 时间下点的坐标；<br>P0为起点，Pn为终点，Pi为控制点<br>一阶贝塞尔曲线（线段）：  </p>
-      
-      <a class="article-more-link" href="/2020/04/30/ML-%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bezier-curve/" rel="tag">Bezier curve</a></li></ul>
 
 
     </footer>

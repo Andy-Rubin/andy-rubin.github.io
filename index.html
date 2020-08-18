@@ -85,6 +85,236 @@
     
     
     
+    <article id="post-数据库" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/08/18/%E6%95%B0%E6%8D%AE%E5%BA%93/"
+    >数据库</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/08/18/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2020-08-18T02:41:59.000Z" itemprop="datePublished">2020-08-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h4><p>数据库管理系统（DBMS）：有一个相互关联的数据的集合和一组用于访问这些数据的程序组成。这个数据集合通常称作数据库，其中包含了关于某个企业的信息。其主要目标是要提供一种可以方便、高效地存取数据库信息的途径。</p>
+<p>传统的文件处理系统存在很多弊端：</p>
+<p>数据的冗余和不一致；数据访问困难；数据孤立；完整性问题；</p>
+<p>原子性问题：比如银行系统中借和贷，从A中取出500，放进B账户时，系统故障，恢复后可能会A中没了500，但是B中没有多500。如同任何别的设备一样，计算机系统也会发生故障，一旦故障发生，数据就应被恢复到故障发生以前的一致的状态，对很多应用来说，这样的保证是至关重要的。显然，为了数据库一致性，这里借和贷两个操作必须是要么发生，要么都不发生。也就是说转账必须是原子的——它要么全部发生要么根本不发生。</p>
+<p>并发访问异常；安全性问题；</p>
+<h4 id="数据视图"><a href="#数据视图" class="headerlink" title="数据视图"></a><strong>数据视图</strong></h4><p>数据库系统是一些相互关联的数据以及一组使得用户可以访问和修改这些数据的程序的集合。数据库系统的一个主要目的是给用户提供数据的抽象视图，即系统隐藏关于数据存储和维护的某些细节。</p>
+<h5 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a><strong>数据抽象</strong></h5><p>一个可用的系统必须能高效地检索数据。这种高效性的需求促使设计者在数据库中使用复杂的数据结构表示数据。而用户不能直接懂这些专业知识，这就需要开发人员对一下几层，用户屏蔽复杂性，简化交互：</p>
+<ul>
+<li><strong>物理层</strong></li>
+</ul>
+<p>最低层次的抽象，描述数据实际上是怎样存储的。物理层详细描述复杂的底层数据结构。</p>
+<ul>
+<li><strong>逻辑层</strong></li>
+</ul>
+<p>比物理层层次稍高的抽象，描述数据库中存储什么数据及这些数据间存在什么关系。这样逻辑层就通过少量相对简单的结构描述了整个数据库。虽然逻辑层的简单结构的实现可能涉及复杂的物理层结构，但逻辑层的用户不必知道这样的复杂性。这称作物理数据独立性。数据库管理员使用抽象的逻辑层，他必须确定数据库中应该保存哪些信息。</p>
+<ul>
+<li><strong>视图层</strong></li>
+</ul>
+<p>最高层次的抽象，只描述整个数据库的某个部分。尽管在逻辑层使用了比较简答的结构，但由于一个大型数据库中所存储的信息的多样性，仍存在一定程度的复杂性。数据库系统的很多用户并不需要关系所有的信息，而只需要访问数据库的一部分。视图层抽象的定义正是为了使这样的用户与系统的交互更简单。系统可以同一数据库提供多个视图。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type instructor = recode</span><br><span class="line">	ID: char(5);</span><br><span class="line">	name:char(20);</span><br><span class="line">	dept_name:char(20);</span><br><span class="line">	salary:numeric(8,2);</span><br><span class="line">	<span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码定义了一个具有四个字段的新纪录</p>
+<p>在物理层，一个instrutor记录可能被描述为连续存储位置组成的存储块。</p>
+<p>在逻辑层，，每个这样的记录通过类型定义进行描述。在逻辑层上同时还要定义这些记录类型的相互关系。程序设计人员正是这个抽象层次上使用程序语言进行工作。</p>
+<p>在视图层，计算机用户看见的是为其屏蔽了数据类型细节的一组应用程序。</p>
+<p><strong>过程化数据操作语言：</strong></p>
+<p>它使得用户可以访问或操纵哪些按照某种适当的数据模型组织起来的数据。以下访问类型：</p>
+<ul>
+<li>对存储在数据库中的信息进行检索</li>
+<li>从数据库中删除信息</li>
+<li>向数据库中插入新的信息</li>
+<li>修改数据库中存储的信息</li>
+</ul>
+<p><strong>关系数据库</strong></p>
+<p>关系数据库基于关系模型，使用一系列来表达数据以及这些数据之间的联系。关系数据库也包括DML（过程化数据操作语言）和DDL（数据定义语言）</p>
+<p>instructor</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+<th>DEPT_NAME</th>
+<th>SALARY</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12121</td>
+<td>WU</td>
+<td>HISTORY</td>
+<td>60000</td>
+</tr>
+</tbody></table>
+<p>department</p>
+<table>
+<thead>
+<tr>
+<th>DEPT_NAME</th>
+<th>BUILDING</th>
+<th>BUDGET</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Music</td>
+<td>Packard</td>
+<td>80000</td>
+</tr>
+</tbody></table>
+<h4 id="表"><a href="#表" class="headerlink" title="表"></a>表</h4><p> 每个表有很多列，每个列有唯一的名字。比如instructor表，表示，ID为12121的WU老师，是物理系成员，工资60000.</p>
+<p>关系模型是基于记录的模型的一个实例。基于记录的模型，之所以有次称谓，因为数据库的结构是几种固定格式的记录。每个表包含一种特定类型的记录。每种记录类型定义固定数目的字段或属性。表的列对应记录类型的属性。</p>
+<h4 id="数据操纵语言"><a href="#数据操纵语言" class="headerlink" title="数据操纵语言"></a><strong>数据操纵语言</strong></h4><p>SQL查询语言是非过程化的。它以几个表作为输入，总是仅返回一个表。例如：找出历史系的所有教员的名字：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> instruct.name</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> instructor.dept_name=<span class="string">'History'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个查询指定了从instrcut表中，要取回的是dept_name为History的那些行，并且这些行的name属性要显示出来。更具体点，执行本查询的结果是一个表，它有一列name和若干行，每一行都是dept_name为History的一个老师的名字。</p>
+</blockquote>
+<p>查询可以涉及来自不止一个表的信息。下面将找出经费超过95000的系相关的所有教员的ID和系名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> instructor.ID, department.dept_name</span><br><span class="line"><span class="keyword">from</span> instruct, department</span><br><span class="line"><span class="keyword">where</span> instructor.dept_name=departname.dept_name <span class="keyword">and</span> department.budget &gt; <span class="number">95000</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据定义语言"><a href="#数据定义语言" class="headerlink" title="数据定义语言"></a><strong>数据定义语言</strong></h4><p>SQL提供了一个丰富的DDL语言，通过它，我们可以定义表、完整性约束、断言，等。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> tabel department</span><br><span class="line">	(dept_name <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">    building <span class="built_in">char</span>(<span class="number">15</span>),</span><br><span class="line">    budget <span class="built_in">numeric</span>(<span class="number">12</span>,<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="实体-联系模型"><a href="#实体-联系模型" class="headerlink" title="实体-联系模型"></a><strong>实体-联系模型</strong></h4><p>实体-联系(E-R)数据模型使用一组称作实体的基本对象，以及这些对象间的联系。实体是现实世界中可区别于其他对象的一件“事情”或一个“物体”。</p>
+<p>数据库中实体通过“<strong>属性</strong>”集合来描述。例如ID,name和salary.</p>
+<p>联系是几个实体之间的关联。例如,member联系将一位教师和她所在的系关联在一起。同一类型的所有实体的集合称作<strong>实体集</strong>，同一类型的所有联系的集合称作<strong>联系集</strong>。</p>
+<p>数据库的总体逻辑结构（模式）可以用实体-联系图进行图形化表示。有几种方法来画这样的图。最常用的方法之一是采用统一建模语言（UML）。</p>
+<ul>
+<li><p>实体集用矩形表示，实体名在头部，属性名列在下面</p>
+</li>
+<li><p>联系集用连接一对相关的实体集的菱形表示，联系名在菱形里。</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200818145549679.png" alt="image-20200818145549679"></p>
+</li>
+</ul>
+<p>除了实体和联系外，E-R模型还描述了数据库必须遵守的对其内容的某些约束。一个重要的约束是<strong>映射基数</strong>。它表示通过某个联系集能与一实体进行关联的实体数目。</p>
+<h4 id="数据存储和查询"><a href="#数据存储和查询" class="headerlink" title="数据存储和查询"></a><strong>数据存储和查询</strong></h4><p>数据库系统划分为不同的模块，每个模块完成</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
+    <article id="post-回溯算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/08/17/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"
+    >回溯算法</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/08/17/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-08-17T08:05:02.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;(); </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 主函数，输入一组不重复的数字，返回它们的全排列 */</span> </span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;    </span><br><span class="line">    <span class="comment">// 记录「路径」    </span></span><br><span class="line">    LinkedList&lt;Integer&gt; track = <span class="keyword">new</span> LinkedList&lt;&gt;();    </span><br><span class="line">    backtrack(nums, track);    </span><br><span class="line">    <span class="keyword">return</span> res; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 路径：记录在 track 中 </span></span><br><span class="line"><span class="comment">// 选择列表：nums 中不存在于 track 的那些元素 </span></span><br><span class="line"><span class="comment">// 结束条件：nums 中的元素全都在 track 中出现 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span>[] nums, LinkedList&lt;Integer&gt; track)</span> </span>&#123;    </span><br><span class="line">    <span class="comment">// 触发结束条件    </span></span><br><span class="line">    <span class="keyword">if</span> (track.size() == nums.length) &#123;        </span><br><span class="line">        res.add(<span class="keyword">new</span> LinkedList(track));        </span><br><span class="line">        <span class="keyword">return</span>;    </span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) </span><br><span class="line">    &#123;        </span><br><span class="line">        <span class="comment">// 排除不合法的选择       </span></span><br><span class="line">        <span class="keyword">if</span> (track.contains(nums[i]))            </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 做选择        </span></span><br><span class="line">        track.add(nums[i]);  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 进入下一层决策树        </span></span><br><span class="line">        backtrack(nums, track); </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 取消选择        </span></span><br><span class="line">        track.removeLast();    </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-ANDROID-0" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1143,1302 +1373,6 @@
 <p> <img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200706094202521.png" alt="image-20200706094202521"></p>
 <p>在License 文件中选任意一个破解文件即可。</p>
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200706094301758.png" alt="image-20200706094301758"></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-Linux" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/26/Linux/"
-    >Linux</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/26/Linux/" class="article-date">
-  <time datetime="2020-06-26T10:07:12.000Z" itemprop="datePublished">2020-06-26</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Linux-驱动开发"><a href="#Linux-驱动开发" class="headerlink" title="Linux 驱动开发"></a><strong>Linux</strong> <strong>驱动开发</strong></h2><h3 id="Linux操作系统与驱动的关系"><a href="#Linux操作系统与驱动的关系" class="headerlink" title="Linux操作系统与驱动的关系"></a>Linux操作系统与驱动的关系</h3><p>应用程序一般依赖于函数库，而函数库是由系统调用来编写的，所以应用程序间接地依赖于系统调用。</p>
-<p>系统调用层是内核空间和用户空间的接口层。通过这个系统调用层，应用程序不需要直接访问内核空间的程序，增加了内核的安全性。同时，应用程序也不能访问硬件设备，只能通过系统调用层来访问硬件设备。如果应用程序需要访问硬件设备，那么应用程序先访问系统调用层，由系统调用层去访问内核层的设备驱动程序。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200626184242247.png" alt="image-20200626184242247"></p>
-<h3 id="用户态和内核态"><a href="#用户态和内核态" class="headerlink" title="用户态和内核态"></a><strong>用户态和内核态</strong></h3><p>Linux操作系统分为<strong>用户态</strong>和<strong>内核态</strong>。用户态处理上层的软件工作。内核态用来管理用户态的程序，完成用户态请求的工作。驱动程序与底层的硬件交互，所以工作在内核态。</p>
-<p>Linux操作系统分为两个状态的原因主要是，为应用程序提供一个统一的计算机硬件抽象。工作在用户态的应用程序完全可以<strong>不考虑底层</strong>的硬件操作，这些操作由内核态程序来完成。这些内核态程序大部分是<strong>设备驱动程序</strong>。一个好的操作系统的驱动程序对用户态应用程序应该是透明的，也就是说，应用程序可以在不了解硬件工作原理的情况下，很好地操作硬件设备，同时不会使硬件设备进入非法状态。Linux操作系统很好的做到了这一点。</p>
-<p>另一个值得注意的问题是：用户态和内核态是可以相互转换的。每当应用程序执行系统调用或者被硬件中断挂起时，Linux操作系统都会从用户态切换到内核态。当系统调用完成或者中断处理完成后，操作系统会从内核态返回用户态，继续执行应用程序。</p>
-<h3 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a><strong>模块机制</strong></h3><p>模块是可以在运行时加入内核的代码。Linux支持很多种模块，驱动程序就是其中最重要的一种，甚至文件系统也可以写成一个模块，然后加入内核中。</p>
-<p>模块在内核启动时装载称为静态装载，在内核已经运行时装载称为动态装载。模块可以扩充内核所期望的任何功能，但通常用于实现设备驱动程序。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/kernel.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">int_init <span class="title">xxx_init</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="comment">/*模块加载时的初始化工作*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> _exit <span class="title">xxx_exit</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="comment">/*模块卸载时的销毁工作*/</span></span><br><span class="line">&#125;</span><br><span class="line">module_init(xxx_init);    <span class="comment">//指定模块的初始化函数的宏</span></span><br><span class="line">module_exit(xxx_exit);    <span class="comment">//指定模块的卸载函数的宏</span></span><br></pre></td></tr></table></figure>
-
-<p>在Linux上程序开发一般分为两种，一种是内核及驱动程序开发，另一种是应用程序开发。这两种开发种类对应Linux的两种状态，分别是内核态和用户态。内核态用来管理用户态的程序，完成用户态请求的工作；用户态的处理上层的软件工作。驱动程序与底层的硬件交互，所以工作在内核态。</p>
-<p>内核及驱动开发时必须使用GNU C，因为Linux操作系统从一开始就使用的是GNU C，虽然也可以使用其他的编译工具，但是需要对以前的代码做大量的修改。</p>
-<h3 id="Source-Insight"><a href="#Source-Insight" class="headerlink" title="Source Insight"></a><strong>Source Insight</strong></h3><p>是一款很实用的编译器，下面介绍如何使用。</p>
-<p>建立新工程；Project  -&gt; new Project</p>
-<p>名字和工程名字一样，目录选择代码所在的目录。勾上冒出的两个选项，include top level sub..和Recursively add …两个分别表示，加入第一层子目录中的文件和递归的加入所有子目录中的文件。OK后colse就新建完成。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200701154504160.png" alt="image-20200701154504160"></p>
-<p>如果出现一片白，view-&gt;reset…,网上说还可以Ctr+o，出现文件目录。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200701155120154.png" alt="image-20200701155120154"></p>
-<p>Sourceinsight还可以为所有源文件建立函数、变量关系。这些关系会存储在工程对应的数据库中。小工程系统会自动创建，但是工程比较大比如一个Linux系统的工程需要手动创建。</p>
-<p>Project-&gt;Sysnchronize Files, 选择Force all files to re-parsed</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200701155545694.png" alt="image-20200701155545694"></p>
-<p>之后可以按住ctril+点击使用函数的地方，会自动跳转到定会函数的位置。</p>
-<h2 id="Linux内核子系统"><a href="#Linux内核子系统" class="headerlink" title="Linux内核子系统"></a><strong>Linux内核子系统</strong></h2><p>这些子系统包括：进程管理、内存管理、文件管理、设备管理和网络管理。</p>
-<h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a><strong>进程管理</strong></h3><p>是操作系统分配资源的基本单位，也是CPU调度的基本单位。可以给进程这样的定义：进程是程序运行的一个实例，是操作系统分配资源和调度的一个基本单位。Linux将进程分为就绪状态、执行状态和阻塞状态三个状态。linux内核负责对这三种状态进行管理。</p>
-<p><strong>就绪状态</strong>：在这种状态中，进程具有处理器外的其他资源，进程不运行。当处理器空闲时，进程就被调度来运行。</p>
-<p><strong>执行状态</strong>：进程处于就绪状态后，获得处理器资源，就能进入执行状态，此时程序正在运行。</p>
-<p><strong>阻塞状态</strong>：进程因为等待某种事物的发生而暂时不能运行。这些事件如设备终端，其他进程的信号。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200701191715081.png" alt="image-20200701191715081"></p>
-<h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a><strong>内存管理</strong></h3><p>内存是计算机的主要资源之一，可以将内存理解为一个线性的存储结构。用来管理内存的策略是决定系统性能的主要因素。内核在有限的资源上为每一个进程创建一个虚拟地址空间，并对虚拟地址空间进行管理。为了方便内存的管理，内核提供了一些重要的函数。这些函数包括kmalloc(),kfree()等。另外设备驱动程序需要使用内存分配，不同的分配方式对驱动程序的影响不同，所以需要对内存分配有比较清晰的了解。</p>
-<h3 id="Linux源代码分析"><a href="#Linux源代码分析" class="headerlink" title="Linux源代码分析"></a>Linux源代码分析</h3><p>Linux源代码以目录的方式组织，每一个目录中有相关的内核代码。</p>
-<p><strong>arch目录</strong></p>
-<p>arch目录中包含与体系结构相关的代码，每一种平台都有一种相应的目录；</p>
-<p><strong>drive</strong></p>
-<p>目录中包含了Linux内核支持的大部分驱动程序。每种驱动程序都占用一个子目录。目录中包含了驱动的大部分代码、</p>
-<p><strong>fd目录</strong></p>
-<p>包含了Linux所支持的所有文件系统相关的代码。每个子目录中包含一种文件系统。</p>
-<p><strong>其他目录</strong></p>
-<table>
-<thead>
-<tr>
-<th>目录或者文件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>include</td>
-<td>该目录包含编译内核西药的大部分头文件，其子目录/include/linux中，包含与凭他无关的头文件，与平台有关的头文件放在各自的单独目录中。</td>
-</tr>
-<tr>
-<td>init</td>
-<td>内核的初始化代码，包含系统启动的main()函数</td>
-</tr>
-<tr>
-<td>ipc</td>
-<td>该目录最核心的代码包括进程调度、内存管理等</td>
-</tr>
-<tr>
-<td>kernel</td>
-<td>内核最核心的代码，包括进程调度、内存管理等</td>
-</tr>
-<tr>
-<td>lib</td>
-<td>该目录包含库模块代码</td>
-</tr>
-<tr>
-<td>mm</td>
-<td>该目录包含独立于CPU体系结构的内存管理代码。不同的平台的代码在该目录下有相应的目录。</td>
-</tr>
-<tr>
-<td>net</td>
-<td>包含各种网络协议</td>
-</tr>
-<tr>
-<td>scripts</td>
-<td>包含一些脚本文件，内核配置相关的文件</td>
-</tr>
-<tr>
-<td>security</td>
-<td>一个SELinux模块</td>
-</tr>
-<tr>
-<td>sound</td>
-<td>常用的音频设备驱动程序</td>
-</tr>
-<tr>
-<td>ust</td>
-<td>一个cpio</td>
-</tr>
-<tr>
-<td>block</td>
-<td>块设备驱动程序</td>
-</tr>
-<tr>
-<td>crypto</td>
-<td>常用的加密和压缩算法</td>
-</tr>
-<tr>
-<td>Documentation</td>
-<td>内核部分功能的解释文档</td>
-</tr>
-<tr>
-<td>COPYING</td>
-<td>GPL版权声明文件</td>
-</tr>
-<tr>
-<td>CREDITS</td>
-<td>内核开发者列表，包含对Linux做出很大贡献的人信息</td>
-</tr>
-<tr>
-<td>Kbuild</td>
-<td>用来编译内核的脚本</td>
-</tr>
-<tr>
-<td>MAINTAINERS</td>
-<td>维护人员列表</td>
-</tr>
-<tr>
-<td>Makefile</td>
-<td>第一个Makefile文件，用来组织内核的各个模块，记录了各个模块相互之间的联系。编译器根据这个文件来编译内核</td>
-</tr>
-<tr>
-<td>Readme</td>
-<td>内核及编译方法的介绍</td>
-</tr>
-<tr>
-<td>REPORTING-BUG</td>
-<td>关于bug的一些内容</td>
-</tr>
-</tbody></table>
-<h3 id="内核配置选项"><a href="#内核配置选项" class="headerlink" title="内核配置选项"></a><strong>内核配置选项</strong></h3><p>配置编译过程</p>
-<blockquote>
-<p><strong>Makefile文件</strong>：它的作用是根据配置的情况，构造出需要编译的源文件列表，然后分别编译，并把目标代码连接在一起，最终形成Linux内核二进制文件。由于Linux内核源代码是按照树形结构组织的，所以Makefile也被分布在目录树中。</p>
-</blockquote>
-<blockquote>
-<p><strong>Kconfig文件</strong>：它的作用是为用户提供一个层次化的配置选项集。make menuconfig 命令通过分布在各个子目录中的Kconfig文件构建配置用户界面。</p>
-</blockquote>
-<blockquote>
-<p><strong>配置文件（.config）</strong>：当用户配置完后，将配置信息保存在.config文件中</p>
-</blockquote>
-<blockquote>
-<p><strong>配置工具</strong>：包括配置命令解释器（对配置脚本中使用的配置命令进行解释）和配置用户界面（提供基于字符界面、基于Ncurses图像界面以及基于Xwindows图形界面的用户配置界面，各自对应于Make config、Make menuconfig和make xconfig）</p>
-</blockquote>
-<h2 id="嵌入式文件系统基础知识"><a href="#嵌入式文件系统基础知识" class="headerlink" title="嵌入式文件系统基础知识"></a><strong>嵌入式文件系统基础知识</strong></h2><p>除了一个嵌入式操作系统外还需要一个嵌入式文件系统管理和存储数据和程序。</p>
-<p><strong>嵌入式文件系统</strong></p>
-<p>Linux支持多种文件系统，包括ext2,ext3,vfat,ntfs,iso9660,jffs,romfs,cramfs和nfs等，为了对各类文件系统进行统一管理，Linux引入了虚拟文件系统VFS(Virtual File System)，为各类文件系统提供一个统一的操作界面和应用编程接口。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200702150909908.png" alt="image-20200702150909908"></p>
-<p>用户层为用户提供一个操作接口，内核层实现了各种文件系统，驱动层是块设备的驱动程序，硬件层是嵌入式系统使用的几种存储器。</p>
-<p>在Linux文件系统结构中，内核层的文件系统是必须的。Linux启动时，第一个必须挂载的是根文件系统；若系统不能从指定设备上挂载根文件系统，则系统会出错而退出启动。当根文件系统挂载成功后，才可以自动或手动挂载其他的文件系统。因此，一个系统中可以同时存在不同的文件系统。</p>
-<p><strong>根文件系统概述</strong></p>
-<p>是Linux操作系统运行需要的文件系统，根文件系统被存储在Flash存储器中，存储器被分为多个区。</p>
-<table>
-<thead>
-<tr>
-<th>目录</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>bin</td>
-<td>该目录存放用户可以使用的基本命令，bin目录下常用的命令有：cat、chmod、cp、ls、kill、mount、unmount、mkdir、mknod、test等</td>
-</tr>
-<tr>
-<td>sbin</td>
-<td>该目录下存放必要的系统管理员命令，这些命令只有系统管理员才能使用。sbin目录下存放的是基本的系统命令，它们用于启动系统、修复系统。sbin目录下常用的命令有shutdown、reboot、fdisk、fsck等</td>
-</tr>
-<tr>
-<td>boot</td>
-<td>该目录下包含引导加载程序使用的静态文件</td>
-</tr>
-<tr>
-<td>root</td>
-<td>根目录的目录，与此对应，普通用户的目录是/home下的一个子目录</td>
-</tr>
-<tr>
-<td>home</td>
-<td>用户目录。对于每一个普通用户,在/home目录下都有一个与用户名同的子目录，里面存放用户相关的配置文件和私有文件。</td>
-</tr>
-<tr>
-<td>etc</td>
-<td>该目录下存放各种系统配置文件。该目录中的文件或者子目录依赖于系统中拥有的应用程序，很多应用程序需要配置文件。</td>
-</tr>
-<tr>
-<td>dev</td>
-<td>设备文件和一些特殊文件。常见的设备文件一般有字符设备文件和块设备文件</td>
-</tr>
-<tr>
-<td>opt</td>
-<td>该目录包含附加的软件</td>
-</tr>
-<tr>
-<td>mnt</td>
-<td>临时文件系统的挂接目录，用来挂接暂时需要到的文件系统。如挂接光盘、U盘和硬盘</td>
-</tr>
-<tr>
-<td>lib</td>
-<td>该目录中存放共享库和一些驱动程序模块。共享库用于对/bin,/sbin中的程序进行支持</td>
-</tr>
-<tr>
-<td>proc</td>
-<td>该目录是一个空目录，作为proc文件系统的挂接点。proc文件系统时一个虚拟的文件系统，它存在于内存中。proc文件系统中的目录和文件系统都是内核临时生成的，用于了解系统目前的运行状态。</td>
-</tr>
-<tr>
-<td>tmp</td>
-<td>该目录通常是一个空目录，用于存放临时文件。一些需要存放临时文件的程序会用到/tmp目录，所以该目录必须存在</td>
-</tr>
-<tr>
-<td>usr</td>
-<td>该目录中存放共享、只读的文件和程序。该目录中的文件可以被多个用户共享</td>
-</tr>
-<tr>
-<td>var</td>
-<td>存放可变的文件。例如日志文件、log文件、临时文件等</td>
-</tr>
-</tbody></table>
-<p><strong>BusyBox构建根文件系统</strong></p>
-<p>是一个用来构建根文件系统的工具。最初的目的是自动构建一个能够在软盘上运行的命令系统。他可以把常用的Linux命令打包编译成一个单一的可执行文件。通过建立连接，用户可以像传统的命令一样使用BusyBox。</p>
-<p>下载<a href="http://www.busybox.net/downloads" target="_blank" rel="noopener">http://www.busybox.net/downloads</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar jxvf Busybox 1.2.0.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p>进入Busybox源代码所在的目录，命令进行配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-<h2 id="构建第一个驱动程序"><a href="#构建第一个驱动程序" class="headerlink" title="构建第一个驱动程序"></a><strong>构建第一个驱动程序</strong></h2><p>构建正确的开发环境，对写驱动程序非常重要。</p>
-<p>内核是一个提供硬件抽象层、磁盘及文件系统控制、多任务等功能的系统软件。根据内核是否被修改过，可以将内核分为标准内核和厂商内核两类。</p>
-<p>如何升级内核</p>
-<p>1.从<a href="http://www.kernel.org/pub/linux/kernel/" target="_blank" rel="noopener">http://www.kernel.org/pub/linux/kernel/</a> 上下载linux-2.6.29.4.tar.bz2内核源码包</p>
-<p>2.使用mkdir linux-2.6.29.4在根目录中建立一个目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir linux-2.6.29.4</span><br></pre></td></tr></table></figure>
-
-<p>3.将Linux-2.6.29.4.tar.bz2复制到/linux-2.6.29.4目录中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp linux-2.6.29.4.tar.bz2 &#x2F;linux-2.6.29.4&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>4.进入该目录，用tar-xjvf解压</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd linux-2.6.29.4</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xjvf linux-2.6.29.4.tar.bz2</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="5">
-<li>进入第二层内核源码目录，cd linux-3.6.29.4</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd linux-2.6.29.4</span><br></pre></td></tr></table></figure>
-
-<p>6.执行make menconfig配置内核并保存</p>
-<p>7.编译内核make命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>8.编译内核模块 make modules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make modules</span><br></pre></td></tr></table></figure>
-
-<p>9.安装内核模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make modules_install</span><br></pre></td></tr></table></figure>
-
-<p>10.安装内核</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>11.使用reboot重启计算机，选择新内核启动系统</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="驱动模块的组成"><a href="#驱动模块的组成" class="headerlink" title="驱动模块的组成"></a><strong>驱动模块的组成</strong></h2><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200702160917886.png" alt="image-20200702160917886"></p>
-<p>1.头文件</p>
-<p>有两个头文件是所有驱动模块都必须包含的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;linux&#x2F;module.h&gt;      &#x2F;&#x2F;包含了加载模块时需要使用的大量符号和函数定义</span><br><span class="line">#include &lt;linux&#x2F;init.h&gt;        &#x2F;&#x2F;包含了模块加载函数和模块释放函数的宏定义</span><br></pre></td></tr></table></figure>
-
-<p>2.模块参数</p>
-<p>是驱动模块加载时，需要传递给驱动模块的参数。如果一个驱动模块需要完成两个种功能，那么就可以通过模块参数选择哪一种功能。</p>
-<p>3.模块加载函数</p>
-<p>是模块加载时，需要执行的函数</p>
-<p>4.模块卸载函数是模块卸载时，需要执行的函数。</p>
-<p>5.模块许可声明</p>
-<p>模块许可声明表示模块受内核支持的程度。有许可权的模块会更受到开发人员的重视。需要使用MODULE_LICENSE表示该模块的许可权限。</p>
-<p>MODULE_LICENSE (‘’GPL’’)</p>
-<p>GPL v2    //GPL版本2许可权</p>
-<p>GPL and additional rights       //GPL及其附加许可权    GPL(通用公共许可证,保证您能收到源程序或者在你需要时能得到它；保证你能修改软件或者将它的一部分用于新的自由软件)</p>
-<p>Dual BSD/GPL                        //*BSD/GPL双重许可权</p>
-<p>Dual MPL/GPL                       //*MPL/GPL双重许可权</p>
-<p>Proprietary                             //专用许可权</p>
-<p>如果一个模块没有包含任何许可权，那么就会认为是不符合规范的。</p>
-<p>Hello World模块</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    printk(KERN_ALERT <span class="string">"Hello, Word\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    printk(KERN_ALERT <span class="string">"Goodbye, World\n"</span>)</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);                           <span class="comment">//指定模块加载函数</span></span><br><span class="line">module_exit(hello_exit);                           <span class="comment">//指定模块卸载函数</span></span><br><span class="line">MODULE_LICENSE(<span class="string">"Dual BSD/GPL"</span>);                    <span class="comment">//指定许可权为Dual BSD/GPL*/</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>Makefile文件</p>
-<p>编译hello world模块需要编写一个Makefile文件，首先这是一个完整的Makefile文件，以便对该文件有整体的认识。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(KERNELRELEASE),)</span><br><span class="line">	KERNELDIR   ?= /linux-2.6.29.4/linux-2.6.29.4</span><br><span class="line">	PWD := $(shell pwd)</span><br><span class="line">modules:</span><br><span class="line">	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules</span><br><span class="line">modules_install:</span><br><span class="line">	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install</span><br><span class="line">clean</span><br><span class="line">	rm -rf *.0 *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions</span><br><span class="line">else </span><br><span class="line">	obj-m := hell0.o</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>第一行，判断KERNELRELEASE变量是否为空，改变量是描述内核版本的字符串。只有执行make命令的当前目录为内核源代码目录时，该变量才不为空字符。</li>
-<li>第二、三行，定义了KERNELDIR、PWD变量，一个是内核路径变量，一个是由执行pwd命令得到的当前模块路径。</li>
-<li>第四行，是<strong>一个标识，以冒号结尾，标识Makefile文件的一个功能选项</strong>。</li>
-<li>第五行，make的语法是”Make-C 内核路径 M=模块路径 modiles”。该语句会执行内核模块的编译</li>
-<li>第六行和第四行表示同样的意思</li>
-<li>第七行是将模块安装到模块对应的路径中，当在命令执行make modules_install时，执行该命令，其他时候不执行。</li>
-<li>第八行是删除多余的文件</li>
-<li>第九行是删除编译过程的中间文件的命令。</li>
-<li>第11行，是将hello.o编译成hello.ko模块。如果要编译其他模块时，只是将hello.o中的hello改成模块的文件名就可以了。</li>
-</ul>
-<p><strong>Makefile文件的执行过程：</strong></p>
-<p>执行make命令后，将进入Makefile文件。此时KERNELRELEASE变量为空，此时是第一次进入Makefile文件。当执行完02，03行代码后，会根据make命令的参数执行不同的逻辑。</p>
-<ul>
-<li><p>make modules_install命令，将执行6，7行将模块安装到操作系统中；</p>
-</li>
-<li><p>make clean命令，会删除目录中的所有临时文件</p>
-</li>
-<li><p>make命令，会执行04，05行编译模块。首先</p>
-</li>
-<li><pre><code>$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  -C $(KERNELDIR)会使编译器进入内核源码目录&#x2F;linux-2.6.29.4&#x2F;linux-2.6.29.4,读取Makefile文件，并从中得到一些信息，例如变量KERNELRELEASE将在这里被赋值。当内核源码目录中的Makefile文件读取完成后，编译器会根据选项 </span><br><span class="line"></span><br><span class="line">   M&#x3D;$(PWD) 第二次进入模块所在的目录，并再一次执行Makefile文件。当第二次执行Makefile文件时，变量KERNELRELEASE的值为内核发布版本信息，也就是不为空，此时会执行10，11，12行。这里的代码指明了模块源码中各文件的依赖关系，以及要生成的目标模块名，这里就正式编译模块了。</span><br><span class="line"></span><br><span class="line">**编译模块**</span><br><span class="line"></span><br><span class="line">有了Makefile文件，就可以在模块所在的目录下执行make命令，生成模块。</span><br></pre></td></tr></table></figure>
-# make
-make -C /linux=2.6.29.4/linux-2.6.29.4 M=/driver-test/chapter5/hello
-modules
-make[1]:Entering directory &apos;/linux-2.6.29.4/linux-2.6.29.4&apos;
-  Building modules, stage 2.
-  MODPOST 1 modules
-make[1]:Leavinf directory &apos;/linux-26.29.4/linux-2.6.29.4&apos;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可看出，编译器首先进入内核源代码文件所在的目录，进入该目录的目的是生成hello.o中间文件，编译模块的第二个阶段是运行MODPOST程序，生成hello.mod.c文件，最后连接hello.o和hello.mod.c文件，生成hello.ko模块文件。</span><br><span class="line"></span><br><span class="line">## 模块与模块之间的通信</span><br><span class="line"></span><br><span class="line">## **设备驱动中的并发控制**</span><br><span class="line"></span><br><span class="line">### **并发与竞争**</span><br><span class="line"></span><br><span class="line">并发是指在操作系统中，一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行，担任一个时刻点上只有一个程序在处理机上运行。并发容易导致竞争问题。竞争就是两个或两个以上的进程同时访问一个资源，从而引起资源的错误。</span><br><span class="line"></span><br><span class="line">**原子变量操作：**</span><br><span class="line"></span><br><span class="line">就是该操作绝不会再执行完毕前被任何其他任务或事件打断。也就是说，原子变量操作是一种不可以被打断的操作。原子操作需要硬件的支持，因此是架构相关的，其API和原子类型的定义在内核源码树的include&#x2F;asm&#x2F;atomic.h文件中，他们都使用汇编语言实现，因为C语言并不能实现这样的操作。</span><br><span class="line"></span><br><span class="line">原子变量操作不会只执行一半，又去执行其他代码。他要么执行完毕，那么一点也不执行。原子变量操作的优点是编写简单；缺点是功能太简单，只能做计数操作，保护东西太少，但却是其他同步手段的基石。原子变量定义：</span><br></pre></td></tr></table></figure>
-typedef struct{
-  volatile int counter;
-}atomic_t;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">volatile用来暗示GCC不要对该类型做数据优化，所以对这个变量countrt的访问都是基于内存的，不要将其缓冲到寄存器中。存储到寄存器中，可能导致内存中的数据已经改变，而寄存器中的数据没有改变。</span><br><span class="line"></span><br><span class="line">### **自旋锁**</span><br><span class="line"></span><br><span class="line">是一种简单的并发控制机制，其是实现信号量和完成量的基础。自旋锁对资源有很好的保护作用。当一个临界区域要在多个函数之间来回运行时，原子操作就显得无能为力。</span><br><span class="line"></span><br><span class="line">Linux中一般可以认为有两种锁，一种是自旋锁，另一种是信号量。这两种锁是为了解决内核中遇到的不同问题开发的。</span><br><span class="line"></span><br><span class="line">**自旋锁的作用**</span><br><span class="line"></span><br><span class="line">自旋锁类型为struct spinlock_t ， 内核提供了一系列的函数对struct spinlock_t进行操作。</span><br><span class="line"></span><br><span class="line">1.定义和初始化自旋锁</span><br><span class="line"></span><br><span class="line">在Linux中，定义自旋锁的方法和定义普通结构体的方法相同，定义方法为</span><br></pre></td></tr></table></figure>
-spinlock_t lock;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一个自选锁必须初始化才能被使用个，对自旋锁的初始化可以在编译阶段通过宏来实现，初始化自旋锁就可以使用宏SPIN_LOCK_UNLOCKED,这个宏表示一个没有锁定的自旋锁，</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c</span><br><span class="line">spinlock_t lock&#x3D;SPIN_LOCK_UNLOCKED    &#x2F;&#x2F;初始化一个未使用的自旋锁</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-<p>在运行阶段可以使用spin_lock_init(spinlock_t lock)函数动态地初始化一个自旋锁.</p>
-<p><strong>锁定自旋锁：</strong></p>
-<p>在进入临界区前，需要使用spin_lock宏来获得自旋锁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define spin_lock(lock)      _spin_lock(lock)</span><br></pre></td></tr></table></figure>
-
-<p>这个宏用获得lock自旋锁，如果能够立即获得自旋锁，则宏立刻返回；否则，这个锁会一直自旋在那里，直到该锁被其他线程释放为止。</p>
-<p>释放自旋锁：</p>
-<p>当不再使用临界区时，需要使用spin_unlock宏释放自旋锁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define spin_unlock(lock)          _spin_unlock(lock)</span><br></pre></td></tr></table></figure>
-
-<p>这个宏用来释放lock自旋锁，当调用该宏之后，</p>
-<p>使用自旋锁</p>
-<p>定义、初始化、获取、释放</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">spinlock_t   lock;</span><br><span class="line">spin_lock_init(&amp;lock);</span><br><span class="line">spin_lock(&amp;lock);</span><br><span class="line">临界资源</span><br><span class="line">spin_unlock(&amp;lock);</span><br></pre></td></tr></table></figure>
-
-<p>在驱动程序中，有些设备只允许打开一次，那就需要一个自旋锁保护表示设备的开关或者关闭状态的变量count，此处count属于一个临界变量，如果不对count进行保护，当设备打开频繁时，可能出现错误的count计数，所以必须对count进行保护。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">int count&#x3D;0;</span><br><span class="line">spinlock_t lock;</span><br><span class="line">int xxx_init(void)&#123;</span><br><span class="line">	...</span><br><span class="line">	spin_lock_init(&amp;lock);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;文件打开函数</span><br><span class="line">int xxx_open(struct inode *innode, struct file *filp)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	spin_lock(&amp;lock);</span><br><span class="line">	if(count)</span><br><span class="line">	&#123;</span><br><span class="line">		spin_unlock(&amp;lock);</span><br><span class="line">		return -EBUSY;</span><br><span class="line">	&#125;</span><br><span class="line">	count++;</span><br><span class="line">	spin_unlock(&amp;lock);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;文件释放函数</span><br><span class="line">int  xxx_release(struct inode *inode, struct file *filp)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	spin_lock(&amp;lock);</span><br><span class="line">	count++;</span><br><span class="line">	spin_unlock(&amp;lock);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>自旋锁的使用注意事项：</p>
-<ul>
-<li><p>自旋锁是一种忙等待，自旋锁当条件不满足时，会一直不断地循环条件是否满足。满足就解锁，继续运行下面代码。它是一种适合短时间锁定的轻量级的加锁机制。</p>
-</li>
-<li><p>自旋锁不递归使用。是因为，自旋锁被设计成在不同线程或者函数之间同步。如果一个线程在已经持有自旋锁时，其处于忙等待状态，则已经没有机会释放自己持有的锁了。如果这时再调用自身，则自旋锁永远没有执行的机会了。所以类似下面的递归形式是不能使用自旋锁的。</p>
-</li>
-<li><pre><code>void A()
-{
-    锁定自旋锁
-    A();
-    解锁自旋锁
-}
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">**信号量**</span><br><span class="line"></span><br><span class="line">Linux中提供两种信号量，一种用于内核程序中，一种用于应用程序中。</span><br><span class="line"></span><br><span class="line">和自旋锁一样，也是保护临界资源的一种有用方法。信号量与自旋锁的使用方法基本一样。而信号量只有当得到信号量的进程或者线程时才能够进入临界区，执行临界代码。信号量与自旋锁的最大不同点在于，当一个进程试图去获取一个已经锁定的信号量时，进程不会像自旋锁一样在远处忙等待。</span><br><span class="line"></span><br><span class="line">当获取的信号量没有释放时，进程会将自身加入一个等待队列中去睡眠，知道拥有信号量的进程释放信号量后，处于等待队列中的那个进程才被唤醒。当进程唤醒后，就立刻重新从睡眠的地方开始执行，又一次试图获得信号量，当获得信号量后，程序继续执行。</span><br><span class="line"></span><br><span class="line">只有能够睡眠的进程才能够使用信号量，不能睡眠的进程不能使用信号量。例如中断需要立刻完成所以不能睡眠。</span><br><span class="line"></span><br><span class="line">**信号量的实现**</span><br><span class="line"></span><br><span class="line">定义</span><br></pre></td></tr></table></figure>
-struct semaphore{
-  spinlock_t lock;
-  unsigned int  count;
-  struct list_head  wait_list;
-};
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**lock自旋锁**</span><br><span class="line"></span><br><span class="line">用来对count变量起保护作用。当count变化时，内部会锁定lock锁，但修改完成后会释放lock锁。</span><br><span class="line"></span><br><span class="line">**count变量**</span><br><span class="line"></span><br><span class="line">是信号量中一个非常重要的成员变量，这个变量可能取下面的3种值：</span><br><span class="line"></span><br><span class="line">* 等于0的值，如果这个值等于0，表示信号量被其他进程适合使用，现在不可以用这个信号量，但是wait_list队列中没有进程在等待信号量。</span><br><span class="line"></span><br><span class="line">* 小于0的值，表示至少有一个进程在wait_list队列中等待信号量被释放。</span><br><span class="line">* 大于0的值，表示这个信号量是空闲的，程序可以使用这个信号量。</span><br><span class="line"></span><br><span class="line">**定义和初始化**</span><br></pre></td></tr></table></figure>
-struct semaphore sema;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一个信号量必须初始化才能被使用，sema_init()函数用来初始化信号量，并设置sem中count的值为val，</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c</span><br><span class="line">static inline void sema_init(struct semaphore *sem, int val)</span><br></pre></td></tr></table></figure>
-
-另一个宏可以初始化一个信号量的值为1的信号量，这种信号量叫互斥体，
-</code></pre></li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> init_MUTEX(sem)   sema_init(sem,1)</span></span><br></pre></td></tr></table></figure>
-
-<p>该宏用于初始化一个互斥的信号量，并将这个信号量sem的值设置为1，等同于sema_init(sem,1).另一个宏init_MUTEX_LOCKED也用来初始化一个信号量，其将信号量sem的值设置为0，定义为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define init_MUTEX_LOCKED(sem)    sema_init(sem, 0)</span><br></pre></td></tr></table></figure>
-
-<p><strong>锁定信号量</strong></p>
-<p>在进入临界区前，需要使用down()函数获得信号量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void down(struct semaphore *sem)</span><br></pre></td></tr></table></figure>
-
-<p>该函数会导致睡眠，所以不能在中断上下文使用。另一个函数与down()函数相似，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int dow_interruptible(struct semaphore *sem)</span><br></pre></td></tr></table></figure>
-
-<p>该函数与down()函数相似，不同之处在于，down函数进入睡眠之后，就不能够被信号唤醒，而down_interruptible()函数进入睡眠后可以被信号唤醒。如果被信号唤醒，那么会返回非0值。所以在调用down_interruptible()函数时，一般应该检查返回值，判断被唤醒的原因。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(down_interruptible(&amp;sem))&#123;</span><br><span class="line">	return -ERESTARTSYS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>释放信号量</strong></p>
-<p>当不再使用临界区时，需要使用up()函数释放信号量，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void up(struct semaphore *sem)</span><br></pre></td></tr></table></figure>
-
-<p><strong>使用信号量</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct semaphore sem;</span><br><span class="line">int xxx_init(void)&#123;</span><br><span class="line">	...</span><br><span class="line">	init_MUTEX()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="阻塞和非阻塞"><a href="#阻塞和非阻塞" class="headerlink" title="阻塞和非阻塞"></a><strong>阻塞和非阻塞</strong></h2><p>阻塞调用是指调用结果返回之前，当前线程会被挂起。函数只有在得到结果之后才会返回。有人也许会把阻塞调用和同步调用等同起来，实际上它们是不同的。对于同步调用来说，很多时候当前线程还是激活的，只有从逻辑上当前函数没有返回而已。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-基本的传感器" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/"
-    >基本的传感器</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/24/%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8/" class="article-date">
-  <time datetime="2020-06-24T05:16:42.000Z" itemprop="datePublished">2020-06-24</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="DY-SV5W"><a href="#DY-SV5W" class="headerlink" title="DY-SV5W"></a><strong>DY-SV5W</strong></h2><ul>
-<li>完全支持FAT16/FAT32文件系统，最大支持32G的TF卡；</li>
-<li>自带5W D类功放，可直接驱动4欧，3~5W喇叭</li>
-<li>UART串口控制语音播放功能，可控制播放，暂停，选曲，音量加减等功能，最大选曲65535首曲目，波特率9600bit/s</li>
-<li>支持IO触发播放，8个IO口单独触发8首曲目或者8个IO组合触发255首曲目。</li>
-<li>支持3个配置IO进行多达7种工作模式选择，拨码开关设置简单。</li>
-</ul>
-<h3 id="外部引脚说明："><a href="#外部引脚说明：" class="headerlink" title="外部引脚说明："></a><strong>外部引脚说明：</strong></h3><table>
-<thead>
-<tr>
-<th>引脚名称</th>
-<th>引脚描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>5V电源负极</td>
-<td>接5V电源负极（GND）</td>
-</tr>
-<tr>
-<td>5V电源正极</td>
-<td>接5V电源正极</td>
-</tr>
-<tr>
-<td>TXD/IO0</td>
-<td>IO触发模式下为输入引脚IO0;UART控制模式下为TX引脚，连接控制端（MCU）的RX</td>
-</tr>
-<tr>
-<td>RXD/IO1</td>
-<td>IO触发模式下为输入引脚IO1;UART控制模式下为RX引脚，连接控制端（MCU）的TX</td>
-</tr>
-<tr>
-<td>IO2</td>
-<td>IO触发模式下为输入引脚IO2</td>
-</tr>
-<tr>
-<td>IO3</td>
-<td>IO触发模式下为输入引脚IO3</td>
-</tr>
-<tr>
-<td>IO4</td>
-<td>IO触发模式下为输入引脚IO4</td>
-</tr>
-<tr>
-<td>IO5</td>
-<td>IO触发模式下为输入引脚IO5</td>
-</tr>
-<tr>
-<td>IO6</td>
-<td>IO触发模式下为输入引脚IO6</td>
-</tr>
-<tr>
-<td>IO7</td>
-<td>IO触发模式下为输入引脚IO7</td>
-</tr>
-<tr>
-<td>BUSY</td>
-<td>播放曲目时输出低电压（0V），播放结束输出高电平（3.3V）</td>
-</tr>
-<tr>
-<td>GND</td>
-<td>参考地端（与控制端GND连接）</td>
-</tr>
-</tbody></table>
-<h3 id="拨码开关模式配置："><a href="#拨码开关模式配置：" class="headerlink" title="拨码开关模式配置："></a><strong>拨码开关模式配置：</strong></h3><table>
-<thead>
-<tr>
-<th>控制模式</th>
-<th>配置引脚</th>
-<th>I/O功能</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>CON3</td>
-<td>CON2</td>
-<td>CON1</td>
-<td>IO7</td>
-<td>IO6</td>
-<td>IO5</td>
-<td>IO4</td>
-<td>IO3</td>
-<td>IO2</td>
-<td>IO1</td>
-<td>IO0</td>
-</tr>
-<tr>
-<td>I/O组合模式0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>按键组合播放，可播放2^8-1(255)首曲目</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>I/O组合模式1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>电平组合播放，可播放2^8-1(255)首曲目</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>I/O独立模式0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>曲目8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>曲目1</td>
-</tr>
-<tr>
-<td>I/O独立模式1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>曲目8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>曲目1</td>
-</tr>
-<tr>
-<td>UART串口模式</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>RXD</td>
-<td>TXD</td>
-</tr>
-<tr>
-<td>一线串口</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td></td>
-<td></td>
-<td></td>
-<td>RXD</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>标准MP3模式</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>RPT</td>
-<td>EQ</td>
-<td>P/P/MODE</td>
-<td>PREV/V-</td>
-<td>NEXT/V+</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>“按键组合播放”是指IO0-IO7输出对应的电平后恢复原来的高电平，类似于按键触发一次</p>
-<p>“电平组合播放”是指IO0-IO7输出对应的电平后保持电平不变</p>
-<p>“I/O组合（独立）模式0”与“I/O组合（独立）模式1”的区别在于前者释放电平后继续播放当前曲目至结束，后者模式释放电平后立即停止播放曲目。</p>
-</blockquote>
-<p>I/O组合模式0（按键组合播放）：</p>
-<p>单片机控制I/0组合触发（低电平有效）指定的曲目后释放（IO0-IO7恢复高电平），播放完当前曲目停止；播放中途重新触发，播放新的曲目，播放结束停止后；若一直触发（不释放电平），循环播放；播放过程busy有效。</p>
-<blockquote>
-<p>曲目名称必须按照5位数字进行命名。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>IO7</th>
-<th>IO6</th>
-<th>IO5</th>
-<th>IO4</th>
-<th>IO3</th>
-<th>IO2</th>
-<th>IO1</th>
-<th>IO0</th>
-<th>播放曲目</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>00001.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>00002.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>00003.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>00004.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>00005.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>00006.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>00007.mp3</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>00255.mp3</td>
-</tr>
-</tbody></table>
-<h3 id="IO组合模式1（电平组合播放）"><a href="#IO组合模式1（电平组合播放）" class="headerlink" title="IO组合模式1（电平组合播放）"></a><strong>IO组合模式1（电平组合播放）</strong></h3><p>单片机控制IO组合触发（低电平有效）指定的曲目，一直循环播放指定曲目，电平释放（IO0-IO7恢复高电平）即立即停止。播放中途释放电平，即刻停止播放。播放过程busy有效。</p>
-<table>
-<thead>
-<tr>
-<th>IO7</th>
-<th>IO6</th>
-<th>IO5</th>
-<th>IO4</th>
-<th>IO3</th>
-<th>IO2</th>
-<th>IO1</th>
-<th>IO0</th>
-<th>播放曲目</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>00001.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>00002.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>00003.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>00004.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>00005.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>00006.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>00007.mp3</td>
-</tr>
-<tr>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>00255.mp3</td>
-</tr>
-</tbody></table>
-<p><strong>IO独立模式0（按键独立控制）</strong></p>
-<p>IOO-IO7独立控制8首曲目，IO触发（低电平有效）指定的曲目后释放（IO0-IO7恢复高电平），播放完当前曲目停止；播放中途重新触发，播放新的曲目，播放结束停止；若一直触发不（不释放电平），循环播放；播放过程busy有效。</p>
-<table>
-<thead>
-<tr>
-<th>IO7</th>
-<th>IO6</th>
-<th>IO5</th>
-<th>IO4</th>
-<th>IO3</th>
-<th>IO2</th>
-<th>IO1</th>
-<th>IO0</th>
-<th>播放曲目</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>00001.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>00002.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>00003.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>00004.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>00005.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>00006.mp3</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>00007.mp3</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>00008.mp3</td>
-</tr>
-</tbody></table>
-<h4 id="IO独立模式1（电平独立控制）"><a href="#IO独立模式1（电平独立控制）" class="headerlink" title="IO独立模式1（电平独立控制）"></a><strong>IO独立模式1（电平独立控制）</strong></h4><p>IO0-IO7独立控制8首曲目，IO触发（低电平有效）指定的曲目，一直循环播放指定曲目，电平释放（IO0-IO7恢复高电平）即停止播放。播放中途释放电平，即刻停止播放。播放过程busy有效。</p>
-<h3 id="UART串口模式"><a href="#UART串口模式" class="headerlink" title="UART串口模式"></a><strong>UART串口模式</strong></h3><p>详见手册</p>
-<h3 id="调试心得"><a href="#调试心得" class="headerlink" title="调试心得"></a>调试心得</h3><p>使用是按键组合模式，先将所有开关搬到数字位置，然后先测试下CPU板的8个引脚是否配置无误；还要有个BUSY引脚，该引脚上电初始化默认为1，无操作一直为1。</p>
-<h2 id="STC8-EEPROM"><a href="#STC8-EEPROM" class="headerlink" title="STC8 EEPROM"></a><strong>STC8 EEPROM</strong></h2><p>STC8内部集成了大量的EEPROM，利用ISP/IAP技术可将内部Data Flash当EEPROM。</p>
-<p>EEPROM可分为若干扇区，每个扇区包含512字节。使用时，建议同一次修改的数据放在同一个扇区，不是同一次修改的数据放在不同的扇区，不一定要用满。数据存储器的擦除操作是按扇区进行的。</p>
-<p>EEPROM可用于保存一些需要在引用程序中修改并且掉电不丢失的数据。在用户程序中，可以对EEPROM进行字节读\字节编程\扇区擦除操作。在工作电压偏低时，建议不要进行EEPROM操作，以免发送数据丢失的情况。</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>描述</th>
-<th>地址</th>
-<th>B7</th>
-<th>B6</th>
-<th>B5</th>
-<th>B4</th>
-<th>B3</th>
-<th>B2</th>
-<th>B1</th>
-<th>B0</th>
-<th>复位值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IAP_DATA</td>
-<td>IAP数据寄存器</td>
-<td>C2H</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1111,1111</td>
-</tr>
-<tr>
-<td>IAP_ADDRH</td>
-<td>IAP高地址寄存器</td>
-<td>C3H</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>0000,0000</td>
-</tr>
-<tr>
-<td>IAP_ADDRL</td>
-<td>IAP低地址寄存器</td>
-<td>C4H</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>0000,0000</td>
-</tr>
-<tr>
-<td>IAP_CMD</td>
-<td>IAP命令寄存器</td>
-<td>C5H</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>CMD[1:0]</td>
-<td>xxxx,xx00</td>
-</tr>
-<tr>
-<td>IAP_TRIG</td>
-<td>IAP触发寄存器</td>
-<td>C6H</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>0000,0000</td>
-</tr>
-<tr>
-<td>IAP_CONTR</td>
-<td>IAP控制寄存器</td>
-<td>C7H</td>
-<td>IAPEN</td>
-<td>SWBS</td>
-<td>SWRST</td>
-<td>CMD_FAIL</td>
-<td>-</td>
-<td>IAP_WT[2:0]</td>
-<td>IAP_WT[2:0]</td>
-<td>IAP_WT[2:0]</td>
-<td>0000,x000</td>
-</tr>
-</tbody></table>
-<p><strong>EEPROM数据寄存器（IAP_DATA）</strong></p>
-<p>在进行EEPROM的读操作时，命令执行完成后读出的EEPROM数据保存在IAP_DATA寄存器中。在进行EEPROM的写操作时，在执行写命令前，必须将待写入的数据存在IAP_DATA寄存器中，再发送写命令。擦除EEPROM命令与IAP_DATA寄存器无关。</p>
-<p><strong>IAP_ADDRH</strong></p>
-<p><strong>IAP_ADDRL</strong></p>
-<p>EEPROM进行读、写、擦除操作的目标地址寄存器。IAP_ADDRH保存地址的高字节，IAP_ADDRL保存地址的低字节。</p>
-<p><strong>IAP_CMD</strong></p>
-<p>命令寄存器，发送操作命令</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>地址</th>
-<th>B7</th>
-<th>B6</th>
-<th>B5</th>
-<th>B4</th>
-<th>B3</th>
-<th>B2</th>
-<th>B1</th>
-<th>B0</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IAP_CMD</td>
-<td>C5H</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>CMD[1]</td>
-<td>CMD[0]</td>
-</tr>
-</tbody></table>
-<p>CMD[1:0]:</p>
-<p>00:空操作</p>
-<p>01：读EEPROM命令，读取目标地址所在的1字节</p>
-<p>10：写EEPROM命令，写目标地址所在的1字节。</p>
-<p>11：擦除EEPROM,擦除目标地址所在的1页（1扇区/512字节）</p>
-<p>EEPROM触发寄存器</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>地址</th>
-<th>B7</th>
-<th>B6</th>
-<th>B5</th>
-<th>B4</th>
-<th>B3</th>
-<th>B2</th>
-<th>B1</th>
-<th>B0</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IAP_TRIG</td>
-<td>C6H</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>每次EEPROM操作时，都要对IAP_TRIG先写入5AH，再写入A5H,相应的命令才会生效。写完触发命令后，CPU会处于IDLE等待状态，直到相应的IAP操作执行完成后CPU才会从IDLE状态返回正常状态继续执行CPU指令。</p>
-<p>IAP_CONTR EEPROM控制寄存器</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>地址</th>
-<th>B7</th>
-<th>B6</th>
-<th>B5</th>
-<th>B4</th>
-<th>B3</th>
-<th>B2</th>
-<th>B1</th>
-<th>B0</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IAP_CONTR</td>
-<td>C7H</td>
-<td>IAPEN</td>
-<td>SWBS</td>
-<td>SWRST</td>
-<td>CMD_FAIL</td>
-<td>-</td>
-<td>IAP_WT[2:0]</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>IAPEN:EEPROM操作使能控制位       0：禁止EEPROM操作，  1 ： 使能EEPROM操作</p>
-<p>SWBS: 软件复位选择控制位（配合SWRST使用）   0 ： 软件复位后从用户代码开始执行程序  1：软件复位后从系统ISP监控代码区开始执行程序</p>
-<p>SWRST:软件复位控制位</p>
-<p>0：无动作</p>
-<p>1：产生软件复位</p>
-<p>CMD_FAIL ： EEPROM操作失败状态位，需要软件清零</p>
-<p>0：EEPROM操作正确</p>
-<p>1：EEPROM操作失败</p>
-<p>IAP_WT[2:0]: 设置EEPROM操作的等待时间。</p>
-<p>EEPROM总是从后向前进行规划的。</p>
 
       
       <!-- reward -->
