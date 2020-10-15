@@ -85,6 +85,73 @@
     
     
     
+    <article id="post-Java的类" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/10/15/Java%E7%9A%84%E7%B1%BB/"
+    >Java的类</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/10/15/Java%E7%9A%84%E7%B1%BB/" class="article-date">
+  <time datetime="2020-10-15T01:06:31.000Z" itemprop="datePublished">2020-10-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+</article>
+    
     <article id="post-数据库" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -214,7 +281,150 @@
 </li>
 </ul>
 <p>除了实体和联系外，E-R模型还描述了数据库必须遵守的对其内容的某些约束。一个重要的约束是<strong>映射基数</strong>。它表示通过某个联系集能与一实体进行关联的实体数目。</p>
-<h4 id="数据存储和查询"><a href="#数据存储和查询" class="headerlink" title="数据存储和查询"></a><strong>数据存储和查询</strong></h4><p>数据库系统划分为不同的模块，每个模块完成</p>
+<h4 id="存储管理器"><a href="#存储管理器" class="headerlink" title="存储管理器"></a><strong>存储管理器</strong></h4><p>负责数据库中存储的低层数据与应用程序以及向系统提交的查询之间提供接口的部件。负责与文件管理器进行交互。</p>
+<p>存储管理部件包括：权限及完整性管理器；事务管理器；文件管理器；缓冲区管理器；数据文件；数据字典；索引。</p>
+<ul>
+<li><strong>权限及完整性管理器</strong></li>
+</ul>
+<h4 id="数据存储和查询"><a href="#数据存储和查询" class="headerlink" title="数据存储和查询"></a><strong>数据存储和查询</strong></h4><p>数据库系统划分为不同的模块，每个模块完成整个系统的一个功能。数据库系统的功能部件大致可分为存储管理器和查询处理部件。</p>
+<p>事务是数据库应用中完成单一逻辑功能的操作集合。每一个事务是一个既具有原子性又具有一致性的单元。因此，我们要求事务不违反任何的数据库一致性约束。</p>
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a><strong>关系数据库</strong></h2><p>关系数据库由表的集合构成，每个表有唯一的名字。</p>
+<p>一般来说，表中一行代表了一组值之间的一种联系。由于一个表就是这种联系的一个集合，表这个概念和数字上的关系这个概念是密切相关的，这也是关系数据模型名称的由来。</p>
+<p>元组只是一组值的序列（或列表）。在n个值之间的一种联系可以在数学上用关于这些值的一个n元组来表示，n元组就是一个有n个值的元组，它对应表中的一行。</p>
+<p>在关系模型中，<strong>关系</strong>用来指代表，而<strong>元祖</strong>用来指代行，类似的，<strong>属性</strong>指代的是表中的列。</p>
+<p>对于关系的每个属性，都存在一个允许取值的集合，称为该属性的<strong>域</strong>。对于name属性的域是所有可能教师名字的集合</p>
+<p><strong>空</strong>值是一个特殊的值，表示值未知或不存在。</p>
+<p><strong>超码</strong>是一个或多个属性的集合，这些属性的组合可以使我们在一个关系中唯一地标识一个元组。</p>
+<p><strong>主码</strong>代表被数据库设计者选中的、主要用来在一个关系中区分不同元组的候选码。码（无论是主码、候选码或超码）是整个关系的一种性质，而不是单个元祖的性质。主码应该选择那些值从不或极少变化的属性。例如一个人的身份证号，而不是手机号或地址因为这些课发生变化。</p>
+<p>一种关系模式r1可能在它的属性中包括另一个关系模式r2的主码。这个属性在r1上称作参照r2的外码。关系r1也称为外码依赖的参照关系，r2叫做外码的被参照关系。</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a><strong>SQL</strong></h2><p>SQL语言有以下几个部分：</p>
+<ul>
+<li>数据定义语言（DDL）：提供定义关系、删除关系以及修正关系模式的命令；</li>
+<li>数据操纵语言（DML）：DML提供从数据库中查询信息，以及在数据库中插入元组、删除元组、修改元组的能力。</li>
+<li>完整性：SQL DDL包括定义完整性约束的命令，保存在数据库中的数据必须满足所定义的完整性约束。</li>
+<li>视图定义</li>
+<li>事务控制</li>
+<li>嵌入式SQL和动态SQL：嵌入式和动态SQL定义SQL语句如何嵌入到通用编程语言，如C,C++,JAVA等。</li>
+<li>授权： DDL包括定义对关系和视图的访问权限的命令。</li>
+</ul>
+<hr>
+<h3 id="SQL数据类型"><a href="#SQL数据类型" class="headerlink" title="SQL数据类型"></a>SQL数据类型</h3><hr>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p><strong>char(n)</strong>:固定长度的字符串，用户指定长度n。也可以使用全称character</p>
+<p><strong>varchar(n)</strong>:可变长度的字符串。用户指定最大长度n</p>
+<p><strong>int</strong>:整数类型（和机器相关的整数的有限子集），等价于全称integer</p>
+<p><strong>smallint</strong>:小整数类型</p>
+<p><strong>numeric(p,d)</strong>：定点数，精度由用户指定。这个数有p位数字（加上一个符号位），其中d位数字在小数点右边。所以在一个这种类型的字段上，numeric(3,1)可以精准存储44.5，但不能精准存储444.5或0.32这样的数。</p>
+<p><strong>real,double,precision</strong>:浮点数与双精度浮点数，精度与机器有关。</p>
+<p><strong>float</strong>:精度至少为N位的浮点数。</p>
+<h2 id="基本模式定义"><a href="#基本模式定义" class="headerlink" title="基本模式定义"></a>基本模式定义</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> depart_ment</span><br><span class="line">	(dept_name <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">      building <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">     budget <span class="built_in">numeric</span>(<span class="number">12</span>,<span class="number">2</span>),</span><br><span class="line">     primary <span class="keyword">key</span>(dept_name)</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+
+<p>用create table 命令定义SQL关系。</p>
+<p>create tabel 命令的通用形式：</p>
+<p>create table r(</p>
+<p>​    A1,D1,</p>
+<p>​    A2,D2,</p>
+<p>​    ….,</p>
+<p>​    An,Dn，</p>
+<p>​    &lt;完整性约束1&gt;</p>
+<p>​    …</p>
+<p>)</p>
+<p><strong>primary  key(A1,A2,…)</strong></p>
+<p>primary key声明表示属性A1,….构成关系的主码。主码属性必须非空且唯一。</p>
+<p><strong>foreign key(A1,A2,…) references</strong></p>
+<p>foreign key声明表示关系中任意元组在属性（A1,…）上的取值必须对应于关系s中某一元组在主码属性上的取值。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> department</span><br><span class="line">(</span><br><span class="line">	dept_name  <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    building  <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">    budget <span class="built_in">numeric</span>(<span class="number">12</span>,<span class="number">2</span>),</span><br><span class="line">    primary <span class="keyword">key</span>(dept_name)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> curse</span><br><span class="line">(</span><br><span class="line">    course_id  <span class="built_in">varchar</span>(<span class="number">7</span>),</span><br><span class="line">    title <span class="built_in">varchar</span>(<span class="number">50</span>),</span><br><span class="line">    dept_name <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    credits <span class="built_in">numeric</span>(<span class="number">2</span>,<span class="number">0</span>),</span><br><span class="line">    primary <span class="keyword">key</span>(<span class="keyword">ID</span>),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(dept_name) <span class="keyword">references</span> department</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> instructor</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">varchar</span>(<span class="number">5</span>),</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    dept_name <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    slaray <span class="built_in">numeric</span>(<span class="number">8</span>,<span class="number">2</span>),</span><br><span class="line">    primary <span class="keyword">key</span>(<span class="keyword">ID</span>),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(dept_name) <span class="keyword">references</span> department</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">section</span></span><br><span class="line">(</span><br><span class="line">	course_id <span class="built_in">varchar</span>(<span class="number">8</span>),</span><br><span class="line">    sec_id <span class="built_in">varchar</span>(<span class="number">8</span>),</span><br><span class="line">    senester <span class="built_in">varchar</span>(<span class="number">8</span>),</span><br><span class="line">    <span class="keyword">year</span> <span class="built_in">numeric</span>(<span class="number">4</span>,<span class="number">0</span>),</span><br><span class="line">    building <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">    room_number <span class="built_in">varchar</span>(<span class="number">7</span>),</span><br><span class="line">    time_slot_id <span class="built_in">varchar</span>(<span class="number">4</span>),</span><br><span class="line">    primary <span class="keyword">key</span> (course_id,sec_id,semester,<span class="keyword">year</span>)</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(course_id) <span class="keyword">references</span> course</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teaches</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">varchar</span>(<span class="number">5</span>),</span><br><span class="line">    course_id <span class="built_in">varchar</span>(<span class="number">8</span>),</span><br><span class="line">    sec_id <span class="built_in">varchar</span>(<span class="number">8</span>),</span><br><span class="line">    semester <span class="built_in">varchar</span>(<span class="number">6</span>),</span><br><span class="line">    <span class="keyword">year</span> <span class="built_in">numeric</span>(<span class="number">4</span>,<span class="number">0</span>),</span><br><span class="line">    primary <span class="keyword">key</span>(<span class="keyword">ID</span>,course_id,sec_id,semester,<span class="keyword">year</span>),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(course_id,sec_id,semester,<span class="keyword">year</span>) <span class="keyword">references</span> <span class="keyword">section</span>,</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(<span class="keyword">ID</span>) <span class="keyword">references</span> instructor</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>not null :</strong> 一个属性上的not null约束表明在该属性上不允许空值。此约束把空值排除在该属性域之外。</p>
+<ul>
+<li><strong>insert</strong></li>
+</ul>
+<p>一个新创建的关系最初是空的。我们可以用insert命令将数据加载到关系中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line">	<span class="keyword">values</span>(<span class="number">10211</span>,<span class="string">'Smith'</span>,<span class="string">'Biology'</span>,<span class="number">66000</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>delete</strong></li>
+</ul>
+<p>我们可以使用delete命令从关系中删除元祖。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> student</span><br></pre></td></tr></table></figure>
+
+<p>将从student关系中删除所有元组。</p>
+<p>如果要从SQL中去掉一个关系，我们使用drop table 命令。drop table命令从数据库中删除关于被去掉关系的所有信息。命令  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> r;</span><br></pre></td></tr></table></figure>
+
+<p> 这是比delete from更强的语句，后者会保留关系r，但删除r中的所有元组。前者不仅删除r的所有元组，还删除r的模式。一旦r被去掉，除非用create table 命令重建r，否则没有元组可以插入到r中。</p>
+<p>我们使用<strong>alter table</strong>命令为已有关系增加属性。关系中所有元组在新属性上的取值将被设为null。<strong>alter table</strong>命令格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> r <span class="keyword">add</span> A D；</span><br></pre></td></tr></table></figure>
+
+<p>其中r是现有关系的名字，A是待添加属性的名字，D是待添加属性的域</p>
+<p>还有从关系中去掉属性的命令，</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> r <span class="keyword">drop</span> A；</span><br></pre></td></tr></table></figure>
+
+<p>从关系中去掉属性。其中r是现有关系的名字，A是关系的一个属性的名字。很多数据库系统并不支持去掉属性，尽管它们允许去掉整个表。</p>
+<h2 id="SQL查询的基本结构"><a href="#SQL查询的基本结构" class="headerlink" title="SQL查询的基本结构"></a><strong>SQL查询的基本结构</strong></h2><p>查询的基本结构由三个子句构成：select,  from和where.查询的输入是在from子句中列出的关系，在这些关系上进行where和select子句中指定的运算，然后产生一个关系作为结果。</p>
+<h3 id="单关系查询"><a href="#单关系查询" class="headerlink" title="单关系查询"></a><strong>单关系查询</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> instructor;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> dept_name <span class="keyword">from</span> instructor;</span><br></pre></td></tr></table></figure>
+
+<p>在instructor关系中，一个系的名称可以出现不止一次，因此会有重读的名字出现。</p>
+<p>有时我们想去重，强行删除重读，可在select 后加入关键词distinct.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可将上述查询重写为：</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> dept_name</span><br><span class="line"><span class="keyword">from</span> instructor;</span><br></pre></td></tr></table></figure>
+
+<p>这样，在查询结果中，每个系的名字就最多出现一次。</p>
+<p>SQL允许我们使用关键词all来显式指明不去除重复：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">all</span> dept_name</span><br><span class="line"><span class="keyword">from</span> instructor;</span><br></pre></td></tr></table></figure>
+
+<p>因为保留重复元祖是默认的，可以不用all。但是为了保证我们例子的查询结果中删除重复元祖，我们将在所有必要的地方使用distinct。</p>
+<p>select 子句还可以带有+，-，*，/运算符，运算对象可以是常熟或者元祖的属性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">ID</span>,<span class="keyword">name</span>,dept_name,salary *<span class="number">1.1</span></span><br><span class="line"><span class="keyword">from</span> instructor;</span><br></pre></td></tr></table></figure>
+
+<p>这里属性salary的值是原来的1.1倍。但这不会导致对instructor关系的任何改变。</p>
+<p><strong>where</strong>子句允许我们只选出那些在from子句的结果关系中满足特定谓词的元祖。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> </span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> dept_name=<span class="string">'Tom Tomas'</span> <span class="keyword">and</span> salary &gt; <span class="number">70000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>SQL允许where子句中使用逻辑连词and,or和not.逻辑连词的运算对象可以是包含比较运算符&lt;,&lt;=,&gt;,&gt;=,=和&lt;&gt;的表达式。</p>
+<p>多关系查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>, instructor,dept_name,building</span><br><span class="line"><span class="keyword">from</span> instructor,deppartment</span><br><span class="line"><span class="keyword">where</span> instructor.dept_name = department.dept_name;</span><br></pre></td></tr></table></figure>
+
+<p>“找出所有教师的姓名，以及他们所在的系的名称和系所在建筑的名称”。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h4><ul>
+<li>select子句用于列出查询结果中所需要的属性</li>
+<li>from子句是一个查询求值中需要访问的关系列表</li>
+<li>where子句是一个作用在from子句中关系的属性上的谓词。</li>
+</ul>
+<p>select A1,A2,….,AN</p>
+<p>from r1,r2,…,rn</p>
+<p>where P;</p>
+<p>A代表属性，r代表关系，P是谓词。如果省略where，则谓词为true。</p>
+<p>尽管各子句必须以select,from,where写出，但理解查询所代表运算的最容易方式是以运算的顺序来考察各子句：首先是from,然后是where,最后是select。</p>
+<p><strong>自然连接</strong></p>
+<p>自然连接运算作用于两个关系，并产生一个关系作为结果。</p>
+<p>“对于大学中所有讲课的老师，找出他们的姓名以及所讲述的所有课程标识”以前这样写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,course_id</span><br><span class="line"><span class="keyword">from</span> instructor,teaches</span><br><span class="line"><span class="keyword">where</span> instructor.ID=teachers.ID;</span><br></pre></td></tr></table></figure>
+
+<p>该查询可以用自然连接运算写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,course_id</span><br><span class="line"><span class="keyword">from</span> instructor <span class="keyword">natural</span> <span class="keyword">join</span> teacher</span><br></pre></td></tr></table></figure>
+
+<p>自然连接一般模式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> A1,...</span><br><span class="line"><span class="keyword">from</span> r1 <span class="keyword">natural</span> <span class="keyword">join</span> r2 <span class="keyword">natural</span> <span class="keyword">join</span> ...natual <span class="keyword">join</span> rn</span><br><span class="line"><span class="keyword">where</span> P;</span><br></pre></td></tr></table></figure>
+
+<p>“列出教师的名字以及他们所讲课的名称”</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,title</span><br><span class="line"><span class="keyword">from</span> instructor <span class="keyword">natural</span> <span class="keyword">join</span> teaches,course</span><br><span class="line"><span class="keyword">where</span> teaches.course_id=course.course_id;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,title</span><br><span class="line"><span class="keyword">from</span> (instruct <span class="keyword">natural</span> <span class="keyword">join</span> teaches) <span class="keyword">join</span> course <span class="keyword">using</span> (course_id);</span><br></pre></td></tr></table></figure>
+
+<p>join….using运算中需要给定一个属性名列表，其两个输入中都必须具有指定名称的属性。</p>
+<h3 id="更名运算"><a href="#更名运算" class="headerlink" title="更名运算"></a><strong>更名运算</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">as</span> instructor_name,course_id</span><br><span class="line"><span class="keyword">from</span> instructor,teaches</span><br><span class="line"><span class="keyword">where</span> instructor.ID=teaches.ID;</span><br></pre></td></tr></table></figure>
+
+<p>old-name as new-name</p>
+<p>as子句即可以出现在select，也可以出现在from子句中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> T.name, S.course_id</span><br><span class="line"><span class="keyword">from</span> instructor <span class="keyword">as</span> T, teachse ad S</span><br><span class="line"><span class="keyword">where</span> T.ID = S.ID;</span><br></pre></td></tr></table></figure>
+
+<p>重命名关系的一个原因是把一个长的关系替换成短的，这样使用起来比较方便。另一个原因是为了适用于需要比较用一个关系中的元祖的情况。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> T.name</span><br><span class="line"><span class="keyword">from</span> instructor <span class="keyword">as</span> T, instructor <span class="keyword">as</span> S</span><br><span class="line"><span class="keyword">where</span> T.salary &gt; S.salary <span class="keyword">and</span> S.dept_name = <span class="string">'Biology'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>像</p>
 
       
       <!-- reward -->
@@ -811,6 +1021,40 @@
 <hr>
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200721131854374.png" alt="image-20200721131854374"></p>
 <p>上面是有问题的程序</p>
+<p>Linux的文件基本操作</p>
+<p>列出文件或目录信息，目录的信息就是其中包含的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls  [-adl]  file|dir </span><br><span class="line">-a:列出全部文件</span><br><span class="line">-d:仅列出目录本身</span><br><span class="line">-l:以长数据串行列出，包含文件的属性与权限等数据</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-mp] 目录名称</span><br><span class="line">-m : 配置目录权限</span><br><span class="line">-p ：递归创建目录</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p] 目录名称</span><br><span class="line">-p : 递归删除目录</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch [-acdmt] filename</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
       <!-- reward -->
@@ -1301,78 +1545,6 @@
 <blockquote>
 <p>使用“rm-rf”组合要谨慎，因为文件一旦被删除，就不能恢复。rm的“-i”选项需要输入y，文件才被删除，输入其他信息不被删除。</p>
 </blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-</article>
-    
-    <article id="post-破解AD14软件的步骤" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/%E7%A0%B4%E8%A7%A3AD14%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%AD%A5%E9%AA%A4/"
-    >破解AD14软件的步骤</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/%E7%A0%B4%E8%A7%A3AD14%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%AD%A5%E9%AA%A4/" class="article-date">
-  <time datetime="2020-07-06T01:36:06.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>找到解压文件的Mechine，将DXP文件复制替换到软件安装的文件夹中，双击DXP文件，然后</p>
-<p>在Add standalone license file位置点击</p>
-<p> <img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200706094202521.png" alt="image-20200706094202521"></p>
-<p>在License 文件中选任意一个破解文件即可。</p>
-<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200706094301758.png" alt="image-20200706094301758"></p>
 
       
       <!-- reward -->
